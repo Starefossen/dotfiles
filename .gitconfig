@@ -1,0 +1,8 @@
+[user]
+	name = Hans Kristian Flaatten
+	email = hans@starefossen.com
+[core]
+	trustctime = true
+	autocrlf = false
+[color]
+	ui = true
