@@ -17,8 +17,8 @@
 $
 
 # Command Line History (newest to oldest):
-:q
 :wq
+:q
 :q!
 :%s/-g //g
 :%s/sudo //g
@@ -128,20 +128,21 @@ $
 	t
 
 # File marks:
-'0  1  0  ~/.gitignore
-'1  2  0  ~/.gitignore
-'2  68  31  /etc/nginx/sites-available/default
-'3  70  1  /etc/nginx/sites-available/default
-'4  1  0  /media/psf/ubuntu.local/index.php
-'5  1  0  /media/psf/ubuntu.local/index.
-'6  9  49  /media/psf/ubuntu.local/kdd2-backend/.git/config
-'7  25  32  /media/psf/ubuntu.local/kdd2-backend/install.sh
-'8  14  18  /media/psf/ubuntu.local/kdd2-backend/install.sh
-'9  1  0  /media/psf/ubuntu.local/kdd2-backend/install.sh
+'0  10  4  ~/.gitignore
+'1  1  0  ~/.gitignore
+'2  5  0  ~/.gitignore
+'3  68  31  /etc/nginx/sites-available/default
+'4  70  1  /etc/nginx/sites-available/default
+'5  1  0  /media/psf/ubuntu.local/index.php
+'6  1  0  /media/psf/ubuntu.local/index.
+'7  9  49  /media/psf/ubuntu.local/kdd2-backend/.git/config
+'8  25  32  /media/psf/ubuntu.local/kdd2-backend/install.sh
+'9  14  18  /media/psf/ubuntu.local/kdd2-backend/install.sh
 
 # Jumplist (newest first):
+-'  10  4  ~/.gitignore
 -'  1  0  ~/.gitignore
--'  2  0  ~/.gitignore
+-'  5  0  ~/.gitignore
 -'  68  31  /etc/nginx/sites-available/default
 -'  1  0  /etc/nginx/sites-available/default
 -'  70  1  /etc/nginx/sites-available/default
@@ -241,10 +242,15 @@ $
 # History of marks within files (newest to oldest):
 
 > ~/.gitignore
-	"	1	0
-	^	2	1
-	.	2	1
-	+	2	1
+	"	10	4
+	^	10	5
+	.	8	8
+	+	5	1
+	+	7	0
+	+	1	18
+	+	4	13
+	+	6	5
+	+	8	8
 
 > /etc/nginx/sites-available/default
 	"	68	31
