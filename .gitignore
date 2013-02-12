@@ -1,5 +1,12 @@
+# ignore everything
 *
+
+# don't ignore
 !.*
+!.vim/
+
+# ignore
 .bash_history
 *.swp
 .viminfo
+.ssh/
