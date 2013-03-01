@@ -1,0 +1,85 @@
+#!/usr/bin/fish
+
+# Basic shortcuts
+alias l="ls"
+#alias ls="ls -la --group-directories-first --color=always"
+command ls -la --group-directories-first --color=always
+alias mv="mv -v"
+#alias cp="cp -v"
+function cp -d "verbose cp"; cp -v $argv; end
+alias rm="rm -v"
+alias rmdir="rmdir -v"
+alias ssh="ssh -v"
+alias cal="cal -m"
+
+function pgrep -d "more info for pgrep"
+  set pidlist (command pgrep -d, -x $argv)
+  if test -n "$pidlist"
+    ps -fp $pidlist
+  end
+end
+function mkcd -d "mkdir AND cd to it in one go!"
+  mkdir -p $argv
+  if test $status = 0
+    cd $argv
+  end
+end
+
+function keyhashes -d "View server key-hashes"
+  for key in (command ls /etc/ssh/ssh_*_key.pub)
+    ssh-keygen -lf $key
+  end
+end
+
+
+# Applications
+function top -d "Use htop, not top"; htop; end
+function netstat -d "Netstat with some commonly used options"
+  command sudo netstat --numeric --inet -p $argv
+end
+function easy_install
+  echo "pip installs packages. Python packages. An easy_install replacement."
+end
+
+
+# Other stuff
+function servedir -d "Serve files of cwd"
+  ifconfig | grep "inet addr"
+  python -m SimpleHTTPServer
+end
+
+function checkip -d "Print this machines external IP address"
+  wget http://checkip.dyndns.org/ -O - -o /dev/null | cut -d\  -f 6 | cut -d\< -f 1;
+end
+
+function sendkey -d "Send ssh public key to some remote host (ssh-copy-id alternative)"
+  if test -f ~/.ssh/id_rsa.pub
+    if test (count $argv) -lt 2
+      set port 22
+    else
+      set port $argv[2]
+    end
+    if test (count $argv) -gt 0
+      ssh $argv[1] -p $port "cat >> ~/.ssh/authorized_keys" < ~/.ssh/id_rsa.pub
+    end
+  else
+    echo "There is no ~/.ssh/id_rsa.pub, please generate your keys with 'ssh-keygen'"
+  end
+end
+
+function prettyJson -d "Pretty-print json (/usr/bin/prettify_json.rb works fine too)"
+  echo "Use /usr/local/bin/pjson"
+end
+
+#function prettyJson -d "Pretty-print json (/usr/bin/prettify_json.rb works fine too)"
+#  python -m json.tool
+#end
+
+function man
+  if test "$argv[1]" = "lsof"
+    echo http://danielmiessler.com/study/lsof/
+  else
+    command man $argv
+  end
+end
+
