@@ -11,3 +11,4 @@
 *.swp
 .viminfo
 .ssh/
+.vim/.netrwhist
