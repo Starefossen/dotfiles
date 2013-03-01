@@ -8,17 +8,28 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/JLink
+~MSle0/function 
 
 # Last Substitute Search Pattern:
-~MSle0&-g 
+~MSle0~&\$&argv\;
 
 # Last Substitute String:
-$
+$\$argv\;
 
 # Command Line History (newest to oldest):
-:wq
 :q
+:wq
+:w
+:%s/\$&argv\;/\$argv\;/g
+:%s/\$\&argv\;/\$argv\;/g
+:5,11s/\&argv\;/\&argv\; end/g
+:5,11s/&argv;/&argv; end/g
+:5,11s/command /function /g
+:7,11s/ end//g
+:7,11s/function /command /g
+:s/function /command /g
+:s/function /command /
+:%s/function /command /g
 :q!
 :%s/-g //g
 :%s/sudo //g
@@ -31,7 +42,6 @@ $
 :wq!
 :s/error
 :set mouse=a
-:w
 :set number
 :set num
 :unset paste
@@ -57,18 +67,18 @@ $
 :CoffeeCompile
 :coffee
 :CoffeMake
-:w!
-:syntax
-:syntax on
-:help
-:syntax coffee
-:y
-:yy
-:'<,'>
-:: RoundRobinSched;
-:x
 
 # Search String History (newest to oldest):
+? \$&argv\;
+? \$\&argv\;
+? \&argv\;
+? &argv;
+? command 
+?  end
+? function 
+?/function /command /
+?/usr/bin/fish
+?/Erik
 ?/JLink
 ? -g 
 ? sudo 
@@ -105,44 +115,84 @@ $
 
 # Registers:
 "0	LINE	0
-				draw: {
+	function cp -d "verbose cp"; cp -v $argv; end
+	function rm -d "verbose rm, and confirm removal"; rm -iv $argv; end
 ""1	LINE	0
-	>>>>>>> db3395e226259e24d1380fa0822355771e92cefb
+	. ~/.config/fish/prompt.fish
 "2	LINE	0
-	=======
+	. ~/.config/fish/shortcuts.fish
 "3	LINE	0
-	<<<<<<< HEAD
-"4	LINE	0
-	apt-get install  
-"5	LINE	0
 	
+"4	LINE	0
+	#end
+	
+"5	LINE	0
+	  end
+	end
 "6	LINE	0
-	>>>>>> 50f1160c8f0ea54cfacf0f8c956ad7000da8ca2c
+	      m $i
 "7	LINE	0
-	======
+	  for i in (/bin/ls)
 "8	LINE	0
-	 	map.addLayer(drawnItems);
+	
+	function playall
 "9	LINE	0
-	 	});
+	  ffmpeg -f v4l2 -s 640x480 -i /dev/video0 out.mpg
+	end
 "-	CHAR	0
-	t
+	end
 
 # File marks:
-'0  12  0  ~/.gitignore
-'1  10  4  ~/.gitignore
-'2  1  0  ~/.gitignore
-'3  5  0  ~/.gitignore
-'4  68  31  /etc/nginx/sites-available/default
-'5  70  1  /etc/nginx/sites-available/default
-'6  1  0  /media/psf/ubuntu.local/index.php
-'7  1  0  /media/psf/ubuntu.local/index.
-'8  9  49  /media/psf/ubuntu.local/kdd2-backend/.git/config
-'9  25  32  /media/psf/ubuntu.local/kdd2-backend/install.sh
+'0  6  0  ~/.gitignore
+'1  7  6  ~/.gitignore
+'2  9  10  ~/.config/fish/config.shortcuts
+'3  6  54  ~/.config/fish/config.shortcuts
+'4  85  0  ~/.config/fish/config.shortcuts
+'5  115  0  ~/.bashrc
+'6  1  0  ~/.bash_profile
+'7  5  15  ~/.config/fish/config.shortcuts
+'8  8  7  ~/.config/fish/config.shortcuts
+'9  3  29  ~/.config/fish/config.fish
 
 # Jumplist (newest first):
--'  12  0  ~/.gitignore
+-'  6  0  ~/.gitignore
 -'  1  0  ~/.gitignore
--'  10  4  ~/.gitignore
+-'  7  6  ~/.gitignore
+-'  9  10  ~/.config/fish/config.shortcuts
+-'  1  0  ~/.config/fish/config.shortcuts
+-'  6  54  ~/.config/fish/config.shortcuts
+-'  85  0  ~/.config/fish/config.shortcuts
+-'  115  0  ~/.bashrc
+-'  1  0  ~/.bashrc
+-'  1  0  ~/.bash_profile
+-'  5  15  ~/.config/fish/config.shortcuts
+-'  8  7  ~/.config/fish/config.shortcuts
+-'  3  29  ~/.config/fish/config.fish
+-'  1  0  ~/.config/fish/config.fish
+-'  4  27  ~/.config/fish/config.fish
+-'  22  0  ~/.config/fish/config.shortcuts
+-'  1  0  ~/.config/fish/config.promt
+-'  78  0  ~/.config/fish/config.shortcuts
+-'  45  0  ~/.config/fish/config.shortcuts
+-'  46  0  ~/.config/fish/config.shortcuts
+-'  44  0  ~/.config/fish/config.shortcuts
+-'  37  0  ~/.config/fish/config.shortcuts
+-'  4  42  ~/.config/fish/config.shortcuts
+-'  15  0  ~/.config/fish/config.shortcuts
+-'  8  0  ~/.config/fish/config.fish
+-'  3  0  ~/.config/fish/config.promt
+-'  1  0  ~/.config/fish/config.
+-'  51  0  ~/.config/fish/config.promt
+-'  1  76  /etc/apt/sources.list.d/fish.list
+-'  7  32  ~/.config/fish/config.fish
+-'  4  0  ~/.config/fish/fishd.ubuntu.local
+-'  1  0  ~/.config/fish/fishd.ubuntu.local
+-'  18  15  /media/psf/ubuntu.local/leaflet-snap/.git/config
+-'  1  0  /media/psf/ubuntu.local/leaflet-snap/.git/config
+-'  200  16  /media/psf/ubuntu.local/tsog/team.html
+-'  1  0  /media/psf/ubuntu.local/tsog/team.html
+-'  13  0  ~/.gitignore
+-'  11  4  ~/.gitignore
 -'  5  0  ~/.gitignore
 -'  68  31  /etc/nginx/sites-available/default
 -'  1  0  /etc/nginx/sites-available/default
@@ -190,70 +240,172 @@ $
 -'  1  0  /media/psf/ubuntu.local/leaflet-snap/example/drawing.html
 -'  21  45  /media/psf/ubuntu.local/leaflet-snap/.git/config
 -'  20  0  /media/psf/ubuntu.local/leaflet-snap/.git/config
--'  1  0  /media/psf/ubuntu.local/leaflet-snap/.git/config
 -'  7  17  /media/psf/ubuntu.local/leaflet-snap/.git/config
 -'  59  0  ~/.bashrc
 -'  10  7  ~/.bashrc
--'  1  0  ~/.bashrc
 -'  6  48  /media/psf/ubuntu.local/jquery-hashtag/TODO.md
 -'  1  0  /media/psf/ubuntu.local/jquery-hashtag/TODO.md
 -'  5  49  /media/psf/ubuntu.local/jquery-hashtag/TODO.md
--'  115  0  ~/.bashrc
 -'  3  0  ~/.bash_profile
--'  1  0  ~/.bash_profile
--'  61  0  ~/.bashrc
--'  38  14  /media/psf/ubuntu.local/ghbot/Cakefile
--'  1  0  /media/psf/ubuntu.local/ghbot/Cakefile
--'  7  15  ~/.vimrc
--'  1  0  ~/.vimrc
--'  10  11  /media/psf/ubuntu.local/ghbot/Cakefile
--'  139  0  /media/psf/ubuntu.local/leaflet-draw/src/draw/Control.Draw.js
--'  1  0  /media/psf/ubuntu.local/leaflet-draw/src/draw/Control.Draw.js
--'  2  0  /media/psf/ubuntu.local/leaflet-draw/example/drawing.html
--'  1  0  /media/psf/ubuntu.local/leaflet-draw/example/drawing.html
--'  1  23  ~/.bash_aliases
--'  63  4  ~/.bashrc
--'  60  38  ~/.bashrc
--'  71  64  ~/.bashrc
--'  1  2  /media/psf/ubuntu.local/jquery-hashtag/index.html
--'  10  9  /media/psf/ubuntu.local/jquery-hashtag/.gitignore
--'  1  0  /media/psf/ubuntu.local/jquery-hashtag/.gitignore
--'  16  0  /etc/nginx/sites-available/default
--'  1  0  /etc/nginx/nginx.conf
--'  14  9  /media/psf/ubuntu.local/kdd2/.gitignore
--'  1  0  /media/psf/ubuntu.local/kdd2/.gitignore
--'  664  0  /etc/php5/fpm/php.ini
--'  541  26  /etc/php5/fpm/php.ini
--'  540  17  /etc/php5/fpm/php.ini
--'  538  18  /etc/php5/fpm/php.ini
--'  523  67  /etc/php5/fpm/php.ini
--'  521  0  /etc/php5/fpm/php.ini
--'  520  17  /etc/php5/fpm/php.ini
--'  516  32  /etc/php5/fpm/php.ini
--'  515  73  /etc/php5/fpm/php.ini
--'  514  44  /etc/php5/fpm/php.ini
--'  513  33  /etc/php5/fpm/php.ini
--'  103  2  /media/psf/ubuntu.local/leaflet-snap/example/drawing.html
--'  69  3  /media/psf/ubuntu.local/leaflet-snap/example/drawing.html
--'  38  0  /media/psf/ubuntu.local/leaflet-snap/example/drawing.html
--'  81  0  /media/psf/ubuntu.local/leaflet-snap/example/drawing.html
--'  68  0  /media/psf/ubuntu.local/leaflet-snap/example/drawing.html
+-'  1  0  ~/.config/fish/config.promt
+-'  1  0  ~/.config/fish/config.promt
+-'  3  29  ~/.config/fish/config.fish
+-'  3  29  ~/.config/fish/config.fish
+-'  1  0  ~/.config/fish/config.fish
+-'  4  27  ~/.config/fish/config.fish
 
 # History of marks within files (newest to oldest):
 
 > ~/.gitignore
-	"	12	0
-	^	10	5
-	.	13	0
+	"	6	0
+	^	7	9
+	.	7	8
 	+	5	1
 	+	7	0
 	+	1	18
 	+	4	13
 	+	6	5
-	+	8	8
-	+	11	0
+	+	9	8
 	+	12	0
 	+	13	0
+	+	14	0
+	+	7	8
+
+> ~/.config/fish/config.shortcuts
+	"	9	10
+	^	9	11
+	.	9	10
+	+	4	52
+	+	4	0
+	+	4	0
+	+	4	42
+	+	15	0
+	+	15	0
+	+	4	37
+	+	4	119
+	+	15	39
+	+	15	39
+	+	15	0
+	+	4	41
+	+	4	42
+	+	4	17
+	+	4	42
+	+	4	42
+	+	4	0
+	+	4	0
+	+	15	0
+	+	6	16
+	+	8	16
+	+	9	16
+	+	11	22
+	+	12	18
+	+	13	18
+	+	14	0
+	+	15	0
+	+	36	0
+	+	37	0
+	+	37	0
+	+	46	0
+	+	37	0
+	+	46	0
+	+	55	0
+	+	70	0
+	+	77	0
+	+	76	0
+	+	77	0
+	+	5	56
+	+	9	13
+	+	5	0
+	+	6	14
+	+	7	0
+	+	8	0
+	+	7	0
+	+	6	54
+	+	8	0
+	+	9	10
+
+> ~/.bashrc
+	"	115	0
+	^	61	1
+	.	63	2
+	+	4	0
+	+	3	0
+	+	80	19
+	+	115	41
+	+	60	38
+	+	61	0
+	+	61	142
+	+	61	1
+	+	61	0
+	+	63	4
+	+	64	0
+	+	63	146
+	+	63	2
+
+> ~/.config/fish/config.fish
+	"	11	48
+	^	11	49
+	.	11	48
+	+	1	15
+	+	17	0
+	+	16	29
+	+	12	30
+	+	12	30
+	+	12	0
+	+	12	0
+	+	8	5
+	+	7	5
+	+	11	48
+
+> ~/.bash_profile
+	"	1	0
+	.	1	0
+	+	1	0
+	+	1	0
+	+	1	38
+	+	1	0
+	+	1	23
+	+	1	1
+	+	1	0
+	+	1	15
+	+	1	22
+	+	1	48
+	+	1	16
+	+	1	0
+	+	1	0
+	+	3	0
+	+	2	1
+	+	1	1
+	+	1	0
+
+> ~/.config/fish/config.promt
+	"	1	0
+
+> ~/.config/fish/config.
+	"	1	0
+
+> /etc/apt/sources.list.d/fish.list
+	"	1	76
+	^	1	77
+	.	1	76
+	+	1	73
+	+	1	76
+
+> ~/.config/fish/fishd.ubuntu.local
+	"	4	0
+
+> /media/psf/ubuntu.local/leaflet-snap/.git/config
+	"	18	15
+	^	18	16
+	.	18	15
+	+	7	18
+	+	8	0
+	+	23	0
+	+	21	45
+	+	18	15
+
+> /media/psf/ubuntu.local/tsog/team.html
+	"	200	16
 
 > /etc/nginx/sites-available/default
 	"	68	31
@@ -381,33 +533,6 @@ $
 	+	91	0
 	+	103	0
 
-> /media/psf/ubuntu.local/leaflet-snap/.git/config
-	"	21	45
-	^	21	46
-	.	21	45
-	+	7	18
-	+	8	0
-	+	23	0
-	+	21	45
-
-> ~/.bashrc
-	"	59	0
-	^	61	1
-	.	63	2
-	+	4	0
-	+	3	0
-	+	80	19
-	+	115	41
-	+	60	38
-	+	61	0
-	+	61	142
-	+	61	1
-	+	61	0
-	+	63	4
-	+	64	0
-	+	63	146
-	+	63	2
-
 > /media/psf/ubuntu.local/jquery-hashtag/TODO.md
 	"	6	48
 	^	6	49
@@ -416,27 +541,6 @@ $
 	+	6	49
 	+	7	0
 	+	6	49
-
-> ~/.bash_profile
-	"	1	0
-	.	1	0
-	+	1	0
-	+	1	0
-	+	1	38
-	+	1	0
-	+	1	23
-	+	1	1
-	+	1	0
-	+	1	15
-	+	1	22
-	+	1	48
-	+	1	16
-	+	1	0
-	+	1	0
-	+	3	0
-	+	2	1
-	+	1	1
-	+	1	0
 
 > /media/psf/ubuntu.local/ghbot/Cakefile
 	"	38	14
