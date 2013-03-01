@@ -4,6 +4,7 @@
 # don't ignore
 !.*
 !.vim/
+!.config/
 
 # ignore
 .bash_history
