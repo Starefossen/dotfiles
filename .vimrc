@@ -7,6 +7,8 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+set textwidth=80
+
 filetype plugin indent on
 call pathogen#runtime_append_all_bundles()
 call pathogen#infect()
