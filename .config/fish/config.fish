@@ -1,6 +1,7 @@
 # Application specific
 . ~/.config/fish/config.shortcuts
 . ~/.config/fish/config.prompt
+. ~/.config/fish/config.git
 
 # Exports
 set -x LC_ALL en_US.UTF-8

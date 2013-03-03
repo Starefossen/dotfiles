@@ -2,11 +2,9 @@
 
 # Basic shortcuts
 alias l="ls"
-#alias ls="ls -la --group-directories-first --color=always"
-command ls -la --group-directories-first --color=always
+alias ls="ls -la --group-directories-first --color=always"
 alias mv="mv -v"
-#alias cp="cp -v"
-function cp -d "verbose cp"; cp -v $argv; end
+alias cp="cp -v"a
 alias rm="rm -v"
 alias rmdir="rmdir -v"
 alias ssh="ssh -v"
