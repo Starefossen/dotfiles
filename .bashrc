@@ -112,4 +112,5 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:/usr/local/share/CodeSourcery/bin #Adds gcc path
 NODE_PATH=$NODE_PATH:/usr/lib/node_modules
