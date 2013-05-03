@@ -4,5 +4,6 @@
 [core]
 	trustctime = true
 	autocrlf = false
+	editor = vim
 [color]
 	ui = true
