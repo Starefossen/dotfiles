@@ -14,3 +14,4 @@
 .ssh/
 .vim/.netrwhist
 .lesshst
+.cache
