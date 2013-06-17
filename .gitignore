@@ -3,22 +3,23 @@
 
 # don't ignore
 !.*
+!.*/
 !.vim/
-!.config/fish/*
-!.config/hotop/*
+!.config/
 
-# ignore
-.bash_history
+# ingored file endings
 *.swp
-.viminfo
+
+# ignored directories
+.cache/
+.gnugp/
+.node-gyp/
+.npm/
 .ssh/
-.vim/.netrwhist
-.lesshst
-.cache
-.config/fish/fish_history
-.config/fish/fishd*
-.node-gyp
-.npm
+
+# ignored files
+.bash_history
 .DS_Store
+.lesshst
 .rnd
-.gnugp
+.viminfo
