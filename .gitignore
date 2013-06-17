@@ -19,3 +19,4 @@
 .config/fish/fishd*
 .node-gyp
 .npm
+.DS_Store
