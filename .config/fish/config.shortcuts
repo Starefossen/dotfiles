@@ -2,9 +2,16 @@
 
 # Basic shortcuts
 alias l="ls"
-alias ls="ls -la --group-directories-first --color=always"
+
+switch (uname)
+  case Darwin
+    alias ls="ls -laG"
+  case '*'
+    alias ls="ls -la --group-directories-first --color=always"
+end
+
 alias mv="mv -v"
-alias cp="cp -v"a
+alias cp="cp -v"
 alias rm="rm -v"
 alias rmdir="rmdir -v"
 alias ssh="ssh -v"
