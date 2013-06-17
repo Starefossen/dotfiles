@@ -20,3 +20,4 @@
 .node-gyp
 .npm
 .DS_Store
+.rnd
