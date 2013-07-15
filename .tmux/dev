@@ -5,3 +5,4 @@ selectp -t 1 # select the new, second (1) pane
 splitw -v -p 50 # split it into two halves
 selectp -t 0 # go back to the first pane
 
+resize-pane -R 15
