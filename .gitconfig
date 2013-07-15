@@ -3,7 +3,7 @@
 	email = hans@starefossen.com
 [core]
 	trustctime = true
-	autocrlf = true
+	autocrlf = false #true
 	editor = vim
 [color]
 	ui = true
