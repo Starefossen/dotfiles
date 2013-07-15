@@ -5,9 +5,9 @@ alias l="ls"
 
 switch (uname)
   case Darwin
-    alias ls="ls -laG"
+    alias ls="ls -lG"
   case '*'
-    alias ls="ls -la --group-directories-first --color=always"
+    alias ls="ls -l --group-directories-first --color=always"
 end
 
 alias mv="mv -v"
