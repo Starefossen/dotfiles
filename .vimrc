@@ -17,6 +17,9 @@ set tabstop=2         " tabs should insert 2 spaces
 set shiftwidth=2      " tabs should be 2 spaces long
 set expandtab         " replace tabs with spaces (insert)
 
+set splitright        " opens new vertical splits to the right
+set splitbelow        " opens new horisontal splits bellow
+
 " cutom key mappings
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " nnoremap <silent> <leader><Tab> <c-w>w
