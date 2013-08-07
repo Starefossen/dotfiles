@@ -1,9 +1,6 @@
 [submodule ".vim/bundle/ctrlp.vim"]
 	path = .vim/bundle/ctrlp.vim
 	url = git@github.com:kien/ctrlp.vim.git
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic
-	url = git@github.com:scrooloose/syntastic.git
 [submodule ".vim/bundle/vim-airline"]
 	path = .vim/bundle/vim-airline
 	url = git@github.com:bling/vim-airline.git
@@ -22,3 +19,6 @@
 [submodule ".vim/bundle/vim-sensible"]
 	path = .vim/bundle/vim-sensible
 	url = git@github.com:tpope/vim-sensible.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = git@github.com:scrooloose/syntastic.git
