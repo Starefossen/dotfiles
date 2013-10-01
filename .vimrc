@@ -3,6 +3,8 @@ call pathogen#infect('~/.vim/bundle/{}')
 syntax on
 filetype plugin indent on
 
+set shell=/bin/bash   " set shell to bash
+
 set background=dark   " set background to dark
 color mango           " set color scheme to 'mango'
 
