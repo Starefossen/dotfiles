@@ -9,6 +9,7 @@ set background=dark   " set background to dark
 color mango           " set color scheme to 'mango'
 
 set vb t_vb=          " disbale visual bell
+set viminfo=          " disable viminfo
 set number            " show line numbers
 set textwidth=80      " max text width (will force new line)
 set hlsearch          " highligh search results
