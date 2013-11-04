@@ -1,6 +1,6 @@
 ﻿set nocp
 call pathogen#infect('~/.vim/bundle/{}')
-syntax on
+syntax off
 filetype plugin indent on
 
 set shell=/bin/bash   " set shell to bash
