@@ -1,15 +1,19 @@
 [user]
-	name = Hans Kristian Flaatten
-	email = hans@starefossen.com
+  name = Hans Kristian Flaatten
+  email = hans@starefossen.com
 [core]
-	trustctime = true
-	autocrlf = false #true
-	editor = vim
+  trustctime = true
+  autocrlf = false #true
+  editor = vim
 [color]
-	ui = true
+  ui = true
 [credential]
-	helper = cache --timeout=3600
+  helper = cache --timeout=3600
 [push]
-	default = simple
+  default = simple
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  co = checkout
+  br = branch
+  pum = push origin master
+  pom = pull origin master
