@@ -44,3 +44,5 @@ augroup json_autocmd
   autocmd FileType json set expandtab 
   autocmd FileType json set foldmethod=syntax 
 augroup END
+
+autocmd FileType coffee,js,md autocmd BufWritePre <buffer> :%s/\s\+$//e
