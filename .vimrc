@@ -30,20 +30,21 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 "nnoremap <silent> <leader>p gT
 
 " au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
+autocmd BufWritePre * :%s/\s\+$//e
 
 let g:bufferline_echo = 0 " ingore bufferline line
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|_site'
 
-augroup json_autocmd 
-  autocmd! 
-  autocmd FileType json set autoindent 
-  autocmd FileType json set formatoptions=tcq2l 
-  autocmd FileType json set textwidth=78 shiftwidth=2 
-  autocmd FileType json set softtabstop=2 tabstop=8 
-  autocmd FileType json set expandtab 
-  autocmd FileType json set foldmethod=syntax 
+augroup json_autocmd
+  autocmd!
+  autocmd FileType json set autoindent
+  autocmd FileType json set formatoptions=tcq2l
+  autocmd FileType json set textwidth=78 shiftwidth=2
+  autocmd FileType json set softtabstop=2 tabstop=8
+  autocmd FileType json set expandtab
+  autocmd FileType json set foldmethod=syntax
 augroup END
 
 autocmd FileType coffee,js,md autocmd BufWritePre <buffer> :%s/\s\+$//e
