@@ -32,8 +32,9 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
 
 let g:bufferline_echo = 0 " ingore bufferline line
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git' " ignore some ctrlp dirs
-let g:ctrlp_custom_ignore = '\~/Developer/eta2/app/src'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|_site'
 
 augroup json_autocmd 
   autocmd! 
