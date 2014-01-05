@@ -35,7 +35,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 let g:bufferline_echo = 0 " ingore bufferline line
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|_site'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|_site'
 
 augroup json_autocmd
   autocmd!
