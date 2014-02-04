@@ -48,3 +48,8 @@ augroup json_autocmd
 augroup END
 
 autocmd FileType coffee,js,md autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+if filereadable(".vim.custom")
+  so .vim.custom
+endif
+
