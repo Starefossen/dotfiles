@@ -39,3 +39,6 @@
 	url = git@github.com:tpope/vim-fugitive.git
   ignore = dirty
 
+[submodule ".vim/bundle/vim-literate-coffeescript"]
+	path = .vim/bundle/vim-literate-coffeescript
+	url = git@github.com:mintplant/vim-literate-coffeescript.git
