@@ -1,6 +1,6 @@
 [user]
   name = Hans Kristian Flaatten
-  email = hans@starefossen.com
+  email = hans.kristian.flaatten@turistforeningen.no
 [core]
   trustctime = true
   autocrlf = false #true
