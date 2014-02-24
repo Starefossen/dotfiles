@@ -1,6 +1,7 @@
 [user]
   name = Hans Kristian Flaatten
   email = hans.kristian.flaatten@turistforeningen.no
+  signingkey = 8525B59341141813
 [core]
   trustctime = true
   autocrlf = false #true
