@@ -13,7 +13,6 @@ end
 alias mv="mv -v"
 alias cp="cp -v"
 alias rm="rm -v"
-alias rmdir="rmdir -v"
 alias ssh="ssh -v"
 alias cal="cal -m"
 
