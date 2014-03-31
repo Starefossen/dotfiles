@@ -36,6 +36,11 @@ function keyhashes -d "View server key-hashes"
 end
 
 
+# Vagrant
+function vus -d "Vagrant up, ssh"; vagrant up & vagrant ssh; end
+function vdus -d "Vagrant destroy, up, ssh"; vagrant destroy & vagrant up & vagrant ssh; end
+
+
 # Applications
 function top -d "Use htop, not top"; htop; end
 function netstat -d "Netstat with some commonly used options"
