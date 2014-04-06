@@ -37,8 +37,8 @@ end
 
 
 # Vagrant
-function vus -d "Vagrant up, ssh"; vagrant up & vagrant ssh; end
-function vdus -d "Vagrant destroy, up, ssh"; vagrant destroy & vagrant up & vagrant ssh; end
+function vus -d "Vagrant up, ssh"; vagrant up; vagrant ssh; end
+function vdus -d "Vagrant destroy, up, ssh"; vagrant destroy; vagrant up; vagrant ssh; end
 
 
 # Applications
