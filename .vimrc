@@ -11,7 +11,7 @@ color mango           " set color scheme to 'mango'
 set vb t_vb=          " disbale visual bell
 set viminfo=          " disable viminfo
 set number            " show line numbers
-set textwidth=100     " max text width (will force new line)
+set textwidth=80      " max text width (will force new line)
 set hlsearch          " highligh search results
 
 set autoindent        " auto indent (remember paste / nopaste)
@@ -34,8 +34,10 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 let g:bufferline_echo = 0 " ingore bufferline line
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|_site'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules)$',
+  \ 'file': '\v\.(exe|so|dll|pyc)$',
+  \ }
 
 augroup json_autocmd
   autocmd!
