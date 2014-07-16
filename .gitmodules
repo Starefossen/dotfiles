@@ -42,9 +42,6 @@
 [submodule ".vim/bundle/vim-literate-coffeescript"]
 	path = .vim/bundle/vim-literate-coffeescript
 	url = git@github.com:mintplant/vim-literate-coffeescript.git
-[submodule ".vim/bundle/base16-vim"]
-	path = .vim/bundle/base16-vim
-	url = git@github.com:chriskempson/base16-vim.git
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
 	url = git@github.com:tpope/vim-markdown.git
