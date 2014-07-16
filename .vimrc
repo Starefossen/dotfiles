@@ -13,6 +13,7 @@ set viminfo=          " disable viminfo
 set number            " show line numbers
 set textwidth=80      " max text width (will force new line)
 set hlsearch          " highligh search results
+set smartcase         " smart casing search
 
 set autoindent        " auto indent (remember paste / nopaste)
 set smartindent       " smart indentation
