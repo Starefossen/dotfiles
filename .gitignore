@@ -19,6 +19,7 @@
 
 # ignored files
 .bash_history
+.sh_history
 .DS_Store
 .lesshst
 .rnd
