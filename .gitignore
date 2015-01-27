@@ -9,6 +9,7 @@
 
 # ingored file endings
 *.swp
+*.swo
 
 # ignored directories
 .cache/
@@ -16,6 +17,7 @@
 .node-gyp/
 .npm/
 .ssh/
+.wireshark/
 
 # ignored files
 .bash_history
