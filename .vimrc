@@ -51,6 +51,7 @@ augroup json_autocmd
 augroup END
 
 autocmd FileType coffee,js,md autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType yaml :setlocal sw=4 ts=4 sts=4 tw=100
 
 if filereadable(".vim.custom")
   so .vim.custom
