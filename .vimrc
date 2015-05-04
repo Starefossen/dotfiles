@@ -33,7 +33,7 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
 autocmd BufWritePre * :%s/\s\+$//e
 
-let g:bufferline_echo = 0 " ingore bufferline line
+let g:bufferline_echo = 10 " ingore bufferline line
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules)$',
