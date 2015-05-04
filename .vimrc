@@ -30,6 +30,9 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 "nnoremap <silent> <leader>n gt
 "nnoremap <silent> <leader>p gT
 
+" increment (ctrl+z), decrement (ctrl+x)
+nnoremap <C-z> <C-a>
+
 " au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
 autocmd BufWritePre * :%s/\s\+$//e
 
