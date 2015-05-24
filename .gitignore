@@ -21,6 +21,7 @@
 
 # ignored files
 .bash_history
+.dockercfg
 .sh_history
 .DS_Store
 .lesshst
