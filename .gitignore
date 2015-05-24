@@ -4,12 +4,12 @@
 # don't ignore
 !.*
 !.*/
-!.vim/
 !.config/
+!.vim/
 
 # ingored file endings
-*.swp
 *.swo
+*.swp
 
 # ignored directories
 .cache/
@@ -20,11 +20,11 @@
 .wireshark/
 
 # ignored files
+.CFUserTextEncoding
+.DS_Store
 .bash_history
 .dockercfg
-.sh_history
-.DS_Store
 .lesshst
 .rnd
+.sh_history
 .viminfo
-.CFUserTextEncoding
