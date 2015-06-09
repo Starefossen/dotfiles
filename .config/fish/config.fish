@@ -3,6 +3,9 @@
 . ~/.config/fish/config.prompt
 . ~/.config/fish/config.git
 
+# Welcome Message
+set fish_greeting ""
+
 # Exports
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
