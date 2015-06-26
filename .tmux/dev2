@@ -1,13 +1,2 @@
-selectp -t 0        # select the first (0) pane
-splitw -v -p 30     # split screen horisontaly
-
-selectp -t 1        # select the new, second (1) pane
-send-keys "cd ~/Developer/coreos-vagrant; vagrant up; vagrant ssh" C-m
-send-keys "cd ~/share; ls" C-m
-send-keys "cd "
-splitw -h -p 50     # split it into two halves
-selectp -t 2
-send-keys "git status" C-m
-selectp -t 0        # go back to the first pane
-
-#resize-pane -R 15
+select-pane -t 0
+split-window -h -p 20 -c "#{pane_current_path}"
