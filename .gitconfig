@@ -16,7 +16,7 @@
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   s = status
-  c = commit -S
+  c = commit -v
   co = checkout
   br = branch
   pum = push origin master
