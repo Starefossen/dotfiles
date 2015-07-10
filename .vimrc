@@ -1,4 +1,4 @@
-﻿set nocp
+set nocp
 call pathogen#infect('~/.vim/bundle/{}')
 syntax off
 filetype plugin indent on
