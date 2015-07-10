@@ -34,6 +34,7 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 nnoremap <C-z> <C-a>
 
 " au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
+autocmd VimEnter,BufWinEnter * syn match ErrorMsg " "
 autocmd BufWritePre * :%s/\s\+$//e
 
 let g:bufferline_echo = 10 " ingore bufferline line
