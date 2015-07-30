@@ -37,6 +37,21 @@ function keyhashes -d "View server key-hashes"
 end
 
 
+# Release
+function release -d "Release new package version to GIT"
+  if test -e package.json
+    set from '"version": "[^"]+"'
+    set to   "\"version\": \"$argv[1]\""
+    sed -i '' -E "s/$from/$to/g" package.json
+
+    git commit -m "Tag release v$argv[1]" package.json
+    git tag -a "v$argv[1]" -m "v$argv[1]"
+  else
+    echo "No package.json found"
+  end
+end
+
+
 # Vagrant
 function vus -d "Vagrant up, ssh"; vagrant up; vagrant ssh; end
 function vdus -d "Vagrant destroy, up, ssh"; vagrant destroy; vagrant up; vagrant ssh; end
