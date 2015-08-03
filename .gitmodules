@@ -53,3 +53,6 @@
 [submodule ".vim/bundle/vim-dockerfile"]
 	path = .vim/bundle/vim-dockerfile
 	url = git@github.com:ekalinin/Dockerfile.vim.git
+[submodule ".vim/bundle/yajs.vim"]
+	path = .vim/bundle/yajs.vim
+	url = git@github.com:othree/yajs.vim.git
