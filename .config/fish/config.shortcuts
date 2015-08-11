@@ -40,12 +40,16 @@ end
 # Release
 function release -d "Release new package version to GIT"
   if test -e package.json
-    set from '"version": "[^"]+"'
-    set to   "\"version\": \"$argv[1]\""
-    sed -i '' -E "s/$from/$to/g" package.json
+    if test -z $argv[1]
+      cat package.json | grep version
+    else
+      set from '"version": "[^"]+"'
+      set to   "\"version\": \"$argv[1]\""
+      sed -i '' -E "s/$from/$to/g" package.json
 
-    git commit -m "Tag release v$argv[1]" package.json
-    git tag -a "v$argv[1]" -m "v$argv[1]"
+      git commit -m "Tag release v$argv[1]" package.json
+      git tag -a "v$argv[1]" -m "v$argv[1]"
+    end
   else
     echo "No package.json found"
   end
