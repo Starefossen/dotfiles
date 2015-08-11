@@ -41,7 +41,7 @@ end
 function release -d "Release new package version to GIT"
   if test -e package.json
     if test -z $argv[1]
-      cat package.json | grep version
+      cat package.json | grep '"version"' | awk '{print substr($2, 2, length($2)-3)}'
     else
       set from '"version": "[^"]+"'
       set to   "\"version\": \"$argv[1]\""
