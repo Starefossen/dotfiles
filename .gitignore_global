@@ -4,3 +4,7 @@
 
 # ignored files
 .DS_Store
+
+# ignored directories
+node_modules/
+bower_components/
