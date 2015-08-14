@@ -39,20 +39,37 @@ end
 
 # Release
 function release -d "Release new package version to GIT"
+  # npm packages
   if test -e package.json
     if test -z $argv[1]
       cat package.json | grep '"version"' | awk '{print substr($2, 2, length($2)-3)}'
+      return 0
     else
+      set file 'package.json'
       set from '"version": "[^"]+"'
       set to   "\"version\": \"$argv[1]\""
-      sed -i '' -E "s/$from/$to/g" package.json
-
-      git commit -m "Tag release v$argv[1]" package.json
-      git tag -a "v$argv[1]" -m "v$argv[1]"
     end
+
+  # wercker packages
+  else if test -e wercker-step.yml
+    if test -z $argv[1]
+      cat wercker-step.yml | grep "version:" | awk '{print $2}'
+      return 0
+    else
+      set file 'wercker-step.yml'
+      set from 'version: [^$]+'
+      set to   "version: $argv[1]"
+    end
+
+  # unknown packages
   else
     echo "No package.json found"
+    return 1
   end
+
+  sed -i '' -E "s/$from/$to/g" $file
+  git commit -m "Tag release v$argv[1]" $file
+  git tag -a "v$argv[1]" -m "v$argv[1]"
 end
 
 
