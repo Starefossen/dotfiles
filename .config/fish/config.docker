@@ -1,0 +1,12 @@
+# Aspell
+function aspell -d "Run aspell spell checking on a file"
+  if test -z $argv[1]
+    echo 'Usage: aspell [file]'
+  else
+    # @TODO this only works for relatvive files
+    set file $argv[1]
+    docker run --rm -it \
+      -v (pwd)/$file:/$file \
+      starefossen/aspell aspell check /$file
+  end
+end
