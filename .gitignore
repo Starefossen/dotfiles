@@ -12,6 +12,7 @@
 *.swp
 
 # ignored directories
+.aspell
 .cache/
 .gnugp/
 .node-gyp/
