@@ -26,6 +26,7 @@
 .bash_history
 .dockercfg
 .lesshst
+.npmrc
 .rnd
 .sh_history
 .viminfo
