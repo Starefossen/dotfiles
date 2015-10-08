@@ -21,6 +21,7 @@ function aspell -d "Run aspell spell checking on a file"
       starefossen/aspell \
         aspell check \
           --dont-backup \
+          --encoding=utf-8 \
           --home-dir /etc/aspell \
           $mnt/$file
   end
