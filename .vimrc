@@ -40,7 +40,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 let g:bufferline_echo = 10 " ingore bufferline line
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules)$',
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|bower_components)$',
   \ 'file': '\v\.(exe|so|dll|pyc)$',
   \ }
 
