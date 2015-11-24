@@ -30,10 +30,6 @@
 	path = .vim/bundle/syntastic
 	url = git@github.com:scrooloose/syntastic.git
   ignore = dirty
-[submodule ".vim/bundle/vim-golang"]
-	path = .vim/bundle/vim-golang
-	url = git@github.com:jnwhiteh/vim-golang.git
-  ignore = dirty
 [submodule "/Users/hanskristian/.vim/bundle/vim-fugitive"]
 	path = /Users/hanskristian/.vim/bundle/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git
