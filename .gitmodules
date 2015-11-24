@@ -23,8 +23,8 @@
 	path = .vim/bundle/syntastic
 	url = git@github.com:scrooloose/syntastic.git
   ignore = dirty
-[submodule "/Users/hanskristian/.vim/bundle/vim-fugitive"]
-	path = /Users/hanskristian/.vim/bundle/vim-fugitive
+[submodule ".vim/bundle/vim-fugitive"]
+	path = .vim/bundle/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git
 [submodule ".vim/bundle/vim-literate-coffeescript"]
 	path = .vim/bundle/vim-literate-coffeescript
@@ -47,6 +47,6 @@
 [submodule ".vim/bundle/quick-scope"]
 	path = .vim/bundle/quick-scope
 	url = git@github.com:unblevable/quick-scope.git
-[submodule "/Users/hans/.vim/bundle/vim-go"]
-	path = /Users/hans/.vim/bundle/vim-go
+[submodule ".vim/bundle/vim-go"]
+	path = .vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
