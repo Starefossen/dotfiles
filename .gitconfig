@@ -41,8 +41,15 @@
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   s = status
   c = commit -v
+  p = add -p
   co = checkout
   br = branch
+
+  amend = commit -v --amend
+  conflicts = diff --name-only --diff-filter=U
+  staged = diff --staged
+  undo = reset --soft HEAD~
+  unstage = reset HEAD --
 
 [merge]
 	conflictstyle = diff3
