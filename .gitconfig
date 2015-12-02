@@ -43,8 +43,6 @@
   c = commit -v
   co = checkout
   br = branch
-  pum = push origin master
-  pom = pull origin master
 
 [merge]
 	conflictstyle = diff3
