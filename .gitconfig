@@ -2,17 +2,22 @@
   name = Hans Kristian Flaatten
   email = hans.kristian.flaatten@dnt.no
   signingkey = 8525B59341141813
+
 [core]
   trustctime = true
   autocrlf = false #true
   editor = vim
   excludesfile = ~/.gitignore_global
+
 [color]
   ui = true
+
 [credential]
   helper = cache --timeout=3600
+
 [push]
   default = simple
+
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   s = status
@@ -21,7 +26,9 @@
   br = branch
   pum = push origin master
   pom = pull origin master
+
 [merge]
 	conflictstyle = diff3
+
 [help]
 	autocorrect = 1
