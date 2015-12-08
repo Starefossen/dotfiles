@@ -47,6 +47,7 @@
 
   amend = commit -v --amend
   conflicts = diff --name-only --diff-filter=U
+  last = log -1 HEAD
   staged = diff --staged
   supdate = submodule foreach git pull -f origin master
   undo = reset --soft HEAD~
