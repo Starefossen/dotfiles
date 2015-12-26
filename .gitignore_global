@@ -1,6 +1,7 @@
 # ingored file endings
 *.swp
 *.swo
+*.log
 
 # ignored files
 .DS_Store
