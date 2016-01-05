@@ -73,11 +73,6 @@ function release -d "Release new package version to GIT"
 end
 
 
-# Vagrant
-function vus -d "Vagrant up, ssh"; vagrant up; vagrant ssh; end
-function vdus -d "Vagrant destroy, up, ssh"; vagrant destroy; vagrant up; vagrant ssh; end
-
-
 # Applications
 function top -d "Use htop, not top"; htop; end
 function netstat -d "Netstat with some commonly used options"
