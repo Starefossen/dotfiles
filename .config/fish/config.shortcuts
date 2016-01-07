@@ -73,6 +73,10 @@ function release -d "Release new package version to GIT"
 end
 
 
+# NPM / Node
+alias npm="docker-compose run --rm dev npm"
+
+
 # Applications
 function top -d "Use htop, not top"; htop; end
 function netstat -d "Netstat with some commonly used options"
