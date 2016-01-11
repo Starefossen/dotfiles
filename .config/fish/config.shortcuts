@@ -75,6 +75,7 @@ end
 
 # NPM / Node
 alias npm="docker-compose run --rm dev npm"
+alias node="docker-compose run --rm dev node"
 
 
 # Applications
