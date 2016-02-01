@@ -26,3 +26,5 @@ function aspell -d "Run aspell spell checking on a file"
           $mnt/$file
   end
 end
+
+alias highlight="docker run -i --rm starefossen/highlight"
