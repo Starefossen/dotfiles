@@ -78,7 +78,7 @@ alias npm="docker-compose run --rm dev npm"
 alias node="docker-compose run --rm dev node"
 
 # Sherpa
-alias manage="docker-compose run --rm sherpa ./manage.py"
+alias sherpa="docker-compose run --rm sherpa ./manage.py"
 
 # Applications
 function top -d "Use htop, not top"; htop; end
