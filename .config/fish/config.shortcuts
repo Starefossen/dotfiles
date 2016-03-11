@@ -36,6 +36,11 @@ function keyhashes -d "View server key-hashes"
   end
 end
 
+function noprompt -d "Disable the prompt"
+  function fish_prompt
+    echo "> "
+  end
+end
 
 # Release
 function release -d "Release new package version to GIT"
