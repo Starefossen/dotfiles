@@ -54,3 +54,9 @@
 [submodule ".vim/bundle/seoul256.vim"]
 	path = .vim/bundle/seoul256.vim
 	url = https://github.com/junegunn/seoul256.vim.git
+[submodule ".vim/bundle/goyo.vim"]
+	path = .vim/bundle/goyo.vim
+	url = https://github.com/junegunn/goyo.vim.git
+[submodule ".vim/bundle/limelight.vim"]
+	path = .vim/bundle/limelight.vim
+	url = https://github.com/junegunn/limelight.vim.git

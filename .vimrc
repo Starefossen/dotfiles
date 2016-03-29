@@ -97,6 +97,9 @@ nnoremap <silent> <leader>p gT
 " paragraph formating
 nnoremap <silent> <leader>f gqip
 
+" enable zen writing mode
+nnoremap <silent> <leader>z :Goyo<CR>
+
 " show warning for non breaking spaces
 autocmd VimEnter,BufWinEnter * syn match ErrorMsg " "
 
@@ -113,15 +116,28 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|pyc)$',
   \ }
 
-augroup json_autocmd
-  autocmd!
-  autocmd FileType json set autoindent
-  autocmd FileType json set formatoptions=tcq2l
-  autocmd FileType json set textwidth=78 shiftwidth=2
-  autocmd FileType json set softtabstop=2 tabstop=8
-  autocmd FileType json set expandtab
-  autocmd FileType json set foldmethod=syntax
-augroup END
+function! s:goyo_enter()
+  silent !tmux set status off
+  silent !tmux resize-pane -Z
+  set nocursorline
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  silent !tmux resize-pane -Z
+  set cursorline
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 autocmd FileType coffee,js,md autocmd BufWritePre <buffer> :%s/\s\+$//e
 autocmd FileType yaml :setlocal sw=4 ts=4 sts=4 tw=100
