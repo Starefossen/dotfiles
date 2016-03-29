@@ -12,11 +12,18 @@ set viminfo='100,n$HOME/.vim/files/info/viminfo
 " UI
 set vb t_vb=          " disbale visual bell
 set background=dark   " set background to dark
-color mango           " set color scheme to 'mango'
 
 set number            " show line numbers
 set textwidth=80      " max text width (will force new line)
 set cursorline        " highlight current line
+set showmode          " show the current mode
+set showcmd           " show last command
+set scrolloff=5       " start scolling lines 5 from top or bottom
+
+" seoul256 theme
+let g:seoul256_background = 233
+color seoul256
+" highlight LineNr ctermbg=233
 
 " Windows
 set splitright        " opens new vertical splits to the right

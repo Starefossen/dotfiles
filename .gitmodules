@@ -51,3 +51,6 @@
 [submodule ".vim/bundle/vim-tmux-navigator"]
 	path = .vim/bundle/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule ".vim/bundle/seoul256.vim"]
+	path = .vim/bundle/seoul256.vim
+	url = https://github.com/junegunn/seoul256.vim.git
