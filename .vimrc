@@ -33,6 +33,9 @@ set splitbelow        " opens new horisontal splits bellow
 filetype indent on    " load filetype-specific indent files
 set autoindent        " auto indent (remember paste / nopaste)
 set smartindent       " smart indentation
+set pastetoggle=<F2>  " toggle paste mode with F2
+nnoremap <F2> :set invpaste paste?<CR>
+nnoremap <F1> :w<CR>
 
 " Tags and Spaces
 set tabstop=2         " tabs should insert 2 spaces
