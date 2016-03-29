@@ -23,7 +23,7 @@ set scrolloff=5       " start scolling lines 5 from top or bottom
 " seoul256 theme
 let g:seoul256_background = 233
 color seoul256
-" highlight LineNr ctermbg=233
+autocmd ColorScheme * :highlight LineNr ctermbg=233
 
 " Windows
 set splitright        " opens new vertical splits to the right
