@@ -121,7 +121,7 @@ let g:ctrlp_custom_ignore = {
 
 function! s:goyo_enter()
   silent !tmux set status off
-  silent !tmux resize-pane -Z
+  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   set nocursorline
   set noshowmode
   set noshowcmd
@@ -131,7 +131,7 @@ endfunction
 
 function! s:goyo_leave()
   silent !tmux set status on
-  silent !tmux resize-pane -Z
+  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   set cursorline
   set showmode
   set showcmd
