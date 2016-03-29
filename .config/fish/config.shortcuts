@@ -87,6 +87,7 @@ alias sherpa="docker-compose run --rm sherpa ./manage.py"
 
 # Docker
 alias dclean="docker rm (docker ps -aqf status=exited)"
+alias dcrmf="docker-compose stop -t 0; docker-compose rm -f"
 
 # Applications
 function top -d "Use htop, not top"; htop; end
