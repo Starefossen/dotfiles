@@ -40,12 +40,12 @@
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   s = status
-  c = commit -v
+  c = commit -vsS
   p = add -p
   co = checkout
   br = branch
 
-  amend = commit -v --amend
+  amend = commit -vsS --amend
   conflicts = diff --name-only --diff-filter=U
   last = log -1 HEAD
   staged = diff --staged
