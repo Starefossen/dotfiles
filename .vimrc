@@ -131,7 +131,7 @@ endfunction
 
 function! s:goyo_leave()
   silent !tmux set status on
-  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
   set cursorline
   set showmode
   set showcmd
