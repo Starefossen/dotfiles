@@ -35,7 +35,7 @@ function fish_prompt --description 'Write out the prompt'
     # docker prompt
     set -g __fish_prompt_docker $DOCKER_MACHINE_NAME
     if not test -z $__fish_prompt_docker
-      if [ "$status" = "default" ]
+      if [ "$__fish_prompt_docker" = "default" ]
         set -g __fish_prompt_docker "🐳 "
       else
         set -g __fish_prompt_docker "🐳 $__fish_prompt_docker"
