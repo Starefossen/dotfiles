@@ -83,7 +83,7 @@ alias npm="docker-compose run --rm node npm"
 alias node="docker-compose run --rm node node"
 
 # Sherpa
-alias sherpa="docker-compose run --rm sherpa ./manage.py"
+alias sherpa="docker-compose run --rm sherpa python3 manage.py"
 
 # Docker
 alias dclean="docker rm (docker ps -aqf status=exited)"
