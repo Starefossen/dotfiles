@@ -86,6 +86,11 @@ alias node="docker-compose run --rm node node"
 alias sherpa="docker-compose run --rm sherpa python3 manage.py"
 
 # Docker
+alias d="docker"
+alias dc="docker-compose"
+alias dm="docker-machine"
+alias ds="docker-swarm"
+
 alias dclean="docker rm (docker ps -aqf status=exited)"
 alias dcrmf="docker-compose stop -t 0; docker-compose rm -f"
 
@@ -97,7 +102,6 @@ end
 function easy_install
   echo "pip installs packages. Python packages. An easy_install replacement."
 end
-
 
 # Other stuff
 function servedir -d "Serve files of cwd"
