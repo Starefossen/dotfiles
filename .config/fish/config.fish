@@ -3,6 +3,7 @@
 . ~/.config/fish/config.docker
 . ~/.config/fish/config.prompt
 . ~/.config/fish/config.git
+. ~/.config/fish/config.vim
 
 # Welcome Message
 set fish_greeting ""
