@@ -79,8 +79,8 @@ end
 
 
 # NPM / Node
-alias npm="docker-compose run --rm dev npm"
-alias node="docker-compose run --rm dev node"
+alias npm="docker-compose run --rm node npm"
+alias node="docker-compose run --rm node node"
 
 # Sherpa
 alias sherpa="docker-compose run --rm sherpa ./manage.py"
