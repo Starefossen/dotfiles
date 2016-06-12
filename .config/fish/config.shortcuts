@@ -92,7 +92,7 @@ alias dm="docker-machine"
 alias ds="docker-swarm"
 
 alias dclean="docker rm (docker ps -aqf status=exited)"
-alias dcrmf="docker-compose stop -t 0; docker-compose rm -f"
+alias dcrmf="docker-compose stop -t 0; docker-compose rm -f --all"
 
 # Applications
 function top -d "Use htop, not top"; htop; end
