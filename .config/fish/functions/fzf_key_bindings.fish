@@ -1,0 +1,1 @@
+/Users/hans/developer/starefossen/osx/fzf-master/shell/key-bindings.fish
