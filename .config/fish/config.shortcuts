@@ -42,48 +42,8 @@ function noprompt -d "Disable the prompt"
   end
 end
 
-# Release
-function release -d "Release new package version to GIT"
-  # npm packages
-  if test -e package.json
-    if test -z $argv[1]
-      cat package.json | grep '"version"' | awk '{print substr($2, 2, length($2)-3)}'
-      return 0
-    else
-      set file 'package.json'
-      set from '"version": "[^"]+"'
-      set to   "\"version\": \"$argv[1]\""
-    end
-
-  # wercker packages
-  else if test -e wercker-step.yml
-    if test -z $argv[1]
-      cat wercker-step.yml | grep "version:" | awk '{print $2}'
-      return 0
-    else
-      set file 'wercker-step.yml'
-      set from 'version: [^$]+'
-      set to   "version: $argv[1]"
-    end
-
-  # unknown packages
-  else
-    echo "No package.json found"
-    return 1
-  end
-
-  sed -i '' -E "s/$from/$to/g" $file
-  git commit -m "Tag release v$argv[1]" $file
-  git tag -a "v$argv[1]" -m "v$argv[1]"
-end
-
-
-# NPM / Node
-alias npm="docker-compose run --rm node npm"
-alias node="docker-compose run --rm node node"
-
-# Sherpa
-alias sherpa="docker-compose run --rm sherpa python3 manage.py"
+# vim => nvim
+alias vim="nvim"
 
 # Docker
 alias d="docker"
@@ -91,8 +51,22 @@ alias dc="docker-compose"
 alias dm="docker-machine"
 alias ds="docker-swarm"
 
+# Docker Compose Run
+alias dr="docker-compose run --rm"
+
+# Docker Hygiene
 alias dclean="docker rm (docker ps -aqf status=exited)"
 alias dcrmf="docker-compose stop -t 0; docker-compose rm -f --all"
+
+# Ansible
+alias ansible="docker-compose run --rm ansible ansible"
+
+# NPM / Node
+alias npm="docker-compose run --rm node npm"
+alias node="docker-compose run --rm node node"
+
+# Sherpa
+alias sherpa="docker-compose run --rm sherpa python3 manage.py"
 
 # Applications
 function top -d "Use htop, not top"; htop; end
