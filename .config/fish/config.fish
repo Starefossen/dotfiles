@@ -17,6 +17,6 @@ set -x PATH $PATH ~/bin/ # Local bin directory
 set -x PATH $PATH /opt/bin/ # Tmux path
 
 set -x DOCKER_TLS_VERIFY "1";
-set -x DOCKER_HOST "tcp://192.168.99.100:2376";
+set -x DOCKER_HOST "tcp://172.16.10.129:2376";
 set -x DOCKER_CERT_PATH "/Users/hans/.docker/machine/machines/default";
 set -x DOCKER_MACHINE_NAME "default";
