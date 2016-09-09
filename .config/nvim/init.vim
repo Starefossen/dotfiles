@@ -117,6 +117,9 @@ autocmd VimEnter,BufWinEnter * syn match ErrorMsg " "
 " remove trailing white space on save
 autocmd BufWritePre * :%s/\s\+$//e
 
+" https://github.com/neovim/neovim/issues/2048
+nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
+
 " Autosave on leave
 let g:tmux_navigator_save_on_switch = 1
 
