@@ -1,7 +1,7 @@
 [user]
   name = Hans Kristian Flaatten
   email = hans.flaatten@evry.com
-  signingkey = 8525B59341141813
+  signingkey = 2E4FCF4F88E4422B
 
 [core]
   trustctime = true
