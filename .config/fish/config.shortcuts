@@ -58,9 +58,6 @@ alias dr="docker-compose run --rm"
 alias dclean="docker rm (docker ps -aqf status=exited)"
 alias dcrmf="docker-compose stop -t 0; docker-compose rm -f --all"
 
-# Ansible
-alias ansible="docker-compose run --rm ansible ansible"
-
 # NPM / Node
 alias npm="docker-compose run --rm node npm"
 alias node="docker-compose run --rm node node"
