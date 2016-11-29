@@ -42,6 +42,11 @@ function noprompt -d "Disable the prompt"
   end
 end
 
+function vmstart -d "Start WMVare Fusion VM"
+  set path $HOME"/Documents/Virtual Machines.localized/"$argv".vmwarevm/$argv.vmx"
+  vmrun -T fusion start $path nogui
+end
+
 # vim => nvim
 alias vim="nvim"
 
