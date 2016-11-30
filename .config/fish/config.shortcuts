@@ -53,6 +53,12 @@ function vmstop -d "Stop VMWare Fusion vm"
   vmrun -T fusion stop $path hard
 end
 
+# Kubernetes
+function kubectl-select -d "Select kubectl config"
+  rm ~/.kube/config
+  ln -v -s ~/.kube/config."$argv" ~/.kube/config
+end
+
 # vim => nvim
 alias vim="nvim"
 
