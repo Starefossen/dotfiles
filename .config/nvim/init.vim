@@ -162,3 +162,4 @@ autocmd FileType coffee,js,md autocmd BufWritePre <buffer> :%s/\s\+$//e
 autocmd FileType yaml :setlocal sw=2 ts=2 sts=2 tw=100
 autocmd FileType python :setlocal sw=4 ts=4 sts=4 tw=120
 autocmd FileType gitcommit :setlocal tw=70
+autocmd BufRead,BufNewFile,BufEnter Jenkinsfile :setlocal filetype=groovy
