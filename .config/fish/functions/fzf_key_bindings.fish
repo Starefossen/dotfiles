@@ -1,58 +1,75 @@
 # Key bindings
 # ------------
 function fzf_key_bindings
-  # Due to a bug of fish, we cannot use command substitution,
-  # so we use temporary file instead
-  if [ -z "$TMPDIR" ]
-    set -g TMPDIR /tmp
-  end
 
-  function __fzf_escape
-    while read item
-      echo -n (echo -n "$item" | sed -E 's/([ "$~'\''([{<>})])/\\\\\\1/g')' '
+  # Store last token in $dir as root for the 'find' command
+  function fzf-file-widget -d "List files and folders"
+    set -l dir (commandline -t)
+    # The commandline token might be escaped, we need to unescape it.
+    set dir (eval "printf '%s' $dir")
+    if [ ! -d "$dir" ]
+      set dir .
     end
-  end
+    # Some 'find' versions print undesired duplicated slashes if the path ends with slashes.
+    set dir (string replace --regex '(.)/+$' '$1' "$dir")
 
-  function fzf-file-widget
+    # "-path \$dir'*/\\.*'" matches hidden files/folders inside $dir but not
+    # $dir itself, even if hidden.
     set -q FZF_CTRL_T_COMMAND; or set -l FZF_CTRL_T_COMMAND "
-    command find -L . \\( -path '*/\\.*' -o -fstype 'dev' -o -fstype 'proc' \\) -prune \
-      -o -type f -print \
-      -o -type d -print \
-      -o -type l -print 2> /dev/null | sed 1d | cut -b3-"
-    eval "$FZF_CTRL_T_COMMAND | "(__fzfcmd)" -m $FZF_CTRL_T_OPTS > $TMPDIR/fzf.result"
-    and for i in (seq 20); commandline -i (cat $TMPDIR/fzf.result | __fzf_escape) 2> /dev/null; and break; sleep 0.1; end
+    command find -L \$dir -mindepth 1 \\( -path \$dir'*/\\.*' -o -fstype 'devfs' -o -fstype 'devtmpfs' \\) -prune \
+    -o -type f -print \
+    -o -type d -print \
+    -o -type l -print 2> /dev/null | sed 's#^\./##'"
+
+    set -q FZF_TMUX_HEIGHT; or set FZF_TMUX_HEIGHT 40%
+    begin
+      set -lx FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS"
+      eval "$FZF_CTRL_T_COMMAND | "(__fzfcmd)" -m" | while read -l r; set result $result $r; end
+    end
+    if [ -z "$result" ]
+      commandline -f repaint
+      return
+    end
+
+    if [ "$dir" != . ]
+      # Remove last token from commandline.
+      commandline -t ""
+    end
+    for i in $result
+      commandline -it -- (string escape $i)
+      commandline -it -- ' '
+    end
     commandline -f repaint
-    rm -f $TMPDIR/fzf.result
   end
 
-  function fzf-history-widget
-    history | eval (__fzfcmd) +s +m --tiebreak=index --toggle-sort=ctrl-r $FZF_CTRL_R_OPTS -q '(commandline)' > $TMPDIR/fzf.result
-    and commandline -- (cat $TMPDIR/fzf.result)
+  function fzf-history-widget -d "Show command history"
+    set -q FZF_TMUX_HEIGHT; or set FZF_TMUX_HEIGHT 40%
+    begin
+      set -lx FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT $FZF_DEFAULT_OPTS +s --tiebreak=index --bind=ctrl-r:toggle-sort $FZF_CTRL_R_OPTS +m"
+      history | eval (__fzfcmd) -q '(commandline)' | read -l result
+      and commandline -- $result
+    end
     commandline -f repaint
-    rm -f $TMPDIR/fzf.result
   end
 
-  function fzf-cd-widget
+  function fzf-cd-widget -d "Change directory"
     set -q FZF_ALT_C_COMMAND; or set -l FZF_ALT_C_COMMAND "
-    command find -L . \\( -path '*/\\.*' -o -fstype 'dev' -o -fstype 'proc' \\) -prune \
-      -o -type d -print 2> /dev/null | sed 1d | cut -b3-"
-    # Fish hangs if the command before pipe redirects (2> /dev/null)
-    eval "$FZF_ALT_C_COMMAND | "(__fzfcmd)" +m $FZF_ALT_C_OPTS > $TMPDIR/fzf.result"
-    [ (cat $TMPDIR/fzf.result | wc -l) -gt 0 ]
-    and cd (cat $TMPDIR/fzf.result)
+    command find -L . \\( -path '*/\\.*' -o -fstype 'devfs' -o -fstype 'devtmpfs' \\) -prune \
+    -o -type d -print 2> /dev/null | sed 1d | cut -b3-"
+    set -q FZF_TMUX_HEIGHT; or set FZF_TMUX_HEIGHT 40%
+    begin
+      set -lx FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS"
+      eval "$FZF_ALT_C_COMMAND | "(__fzfcmd)" +m" | read -l result
+      [ "$result" ]; and cd $result
+    end
     commandline -f repaint
-    rm -f $TMPDIR/fzf.result
   end
 
   function __fzfcmd
-    set -q FZF_TMUX; or set FZF_TMUX 1
-
+    set -q FZF_TMUX; or set FZF_TMUX 0
+    set -q FZF_TMUX_HEIGHT; or set FZF_TMUX_HEIGHT 40%
     if [ $FZF_TMUX -eq 1 ]
-      if set -q FZF_TMUX_HEIGHT
-        echo "fzf-tmux -d$FZF_TMUX_HEIGHT"
-      else
-        echo "fzf-tmux -d40%"
-      end
+      echo "fzf-tmux -d$FZF_TMUX_HEIGHT"
     else
       echo "fzf"
     end
@@ -68,4 +85,3 @@ function fzf_key_bindings
     bind -M insert \ec fzf-cd-widget
   end
 end
-
