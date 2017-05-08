@@ -73,7 +73,7 @@ alias dr="docker-compose run --rm"
 
 # Docker Hygiene
 alias dclean="docker rm (docker ps -aqf status=exited)"
-alias dcrmf="docker-compose stop -t 0; docker-compose rm -f --all"
+alias dcrmf="docker-compose stop -t 0; docker-compose rm -f"
 
 # NPM / Node
 alias yarn="docker-compose run --rm node yarn"
