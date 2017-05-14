@@ -83,6 +83,10 @@ alias node="docker-compose run --rm node node"
 # Developer Tools
 alias shellcheck="docker run --rm -it -v (pwd):/mnt nlknguyen/alpine-shellcheck"
 
+function kioskmode -d "Open URL in kiosk mode"
+  command /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --app=$argv[1]
+end
+
 # Applications
 function top -d "Use htop, not top"; htop; end
 function netstat -d "Netstat with some commonly used options"
