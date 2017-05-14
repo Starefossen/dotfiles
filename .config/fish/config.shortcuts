@@ -80,8 +80,8 @@ alias yarn="docker-compose run --rm node yarn"
 alias npm="docker-compose run --rm node npm"
 alias node="docker-compose run --rm node node"
 
-# Sherpa
-alias sherpa="docker-compose run --rm sherpa python3 manage.py"
+# Developer Tools
+alias shellcheck="docker run --rm -it -v (pwd):/mnt nlknguyen/alpine-shellcheck"
 
 # Applications
 function top -d "Use htop, not top"; htop; end
