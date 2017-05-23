@@ -28,3 +28,4 @@ function aspell -d "Run aspell spell checking on a file"
 end
 
 alias highlight="docker run -i --rm starefossen/highlight"
+alias azure="docker run -i --rm -v $HOME/.azure:/root/.azure microsoft/azure-cli azure"
