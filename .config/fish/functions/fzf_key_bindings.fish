@@ -2,7 +2,7 @@
 # ------------
 function fzf_key_bindings
 
-  # Store last token in $dir as root for the 'find' command
+  # Store current token in $dir as root for the 'find' command
   function fzf-file-widget -d "List files and folders"
     set -l dir (commandline -t)
     # The commandline token might be escaped, we need to unescape it.
@@ -16,10 +16,10 @@ function fzf_key_bindings
     # "-path \$dir'*/\\.*'" matches hidden files/folders inside $dir but not
     # $dir itself, even if hidden.
     set -q FZF_CTRL_T_COMMAND; or set -l FZF_CTRL_T_COMMAND "
-    command find -L \$dir -mindepth 1 \\( -path \$dir'*/\\.*' -o -fstype 'devfs' -o -fstype 'devtmpfs' \\) -prune \
+    command find -L \$dir -mindepth 1 \\( -path \$dir'*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' \\) -prune \
     -o -type f -print \
     -o -type d -print \
-    -o -type l -print 2> /dev/null | sed 's#^\./##'"
+    -o -type l -print 2> /dev/null | cut -b3-"
 
     set -q FZF_TMUX_HEIGHT; or set FZF_TMUX_HEIGHT 40%
     begin
@@ -45,7 +45,7 @@ function fzf_key_bindings
   function fzf-history-widget -d "Show command history"
     set -q FZF_TMUX_HEIGHT; or set FZF_TMUX_HEIGHT 40%
     begin
-      set -lx FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT $FZF_DEFAULT_OPTS +s --tiebreak=index --bind=ctrl-r:toggle-sort $FZF_CTRL_R_OPTS +m"
+      set -lx FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT $FZF_DEFAULT_OPTS --tiebreak=index --bind=ctrl-r:toggle-sort $FZF_CTRL_R_OPTS +m"
       history | eval (__fzfcmd) -q '(commandline)' | read -l result
       and commandline -- $result
     end
@@ -54,8 +54,8 @@ function fzf_key_bindings
 
   function fzf-cd-widget -d "Change directory"
     set -q FZF_ALT_C_COMMAND; or set -l FZF_ALT_C_COMMAND "
-    command find -L . \\( -path '*/\\.*' -o -fstype 'devfs' -o -fstype 'devtmpfs' \\) -prune \
-    -o -type d -print 2> /dev/null | sed 1d | cut -b3-"
+    command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' \\) -prune \
+    -o -type d -print 2> /dev/null | cut -b3-"
     set -q FZF_TMUX_HEIGHT; or set FZF_TMUX_HEIGHT 40%
     begin
       set -lx FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS"
