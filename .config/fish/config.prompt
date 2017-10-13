@@ -57,7 +57,7 @@ function fish_prompt --description 'Write out the prompt'
         set gitunstaged "*"
       end
       # staged changes?
-      git diff-index --cached --quiet --ignore-submodules HEAD --
+      git diff-index --quiet --cached --ignore-submodules HEAD -- >/dev/null 2>&1
       if test $status -ne 0
         set gitstaged "+"
       end
