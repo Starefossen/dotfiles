@@ -46,9 +46,9 @@
   br = branch
 
   amend = commit -vS --amend
-  rebase = rebase -vS
   conflicts = diff --name-only --diff-filter=U
   last = log -1 HEAD
+  rebase = rebase -vS
   staged = diff --staged
   supdate = submodule foreach git pull -f origin master
   undo = reset --soft HEAD~
