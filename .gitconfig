@@ -48,6 +48,7 @@
   amend = commit -vS --amend
   conflicts = diff --name-only --diff-filter=U
   last = log -1 HEAD
+  pull = pull --ff-only
   rebase = rebase -vS
   staged = diff --staged
   supdate = submodule foreach git pull -f origin master
