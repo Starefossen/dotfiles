@@ -152,3 +152,12 @@ function ff -d "Find string in current working directory using mdfind"
     grep -in --color -A 5 -B 5 "$argv[1]" "$file"
   end
 end
+
+function mvtv -d "Send to mediaserver"
+  set path (echo -n "L1ZvbHVtZXMvMiBUQiBMYUNpZS9GaWxtZXIvVFY=" | base64 --decode)
+  set show $argv[1]
+  set season $argv[2]
+  set src $argv[3..-1]
+
+  scp -v $src mediaserver:"'$path/$show/Season $season/'"
+end
