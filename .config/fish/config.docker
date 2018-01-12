@@ -27,5 +27,29 @@ function aspell -d "Run aspell spell checking on a file"
   end
 end
 
+function ansible -d "Run ansible command"
+  set mnt /usr/src/app
+  set cmd ansible
+
+  docker run -it --rm \
+    -v (pwd):$mnt \
+    -v $HOME/.ssh/id_rsa:/root/.ssh/id_rsa:ro \
+    #-v $HOME/.ssh/config:/root/.ssh/config \
+    -w /$mnt \
+    williamyeh/ansible:master-ubuntu16.04 $cmd $argv
+end
+
+function ansible-playbook -d "Run ansible-playbook command"
+  set mnt /usr/src/app
+  set cmd ansible-playbook
+
+  docker run -it --rm \
+    -v (pwd):$mnt \
+    -v $HOME/.ssh/id_rsa:/root/.ssh/id_rsa:ro \
+    #-v $HOME/.ssh/config:/root/.ssh/config \
+    -w /$mnt \
+    williamyeh/ansible:master-ubuntu16.04 $cmd $argv
+end
+
 alias highlight="docker run -i --rm starefossen/highlight"
 alias az="docker run -it --rm -v $HOME:/root azuresdk/azure-cli-python:latest az"
