@@ -51,5 +51,15 @@ function ansible-playbook -d "Run ansible-playbook command"
     williamyeh/ansible:master-ubuntu16.04 $cmd $argv
 end
 
+function terraform -d "Run terraform command"
+  set mnt /usr/src/app
+  set cmd terraform
+
+  docker run -it --rm \
+    -v (pwd):$mnt \
+    -w /$mnt \
+    hashicorp/terraform:light $argv
+end
+
 alias highlight="docker run -i --rm starefossen/highlight"
 alias az="docker run -it --rm -v $HOME:/root azuresdk/azure-cli-python:latest az"
