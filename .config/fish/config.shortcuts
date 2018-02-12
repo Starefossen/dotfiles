@@ -87,6 +87,12 @@ function kioskmode -d "Open URL in kiosk mode"
   command /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --app=$argv[1]
 end
 
+# macOS
+function flushdns -d "Flush DNS cache"
+  sudo dscacheutil -flushcache
+  sudo killall -HUP mDNSResponder
+end
+
 # Applications
 function top -d "Use htop, not top"; htop; end
 function netstat -d "Netstat with some commonly used options"
