@@ -77,3 +77,9 @@
 [submodule ".vim/bundle/vim-obsession"]
 	path = .vim/bundle/vim-obsession
 	url = https://github.com/tpope/vim-obsession.git
+[submodule ".vim/bundle/vim-lazy-obsession"]
+	path = .vim/bundle/vim-lazy-obsession
+	url = https://github.com/monokrome/vim-lazy-obsession.git
+[submodule ".tmux/plugins/tmux-continuum"]
+	path = .tmux/plugins/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum.git
