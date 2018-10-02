@@ -51,16 +51,6 @@ function ansible-playbook -d "Run ansible-playbook command"
     starefossen/ansible:master-ubuntu16.04 $cmd $argv
 end
 
-function terraform -d "Run terraform command"
-  set mnt /usr/src/app
-  set cmd terraform
-
-  docker run -it --rm \
-    -v (pwd):$mnt \
-    -w /$mnt \
-    hashicorp/terraform:light $argv
-end
-
 function aws -d "Run AWS CLI"
   set mnt /usr/src/app
   set cmd aws
