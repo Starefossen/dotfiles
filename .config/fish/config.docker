@@ -36,7 +36,7 @@ function ansible -d "Run ansible command"
     -v $HOME/.ssh/id_rsa:/root/.ssh/id_rsa:ro \
     #-v $HOME/.ssh/config:/root/.ssh/config \
     -w /$mnt \
-    starefossen/ansible:master-ubuntu16.04 $cmd $argv
+    williamyeh/ansible:debian9 $cmd $argv
 end
 
 function ansible-playbook -d "Run ansible-playbook command"
@@ -48,7 +48,7 @@ function ansible-playbook -d "Run ansible-playbook command"
     -v $HOME/.ssh/id_rsa:/root/.ssh/id_rsa:ro \
     #-v $HOME/.ssh/config:/root/.ssh/config \
     -w /$mnt \
-    starefossen/ansible:master-ubuntu16.04 $cmd $argv
+    williamyeh/ansible:debian9 $cmd $argv
 end
 
 function aws -d "Run AWS CLI"
