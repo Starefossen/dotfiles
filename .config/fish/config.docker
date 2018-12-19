@@ -74,6 +74,16 @@ function yaml-lint -d "Run yaml-lint command"
     sdesbure/yamllint:latest $cmd .
 end
 
+function terraform -d "Run terraform command"
+  set mnt /usr/src/app
+  set cmd terraform
+
+  docker run -it --rm \
+    -v (pwd):$mnt \
+    -w /$mnt \
+    hashicorp/terraform:light $argv
+end
+
 function aws -d "Run AWS CLI"
   set mnt /usr/src/app
   set cmd aws
