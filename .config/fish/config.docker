@@ -66,13 +66,12 @@ end
 
 function yaml-lint -d "Run yaml-lint command"
   set mnt /usr/src/app
-  set cmd /bin/sh #yamllint
+  set cmd yamllint
 
   docker run -it --rm \
     -v (pwd):$mnt \
     -w /$mnt \
-    sdesbure/yamllint:latest $cmd $argv #yamllint *.y?ml
-		#sh -c 'find . -name "*.y*ml" | xargs -r yamllint --force-color'
+    sdesbure/yamllint:latest $cmd .
 end
 
 function aws -d "Run AWS CLI"
