@@ -111,5 +111,18 @@ function aws -d "Run AWS CLI"
     $img $argv
 end
 
+function groovylint -d "Run Groovy Linter"
+  set mnt /usr/src/app
+
+  docker run --rm \
+   -v (pwd):$mnt \
+   -w $mnt \
+   -u root \
+   abletonag/groovylint:latest \
+     python3 /opt/run_codenarc.py \
+      -report=console \
+      -includes="**/*.groovy"
+end
+
 alias highlight="docker run -i --rm starefossen/highlight"
 alias az="docker run -it --rm -v $HOME:/root azuresdk/azure-cli-python:latest az"
