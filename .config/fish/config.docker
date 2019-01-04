@@ -74,13 +74,16 @@ function yaml-lint -d "Run yaml-lint command"
     sdesbure/yamllint:latest $cmd .
 end
 
-function terraform -d "Run terraform command"
-  set mnt /usr/src/app
+function tf -d "Run terraform command"
+  set mnt /root/terraform
   set cmd terraform
 
   docker run -it --rm \
     -v (pwd):$mnt \
+    -v ~/.helm:/root/.helm \
+    -v ~/.kube:/root/.kube \
     -w /$mnt \
+    -e "GOOGLE_CREDENTIALS=$GOOGLE_CREDENTIALS" \
     hashicorp/terraform:light $argv
 end
 
