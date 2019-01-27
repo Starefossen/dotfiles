@@ -86,3 +86,6 @@
 [submodule ".tmux/plugins/tmux-yank"]
 	path = .tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank.git
+[submodule ".vim/bundle/haproxy.vim"]
+	path = .vim/bundle/haproxy.vim
+	url = https://github.com/sclo/haproxy.vim.git
