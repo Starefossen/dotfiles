@@ -67,6 +67,8 @@ alias d="docker"
 alias dc="docker-compose"
 alias dm="docker-machine"
 alias ds="docker-swarm"
+alias dsh="docker run -it --rm --entrypoint /bin/sh -v (pwd):/root/src -w /root/src"
+alias dbash="docker run -it --rm --entrypoint /bin/bash -v (pwd):/root/src -w /root/src"
 
 # Docker Compose Run
 alias dr="docker-compose run --rm"
