@@ -89,3 +89,6 @@
 [submodule ".vim/bundle/haproxy.vim"]
 	path = .vim/bundle/haproxy.vim
 	url = https://github.com/infobip/haproxy.vim.git
+[submodule ".vim/bundle/ale"]
+	path = .vim/bundle/ale
+	url = https://github.com/w0rp/ale.git
