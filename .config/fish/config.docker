@@ -34,7 +34,7 @@ function ansible -d "Run ansible command"
   docker run -it --rm \
     -v (pwd):$mnt \
     -v $HOME/.ssh/id_rsa:/root/.ssh/id_rsa:ro \
-    -v $HOME/.ssh/prometheus-workshop:/root/.ssh/prometheus-workshop:ro \
+    #-v $HOME/.ssh/prometheus-workshop:/root/.ssh/prometheus-workshop:ro \
     #-v $HOME/.ssh/config:/root/.ssh/config \
     -w /$mnt \
     williamyeh/ansible:debian9 $cmd $argv
@@ -47,10 +47,23 @@ function ansible-playbook -d "Run ansible-playbook command"
   docker run -it --rm \
     -v (pwd):$mnt \
     -v $HOME/.ssh/id_rsa:/root/.ssh/id_rsa:ro \
-    -v $HOME/.ssh/prometheus-workshop:/root/.ssh/prometheus-workshop:ro \
+    #-v $HOME/.ssh/prometheus-workshop:/root/.ssh/prometheus-workshop:ro \
     #-v $HOME/.ssh/config:/root/.ssh/config \
     -w /$mnt \
     williamyeh/ansible:debian9 $cmd $argv
+end
+
+function ansible-playbook-ssh -d "Run ansible-playbook with SSH"
+  set mnt /usr/src/app
+  set cmd ansible-playbook
+  set key /root/.ssh-keys/id_rsa
+
+  docker run -it --rm \
+    -v (pwd):$mnt \
+    -v $HOME/.ssh/id_rsa:$key:ro \
+    -w /$mnt \
+    williamyeh/ansible:debian9 \
+      bash -c "eval \"\$(ssh-agent -s)\" && ssh-add $key && $cmd $argv"
 end
 
 function ansible-lint -d "Run ansible-lint command"
