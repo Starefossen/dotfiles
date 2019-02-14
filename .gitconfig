@@ -54,6 +54,9 @@
   supdate = submodule foreach git pull -f origin master
   undo = reset --soft HEAD~
   unstage = reset HEAD --
+  publish = "!bash -c \"git push -u origin $(git rev-parse --abbrev-ref HEAD) 2>&1 >/dev/null | awk '/pull request/{getline; print \\$2; fflush()}' | xargs open -a /Applications/Safari.app\" -"
+  unpublish = "!sh -c 'git push --delete origin $(git rev-parse --abbrev-ref HEAD --)' -"
+  whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
 
 [merge]
 	conflictstyle = diff3
