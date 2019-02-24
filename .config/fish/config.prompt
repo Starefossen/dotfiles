@@ -63,7 +63,13 @@ function fish_prompt --description 'Write out the prompt'
       end
     end
 
-    printf '%s %s%s%s%s%s%s%s> ' "$__fish_prompt_docker" "$__fish_prompt_cwd" (prompt_pwd) $gitprompt $gitstashed $gitunstaged $gitstaged "$__fish_prompt_normal"
+    # terraform prompt
+    set terraprompt (cat (git rev-parse --show-toplevel)/.terraform/environment 2>/dev/null)
+    if not test -z $terraprompt
+      set terraprompt (set_color "red")" ($terraprompt)"
+    end
+
+    printf '%s %s%s%s%s%s%s%s%s> ' "$__fish_prompt_docker" "$__fish_prompt_cwd" (prompt_pwd) $gitprompt $gitstashed $gitunstaged $gitstaged $terraprompt "$__fish_prompt_normal"
 
   end
 end
