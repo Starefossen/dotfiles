@@ -132,9 +132,9 @@ function groovylint -d "Run Groovy Linter"
    -w $mnt \
    -u root \
    abletonag/groovylint:latest \
-     python3 /opt/run_codenarc.py \
+     python3 /opt/run_codenarc.py -- \
       -report=console \
-      -includes="**/*.groovy"
+      -includes="**/*.groovy,Jenkinfile" $argv
 end
 
 alias highlight="docker run -i --rm starefossen/highlight"
