@@ -146,3 +146,4 @@ end
 
 alias highlight="docker run -i --rm starefossen/highlight"
 alias az="docker run -it --rm -v $HOME:/root azuresdk/azure-cli-python:latest az"
+alias azsh="docker run -it --rm -v $HOME:/root azuresdk/azure-cli-python:latest /bin/bash"
