@@ -93,7 +93,7 @@ function tf -d "Run terraform command"
 
   set env_file
   if test -f .env
-    set env_file "--env-file .env"
+    set env_file "--env-file=.env"
   end
 
   docker run -it --rm \
