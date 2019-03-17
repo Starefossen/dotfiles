@@ -14,6 +14,7 @@
 # ignored directories
 .aspell/
 .cache/
+.dlv/.*
 .gnugp/
 .gnupg/
 .gnupg_pre_2.1/
