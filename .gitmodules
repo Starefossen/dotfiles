@@ -92,3 +92,6 @@
 [submodule ".vim/bundle/ale"]
 	path = .vim/bundle/ale
 	url = https://github.com/w0rp/ale.git
+[submodule ".vim/bundle/vim-delve"]
+	path = .vim/bundle/vim-delve
+	url = https://github.com/sebdah/vim-delve.git
