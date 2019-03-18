@@ -64,7 +64,7 @@ function fish_prompt --description 'Write out the prompt'
     end
 
     # terraform prompt
-    set terraprompt (cat (git rev-parse --show-toplevel)/.terraform/environment 2>/dev/null)
+    set terraprompt (cat (git rev-parse --show-toplevel 2>/dev/null || echo .)/.terraform/environment 2>/dev/null)
     if not test -z $terraprompt
       set terraprompt (set_color "red")" ($terraprompt)"
     end
