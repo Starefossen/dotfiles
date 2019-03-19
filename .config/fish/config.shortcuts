@@ -194,3 +194,12 @@ function watch -d "Watch for changes and run command"
   echo "Watching '$location' and running '$cmd'..."
   fswatch -o $location | xargs -t -I{} "*" $cmd
 end
+
+function gcreds -d "Set google credentials"
+  set path ~/.gcloud/$argv[1].json
+  if test -f $path
+    set -gx GOOGLE_CREDENTIALS (cat $path | tr -d '\n')
+  else
+    echo "File $path does not exist...."
+  end
+end
