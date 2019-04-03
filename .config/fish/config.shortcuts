@@ -59,9 +59,6 @@ function kubectl-select -d "Select kubectl config"
   ln -v -s ~/.kube/config."$argv" ~/.kube/config
 end
 
-# vim => nvim
-alias vim="nvim"
-
 # Docker
 alias d="docker"
 alias dc="docker-compose"
