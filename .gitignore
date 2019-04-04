@@ -4,8 +4,8 @@
 # don't ignore
 !.*
 !.*/
-!.config/
-!.vim/
+!.config/**/*
+!.vim/**/*
 
 # ingored file endings
 *.swo
