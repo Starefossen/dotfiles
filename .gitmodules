@@ -95,3 +95,6 @@
 [submodule ".vim/bundle/vim-delve"]
 	path = .vim/bundle/vim-delve
 	url = https://github.com/sebdah/vim-delve.git
+[submodule ".config/fish/addons/fish-kubectl-completions"]
+	path = .config/fish/addons/fish-kubectl-completions
+	url = https://github.com/evanlucas/fish-kubectl-completions

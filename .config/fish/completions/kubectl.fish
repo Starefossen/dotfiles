@@ -1,0 +1,1 @@
+/Users/hans/.config/fish/addons/fish-kubectl-completions/completions/kubectl.fish
