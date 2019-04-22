@@ -39,6 +39,7 @@ alias node="docker-compose run --rm node node"
 # Kubernetes
 alias k="kubectl"
 alias kpo="kubectl get pods"
+alias kpow="kubectl get pods -w"
 alias ksvc="kubectl get services"
 alias king="kubectl get ingress"
 
