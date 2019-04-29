@@ -54,7 +54,7 @@
   supdate = submodule foreach git pull -f origin master
   undo = reset --soft HEAD~
   unstage = reset HEAD --
-  publish = "!bash -c \"git push -u origin $(git rev-parse --abbrev-ref HEAD) 2>&1 >/dev/null | awk '/pull request/{getline; print \\$2; fflush()}' | xargs open -a ${1:-FireFox}\" -"
+  publish = "!bash -c \"git push -u origin $(git rev-parse --abbrev-ref HEAD) 2>&1 >/dev/null | awk '/pull request/{getline; print \\$2; fflush()}' | xargs open -a ${1:-'Firefox Developer Edition'}\" -"
   unpublish = "!sh -c 'git push --delete origin $(git rev-parse --abbrev-ref HEAD --)' -"
   whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
 
