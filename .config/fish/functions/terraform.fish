@@ -15,7 +15,8 @@ function terraform -d "Run terraform command"
     -v ~/.kube:/root/.kube \
     -w /$mnt \
     -e GOOGLE_CREDENTIALS \
-    (env | grep TF_VAR_ | cut -f1 -d= | sed 's/^/-e /') \
+    -e GOOGLE_ENCRYPTION_KEY \
+    (env | grep TF_ | cut -f1 -d= | sed 's/^/-e /') \
     $env_file \
     hashicorp/terraform:light $argv
 end
