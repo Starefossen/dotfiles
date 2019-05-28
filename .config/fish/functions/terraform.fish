@@ -18,5 +18,5 @@ function terraform -d "Run terraform command"
     -e GOOGLE_ENCRYPTION_KEY \
     (env | grep TF_ | cut -f1 -d= | sed 's/^/-e /') \
     $env_file \
-    hashicorp/terraform:light $argv
+    hashicorp/terraform:0.11.14 $argv
 end
