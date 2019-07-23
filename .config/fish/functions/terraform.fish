@@ -13,6 +13,7 @@ function terraform -d "Run terraform command"
     -v (pwd):$mnt \
     -v ~/.helm:/root/.helm \
     -v ~/.kube:/root/.kube \
+    -v ~/.terraform.d:/root/.terraform.d \
     -w /$mnt \
     -e GOOGLE_CREDENTIALS \
     -e GOOGLE_ENCRYPTION_KEY \
