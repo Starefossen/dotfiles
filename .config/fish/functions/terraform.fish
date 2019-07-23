@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 function terraform -d "Run terraform command"
-  set mnt /root/terraform
+  set mnt /root/project
   set cmd terraform
 
   set env_file
