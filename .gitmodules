@@ -98,3 +98,6 @@
 [submodule ".config/fish/addons/fish-kubectl-completions"]
 	path = .config/fish/addons/fish-kubectl-completions
 	url = https://github.com/evanlucas/fish-kubectl-completions
+[submodule ".vim/bundle/vim-fish"]
+	path = .vim/bundle/vim-fish
+	url = https://github.com/aliva/vim-fish.git
