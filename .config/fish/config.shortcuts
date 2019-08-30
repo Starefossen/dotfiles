@@ -15,6 +15,7 @@ alias cp="cp -v"
 alias rm="rm -v"
 alias ssh="ssh -v"
 alias cal="cal -m"
+alias cat="bat"
 
 # Docker
 alias d="docker"
