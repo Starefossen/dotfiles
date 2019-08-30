@@ -101,3 +101,6 @@
 [submodule ".vim/bundle/vim-fish"]
 	path = .vim/bundle/vim-fish
 	url = https://github.com/aliva/vim-fish.git
+[submodule ".vim/bundle/vim-jsonnet"]
+	path = .vim/bundle/vim-jsonnet
+	url = https://github.com/google/vim-jsonnet.git
