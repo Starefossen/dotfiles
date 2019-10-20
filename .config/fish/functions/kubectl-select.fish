@@ -1,5 +1,8 @@
 #!/usr/bin/env fish
 
 function kubectl-select -d "Select kubectl config"
-  ln -vsf ~/.kube/config."$argv" ~/.kube/config
+  set pwd (pwd)
+  cd ~/.kube
+  ln -vsf config."$argv" config
+  cd $pwd
 end
