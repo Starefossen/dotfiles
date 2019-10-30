@@ -104,3 +104,6 @@
 [submodule ".vim/bundle/vim-jsonnet"]
 	path = .vim/bundle/vim-jsonnet
 	url = https://github.com/google/vim-jsonnet.git
+[submodule ".vim/bundle/vim-easy-align"]
+	path = .vim/bundle/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
