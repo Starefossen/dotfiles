@@ -33,3 +33,7 @@
 .rnd
 .sh_history
 .viminfo
+.config/gh
+.atom
+.docker
+.terraformrc
