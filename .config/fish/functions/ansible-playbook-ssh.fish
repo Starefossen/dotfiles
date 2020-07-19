@@ -3,7 +3,7 @@
 function ansible-playbook-ssh -d "Run ansible-playbook with SSH"
   set mnt /usr/src/app
   set cmd ansible-playbook
-  #set cmd bash
+  set cmd bash
   set key /root/.ssh-keys/id_rsa
 
   set sshDir (dm ssh default ls /tmp/ | grep ssh)
@@ -17,6 +17,7 @@ function ansible-playbook-ssh -d "Run ansible-playbook with SSH"
     -e SSH_AUTH_SOCK=/ssh-agent/$sshAgent \
     -e ANSIBLE_SSH_ARGS="-o ControlMaster=auto -o ControlPersist=60s -o ControlPath=/tmp/ansible-ssh-%h-%p-%r -o ForwardAgent=yes -o StrictHostKeyChecking=no" \
     -w /$mnt \
-    williamyeh/ansible:debian9 $cmd $argv #\
+    #cytopia/ansible:latest-tools $cmd $argv
+    williamyeh/ansible:master-ubuntu16.04 $cmd $argv #\
       #bash -c "eval \"\$(ssh-agent -s)\" && ssh-add $key && $cmd $argv"
 end
