@@ -1,6 +1,9 @@
 #!/usr/bin/env fish
 
 function terraform -d "Run terraform command"
+  set tfversion $argv[1]
+  set tfargs $argv[2..-1]
+
   set mnt /root/project
   set cmd terraform
 
@@ -11,6 +14,7 @@ function terraform -d "Run terraform command"
 
   docker run -it --rm \
     -v (pwd):$mnt \
+    -v ~/.azure:/root/.azure \
     -v ~/.helm:/root/.helm \
     -v ~/.kube:/root/.kube \
     -v ~/.terraform.d:/root/.terraform.d \
@@ -19,5 +23,5 @@ function terraform -d "Run terraform command"
     -e GOOGLE_ENCRYPTION_KEY \
     (env | grep TF_ | cut -f1 -d= | sed 's/^/-e /') \
     $env_file \
-    hashicorp/terraform:0.11.14 $argv
+    hashicorp/terraform:$tfversion $tfargs
 end
