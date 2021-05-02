@@ -50,6 +50,8 @@ alias king="kubectl get ingress"
 alias shellcheck="docker run --rm -it -v (pwd):/mnt nlknguyen/alpine-shellcheck"
 alias tf12="terraform12"
 alias tf13="terraform13"
+alias tf14="terraform14"
+alias tf15="terraform15"
 
 # Applications
 alias highlight="docker run -i --rm starefossen/highlight"

@@ -18,10 +18,13 @@ function terraform -d "Run terraform command"
     -v ~/.helm:/root/.helm \
     -v ~/.kube:/root/.kube \
     -v ~/.terraform.d:/root/.terraform.d \
+    #-v ~/.gitconfig:/root/.gitconfig \
+    -v /etc/hosts:/etc/hosts \
     -w /$mnt \
     -e GOOGLE_CREDENTIALS \
     -e GOOGLE_ENCRYPTION_KEY \
     (env | grep TF_ | cut -f1 -d= | sed 's/^/-e /') \
     $env_file \
+    #--entrypoint /bin/sh \
     hashicorp/terraform:$tfversion $tfargs
 end
