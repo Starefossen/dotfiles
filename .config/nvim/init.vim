@@ -187,3 +187,16 @@ autocmd FileType yaml :setlocal sw=2 ts=2 sts=2 tw=100
 autocmd FileType python :setlocal sw=4 ts=4 sts=4 tw=120
 autocmd FileType gitcommit :setlocal tw=70
 autocmd BufRead,BufNewFile,BufEnter Jenkinsfile :setlocal filetype=groovy
+
+" create directories when saving new file (eg. :vsp src/foo/bar.go)
+augroup vimrc-auto-mkdir
+  autocmd!
+  autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
+  function! s:auto_mkdir(dir, force)
+    if !isdirectory(a:dir)
+          \   && (a:force
+          \       || input("'" . a:dir . "' does not exist. Create? [y/N]") =~? '^y\%[es]$')
+      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+    endif
+  endfunction
+augroup END
