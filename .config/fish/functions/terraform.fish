@@ -18,7 +18,7 @@ function terraform -d "Run terraform command"
     -v ~/.helm:/root/.helm \
     -v ~/.kube:/root/.kube \
     -v ~/.terraform.d:/root/.terraform.d \
-    #-v ~/.gitconfig:/root/.gitconfig \
+    -v ~/.gitconfig:/root/.gitconfig \
     -v /etc/hosts:/etc/hosts \
     -w /$mnt \
     -e GOOGLE_CREDENTIALS \
