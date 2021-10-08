@@ -52,6 +52,7 @@ alias tf12="terraform12"
 alias tf13="terraform13"
 alias tf14="terraform14"
 alias tf15="terraform15"
+alias tf1="terraform1"
 
 # Applications
 alias highlight="docker run -i --rm starefossen/highlight"
