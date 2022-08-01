@@ -1,7 +1,7 @@
 [user]
-  name = Hans Kristian Flatten
-  email = hans.flaatten@tietoevry.com
-  signingkey = 2E4FCF4F88E4422B
+  name = Hans Kristian Flaatten
+  email = hans.kristian.flaatten@nav.no
+  signingkey = 08723031EA995A49
 
 [core]
   trustctime = true
