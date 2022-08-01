@@ -58,3 +58,6 @@ alias tf1="terraform1"
 alias highlight="docker run -i --rm starefossen/highlight"
 alias az="docker run -it --rm -v $HOME:/root mcr.microsoft.com/azure-cli:latest az"
 alias azsh="docker run -it --rm -v $HOME:/root mcr.microsoft.com/azure-cli:latest /bin/bash"
+
+# Overrides
+alias vim=nvim
