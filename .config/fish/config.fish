@@ -14,3 +14,6 @@ set -x LANG en_US.UTF-8
 set -x LANGUAGE en_US.UTF-8
 
 set -x FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
+
+# Homebrew Env
+eval (/opt/homebrew/bin/brew shellenv)
