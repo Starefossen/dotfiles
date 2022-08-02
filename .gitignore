@@ -37,3 +37,4 @@
 .atom
 .docker
 .terraformrc
+.psql_history
