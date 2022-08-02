@@ -15,8 +15,11 @@ set -x LANGUAGE en_US.UTF-8
 
 set -x FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
 
-# Homebrew Env
+# The next line adds the Homebrew environment
 eval (/opt/homebrew/bin/brew shellenv)
+
+# The next line adds the ASDF environment
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/google-cloud-sdk/path.fish.inc'; end
