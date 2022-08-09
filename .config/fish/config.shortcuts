@@ -32,12 +32,6 @@ alias dr="docker-compose run --rm"
 alias dclean="docker rm (docker ps -aqf status=exited)"
 alias dcrmf="docker-compose stop -t 0; docker-compose rm -f"
 
-# NPM / Node
-set node "docker run -it --rm -w /usr/src/app -v (pwd):/usr/src/app node:alpine"
-alias yarn="$node yarn"
-alias npm="$node npm"
-alias node="$node node"
-
 # Kubernetes
 alias k="kubectl"
 alias kpo="kubectl get pods"

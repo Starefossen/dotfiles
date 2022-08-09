@@ -1,6 +1,5 @@
 # Application specific
 . ~/.config/fish/config.shortcuts
-. ~/.config/fish/config.docker
 . ~/.config/fish/config.prompt
 . ~/.config/fish/config.git
 . ~/.config/fish/config.vim
