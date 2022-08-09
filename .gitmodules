@@ -110,3 +110,9 @@
 [submodule ".vim/bundle/plantuml-syntax"]
 	path = .vim/bundle/plantuml-syntax
 	url = git@github.com:aklt/plantuml-syntax.git
+[submodule "/Users/hans/.config/nvim/pack/github/start/copilot.vim"]
+	path = /Users/hans/.config/nvim/pack/github/start/copilot.vim
+	url = https://github.com/github/copilot.vim.git
+[submodule ".vim/bundle/vim-fzf-coauthorship.vim"]
+	path = .vim/bundle/vim-fzf-coauthorship.vim
+	url = https://github.com/maxjacobson/vim-fzf-coauthorship.git
