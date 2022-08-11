@@ -116,3 +116,6 @@
 [submodule ".vim/bundle/vim-fzf-coauthorship.vim"]
 	path = .vim/bundle/vim-fzf-coauthorship.vim
 	url = https://github.com/maxjacobson/vim-fzf-coauthorship.git
+[submodule ".config/fish/addons/fish-kube-prompt"]
+	path = .config/fish/addons/fish-kube-prompt
+	url = https://github.com/aluxian/fish-kube-prompt

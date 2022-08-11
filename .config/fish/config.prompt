@@ -69,7 +69,7 @@ function fish_prompt --description 'Write out the prompt'
       set terraprompt (set_color "red")" ($terraprompt)"
     end
 
-    printf '%s %s%s%s%s%s%s%s%s> ' "$__fish_prompt_docker" "$__fish_prompt_cwd" (prompt_pwd) $gitprompt $gitstashed $gitunstaged $gitstaged $terraprompt "$__fish_prompt_normal"
+    printf '%s %s%s%s%s%s%s%s%s> ' (__kube_prompt) "$__fish_prompt_cwd" (prompt_pwd) $gitprompt $gitstashed $gitunstaged $gitstaged $terraprompt "$__fish_prompt_normal"
 
   end
 end
