@@ -32,16 +32,6 @@ function fish_prompt --description 'Write out the prompt'
       set -g __fish_prompt_cwd (set_color $fish_color_cwd)
     end
 
-    # docker prompt
-    set -g __fish_prompt_docker $DOCKER_MACHINE_NAME
-    if not test -z $__fish_prompt_docker
-      if [ "$__fish_prompt_docker" = "default" ]
-        set -g __fish_prompt_docker ""
-      else
-        set -g __fish_prompt_docker "$__fish_prompt_docker"
-      end
-    end
-
     # git prompt
     set gitprompt (git symbolic-ref HEAD 2>/dev/null | sed 's/refs\/heads\///g')
     if not test -z $gitprompt
