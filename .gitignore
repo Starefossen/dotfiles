@@ -38,3 +38,5 @@
 .docker
 .terraformrc
 .psql_history
+.python_history
+.zsh_history
