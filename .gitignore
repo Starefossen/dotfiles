@@ -6,6 +6,7 @@
 !.*/
 !.config/**/*
 !.vim/**/*
+!.tmux/**/*
 
 # ingored file endings
 *.swo
