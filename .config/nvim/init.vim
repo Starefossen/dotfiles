@@ -200,3 +200,24 @@ augroup vimrc-auto-mkdir
     endif
   endfunction
 augroup END
+
+# Enable GitHub Copilot for the following languages
+let g:copilot_filetypes = {
+\ '*': v:false,
+\ 'css': v:true,
+\ 'go': v:true,
+\ 'html': v:true,
+\ 'java': v:true,
+\ 'js': v:true,
+\ 'json': v:true,
+\ 'less': v:true,
+\ 'md': v:true,
+\ 'python': v:true,
+\ 'sass': v:true,
+\ 'scss': v:true,
+\ 'scss': v:true,
+\ 'sh': v:true,
+\ 'vim': v:true,
+\ 'yaml': v:true,
+\ 'yml': v:true,
+\ }
