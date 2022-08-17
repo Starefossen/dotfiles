@@ -51,7 +51,7 @@
   pull = pull --ff-only
   rebase = rebase -vS
   staged = diff --staged
-  supdate = submodule foreach git pull -f origin master
+  supdate = git submodule foreach 'git fetch origin; git checkout $(git rev-parse --abbrev-ref HEAD); git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); git submodule update --recursive; git clean -dfx'
   undo = reset --soft HEAD~
   unstage = reset HEAD --
   feature = "!bash -c \"git fetch; git checkout -b $1 ${2:-'origin/master'}\" -"
