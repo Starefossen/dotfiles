@@ -150,7 +150,7 @@ let g:tmux_navigator_save_on_switch = 1
 let g:bufferline_echo = 10 " ingore bufferline line
 
 " fzf search
-set rtp+=~/.fzf
+set rtp+=/opt/homebrew/opt/fzf
 nnoremap <c-p> :FZF<cr>
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
@@ -201,7 +201,7 @@ augroup vimrc-auto-mkdir
   endfunction
 augroup END
 
-# Enable GitHub Copilot for the following languages
+" Enable GitHub Copilot for the following languages
 let g:copilot_filetypes = {
 \ '*': v:false,
 \ 'css': v:true,
@@ -215,9 +215,8 @@ let g:copilot_filetypes = {
 \ 'python': v:true,
 \ 'sass': v:true,
 \ 'scss': v:true,
-\ 'scss': v:true,
 \ 'sh': v:true,
 \ 'vim': v:true,
 \ 'yaml': v:true,
-\ 'yml': v:true,
+\ 'yml': v:true
 \ }
