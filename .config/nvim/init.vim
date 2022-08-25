@@ -216,6 +216,7 @@ let g:copilot_filetypes = {
 \ 'sass': v:true,
 \ 'scss': v:true,
 \ 'sh': v:true,
+\ 'terraform': v:true,
 \ 'vim': v:true,
 \ 'yaml': v:true,
 \ 'yml': v:true
