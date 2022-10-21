@@ -5,6 +5,7 @@
 
 # ignored files
 .DS_Store
+.dccache
 
 # ignored directories
 node_modules/
