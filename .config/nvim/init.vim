@@ -218,6 +218,7 @@ let g:copilot_filetypes = {
 \ 'json': v:true,
 \ 'less': v:true,
 \ 'md': v:true,
+\ 'markdown': v:true,
 \ 'python': v:true,
 \ 'sass': v:true,
 \ 'scss': v:true,
