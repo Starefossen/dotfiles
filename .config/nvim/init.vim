@@ -182,7 +182,13 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-autocmd FileType coffee,js,md autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType coffee,js,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType go autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType go autocmd BufWritePre <buffer> :GoImports
+autocmd FileType go autocmd BufWritePre <buffer> :GoFmt
+autocmd FileType tf autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType tf autocmd BufWritePre <buffer> :terraform fmt
+autocmd FileType markdown :setlocal sw=2 ts=2 sts=2
 autocmd FileType yaml :setlocal sw=2 ts=2 sts=2 tw=100
 autocmd FileType python :setlocal sw=4 ts=4 sts=4 tw=120
 autocmd FileType gitcommit :setlocal tw=70
