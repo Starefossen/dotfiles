@@ -1,5 +1,6 @@
 golang 1.19
 kubectx 0.9.4
-kubectl 1.21.14
+kubectl 1.22.12
 helm 3.9.3
 nodejs 16.16.0
+cilium-cli 0.12.4
