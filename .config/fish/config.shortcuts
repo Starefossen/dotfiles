@@ -32,15 +32,27 @@ alias dr="docker-compose run --rm"
 alias dclean="docker rm (docker ps -aqf status=exited)"
 alias dcrmf="docker-compose stop -t 0; docker-compose rm -f"
 
+# Fix kubectl autocomplete with kubecolor
+function kubectl
+  kubecolor $argv
+end
+
 # Kubernetes
 alias k="kubectl"
-alias kpo="kubectl get pods"
-alias kpow="kubectl get pods -w"
-alias kpowa="kubectl get pods -w -A"
-alias ksvc="kubectl get services"
-alias king="kubectl get ingress"
+alias kpo="k get pods"
+alias kpow="k get pods -w"
+alias kpowa="k get pods -w -A"
+alias ksvc="k get services"
+alias king="k get ingress"
 alias kc="kubectx"
 alias kctx="kubectx"
+
+# Defined in - @ line 1
+function ky --description 'Kubernetes yaml output with yq'
+	kubectl -o yaml $argv | yq;
+end
+
+alias kygo="ky get pods"
 
 # Terraform
 alias tf="terraform"
