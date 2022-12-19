@@ -2,6 +2,14 @@
 
 My notes on various topics. Use on your own risk.
 
+## macOS
+
+Use TouchID as sudo password
+
+```bash
+sudo sed -i '' '2s/^/auth       sufficient     pam_tid.so\\n/' /etc/pam.d/sudo
+```
+
 ## Asdf
 
 Remember to reshim after installing a new version of asdf[^2]:
