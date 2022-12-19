@@ -1,6 +1,11 @@
-golang 1.19
+golang 1.19.4
 kubectx 0.9.4
 kubectl 1.22.12
 helm 3.9.3
 nodejs 16.16.0
 cilium-cli 0.12.4
+rust 1.64.0
+terraform 1.3.3
+kustomize 4.5.7
+kubebuilder 3.7.0
+yarn 1.22.19
