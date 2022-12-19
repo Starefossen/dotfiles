@@ -2,6 +2,15 @@
 
 My notes on various topics. Use on your own risk.
 
+## Asdf
+
+Remember to reshim after installing a new version of asdf[^2]:
+
+    rm -rf ~/.asdf/shims
+    asdf reshim
+
+Not doing this may results in tools installed with asdf not being found.
+
 ## Git
 
 Update all the submodules to the latest commit on their default branch:
@@ -10,7 +19,9 @@ Update all the submodules to the latest commit on their default branch:
 
 ## Vim
 
-When updating Go version rememper to update go packages:
+When updating Go version rememper to update go packages[^1]:
 
     :GoUpdateBinaries
 
+[^1]: https://github.com/fatih/vim-go/issues/3434
+[^2]: https://github.com/asdf-vm/asdf/issues/531
