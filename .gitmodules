@@ -119,3 +119,6 @@
 [submodule ".config/fish/addons/fish-kube-prompt"]
 	path = .config/fish/addons/fish-kube-prompt
 	url = https://github.com/aluxian/fish-kube-prompt
+[submodule ".vim/bundle/tabular"]
+	path = .vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
