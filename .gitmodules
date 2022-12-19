@@ -19,7 +19,7 @@
 	url = git@github.com:Starefossen/vim-literate-coffeescript.git
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
-	url = git@github.com:tpope/vim-markdown.git
+	url = git@github.com:preservim/vim-markdown.git
 [submodule ".vim/bundle/vim-mustache-handlebars"]
 	path = .vim/bundle/vim-mustache-handlebars
 	url = git@github.com:mustache/vim-mustache-handlebars.git
