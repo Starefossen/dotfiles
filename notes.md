@@ -27,9 +27,13 @@ Update all the submodules to the latest commit on their default branch:
 
 ## Vim
 
-When updating Go version rememper to update go packages[^1]:
+When updating Go version remember to update go packages[^1]:
 
     :GoUpdateBinaries
+
+Also, remember to update goimports binary:
+
+    go install golang.org/x/tools/cmd/goimports@latest
 
 [^1]: https://github.com/fatih/vim-go/issues/3434
 [^2]: https://github.com/asdf-vm/asdf/issues/531
