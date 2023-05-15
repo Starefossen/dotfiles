@@ -59,6 +59,7 @@ alias tf="terraform"
 
 # Developer Tools
 alias shellcheck="docker run --rm -it -v (pwd):/mnt nlknguyen/alpine-shellcheck"
+alias codi="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/MacOS/Electron"
 
 # Applications
 alias highlight="docker run -i --rm starefossen/highlight"
