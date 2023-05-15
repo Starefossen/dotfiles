@@ -1,17 +1,25 @@
-set nocompatible "prevent arrow keys from inserting A B C D
-
 " Set the shell to Bash
 set shell=/bin/bash   " set shell to bash
 
 " Set Up Pathogen Bundles
 execute pathogen#infect('~/.vim/bundle/{}')
 
+" Set up vim-plug
+call plug#begin()
+Plug 'projekt0n/github-nvim-theme', { 'brnach': '0.0.x' }
+call plug#end()
+
+source ~/.config/nvim/plugins.lua
+
+"prevent arrow keys from inserting A B C D
+set nocompatible
+
 " Vim File History
 set viminfo='100,n$HOME/.config/nvim/files/info/viminfo
 
 " UI
 set vb t_vb=          " disbale visual bell
-set background=dark   " set background to dark
+" set background=dark   " set background to dark
 
 set number            " show line numbers
 set textwidth=80      " max text width (will force new line)
@@ -21,9 +29,9 @@ set showcmd           " show last command
 set scrolloff=5       " start scolling lines 5 from top or bottom
 
 " seoul256 theme
-let g:seoul256_background = 233
-color seoul256
-autocmd ColorScheme * :highlight LineNr ctermbg=233
+" let g:seoul256_background = 233
+" color seoul256
+" autocmd ColorScheme * :highlight LineNr ctermbg=233
 
 " Windows
 set splitright        " opens new vertical splits to the right
