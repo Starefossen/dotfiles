@@ -8,5 +8,6 @@
 .dccache
 
 # ignored directories
+.vscode
 node_modules/
 bower_components/
