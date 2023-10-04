@@ -91,7 +91,7 @@ let mapleader=","
 inoremap jj <esc>
 
 " <leader><Space> will turn of search matches
-nnoremap <leader><Space> :nohlsearch<Bar>:echo<CR>
+nnoremap <leader><Space> :nohlsearch\|:echo<CR>
 
 " Better up / down Movement
 nnoremap j gj
