@@ -47,6 +47,14 @@ alias king="k get ingress"
 alias kc="kubectx"
 alias kctx="kubectx"
 
+function kreq --description 'Kubernetes pod requests'
+  if test -n "$argv[1]"
+    kubectl get pods $argv[1] -o jsonpath='{range .spec.containers[*]}{"Container Name: "}{.name}{"\n"}{"Requests:"}{.resources.requests}{"\n"}{"Limits:"}{.resources.limits}{"\n"}{end}'
+  else
+    kubectl get pod -o jsonpath='{range .items[*]}{"Pod: "}{.metadata.name}{"\n"}{range .spec.containers[*]}{"Container Name: "}{.name}{"\n"}{"Requests:"}{.resources.requests}{"\n"}{"Limits:"}{.resources.limits}{"\n"}{end}{"\n"}{end}'
+  end
+end
+
 # Defined in - @ line 1
 function ky --description 'Kubernetes yaml output with yq'
 	kubectl -o yaml $argv | yq;
