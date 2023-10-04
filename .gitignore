@@ -12,6 +12,7 @@
 .config/configstore/*
 .config/github-copilot/hosts.json
 .config/nvim/pack/**/*
+.config/yarn/
 
 # ingored file endings
 *.swo
@@ -20,12 +21,14 @@
 # ignored directories
 .aspell/
 .cache/
+.cargo/
 .dlv/.*
 .gnugp/
 .gnupg/
 .gnupg_pre_2.1/
 .node-gyp/
 .npm/
+.pulumi/
 .ssh/
 .wireshark/
 
@@ -35,6 +38,7 @@
 .bash_history
 .dockercfg
 .lesshst
+.node_repl_history
 .npmrc
 .rnd
 .sh_history
@@ -46,3 +50,4 @@
 .psql_history
 .python_history
 .zsh_history
+.yarnrc
