@@ -1,0 +1,15 @@
+# Taken from https://github.com/knative/client/blob/main/docs/README.md#options
+#
+#plugins:
+#  directory: ~/.config/kn/plugins
+#eventing:
+#  sink-mappings:
+#  - prefix: svc
+#    group: core
+#    version: v1
+#    resource: services
+#  channel-type-mappings:
+#  - alias: Kafka
+#    group: messaging.knative.dev
+#    version: v1alpha1
+#    kind: KafkaChannel
