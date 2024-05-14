@@ -21,4 +21,11 @@ eval (/opt/homebrew/bin/brew shellenv)
 source /opt/homebrew/opt/asdf/libexec/asdf.fish
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/usr/local/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/google-cloud-sdk/path.fish.inc'; end
+# if [ -f '/usr/local/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/google-cloud-sdk/path.fish.inc'; end
+set gcloud_path (asdf which gcloud)
+if test -n "$gcloud_path"
+  set source_file (dirname (dirname $gcloud_path))/path.fish.inc
+  if test -f $source_file
+    source $source_file
+  end
+end
