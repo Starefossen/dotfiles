@@ -1,8 +1,8 @@
-golang 1.21.4
+golang 1.22.2
 kubectx 0.9.4
-kubectl 1.27.3
+kubectl 1.28.5
 helm 3.11.1
-nodejs 20.9.0
+nodejs 20.12.2
 cilium-cli 0.12.4
 rust 1.64.0
 terraform 1.5.4
