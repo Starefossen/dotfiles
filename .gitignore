@@ -12,7 +12,9 @@
 .config/configstore/*
 .config/github-copilot/hosts.json
 .config/nvim/pack/**/*
-.config/yarn/
+.config/yarn/*
+.config/sanity/*
+.config/gh-copilot/*
 
 # ingored file endings
 *.swo
