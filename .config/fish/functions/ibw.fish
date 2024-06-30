@@ -1,10 +1,10 @@
-function ibw
-    set session (security find-generic-password -s "bw_session" -w)
+function ibw --description "Run Bitwarden CLI with session"
+    set -x BW_SESSION (bwunlock -r)
 
-    if test -z $session
-        echo "Error: bw_session was not found in keychain. Run 'bw login' to login to Bitwarden."
+    if test -z $BW_SESSION
+        echo "Error: bw_session was not found in keychain. Run 'bw login' to login to Bitwarden." >&2
         return 1
     end
 
-    bw --session $session $argv
+    bw $argv
 end
