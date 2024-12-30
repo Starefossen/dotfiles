@@ -1,4 +1,6 @@
 function bwunlock --description "Unlock Bitwarden Vault using macOS keychain"
+    set -x NODE_OPTIONS "--no-deprecation"
+
     set debugFlag 0
     set rawFlag 0
     set quietFlag 0
@@ -19,7 +21,9 @@ function bwunlock --description "Unlock Bitwarden Vault using macOS keychain"
       end
     end
 
+    # @TODO there is a bug here since we do not use the account name to get the session
     set -x BW_SESSION (security find-generic-password -s "bw_session" -w)
+
     set lockStatus (bw status | jq -r '.status')
     test $debugFlag -eq 1; and echo "lockStatus=$lockStatus"
     if [ "$lockStatus" = "unlocked" ]
@@ -33,8 +37,8 @@ function bwunlock --description "Unlock Bitwarden Vault using macOS keychain"
 
     set -x BW_SESSION (bw unlock --raw)
     test $debugFlag -eq 1; and echo "session=$BW_SESSION"
-    if ["$BW_SESSION" = "" ]
-      test $quietFlag -eq 0; and echo "Empty session!" >&2
+    if [ "$BW_SESSION" = "" ]
+      test $quietFlag -eq 0; and echo "Empty bitwarden session from \"bw unlock\", try logging on again using \"bw login\"" >&2
       return 1
     end
 
