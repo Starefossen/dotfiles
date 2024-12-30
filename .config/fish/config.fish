@@ -1,6 +1,6 @@
 # Application specific
 . ~/.config/fish/config.shortcuts
-. ~/.config/fish/config.prompt
+# . ~/.config/fish/config.prompt
 . ~/.config/fish/config.git
 . ~/.config/fish/config.vim
 
@@ -29,3 +29,7 @@ if test -n "$gcloud_path"
     source $source_file
   end
 end
+
+# trap clear WINCH which will automatically run clear when WINCH is delivered (i.e. the window is resized).
+# https://stackoverflow.com/questions/74232633/multiple-prompts-appears-after-resizing-my-terminal
+# trap clear WINCH
