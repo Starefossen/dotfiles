@@ -1,0 +1,5 @@
+[tools]
+"aqua:bitwarden/clients" = "cli-v2025.5.0"
+gcloud = "528.0.0"
+node = "24"
+opentofu = "latest"
