@@ -3,7 +3,6 @@ kubectx 0.9.5
 kubectl 1.32.0
 helm 3.16.3
 nodejs 22.11.0
-rust 1.83.0
 kustomize 5.5.0
 kubebuilder 4.3.1
 yarn 1.22.22
