@@ -54,3 +54,5 @@
 .zsh_history
 .yarnrc
 .wget-hsts
+.config/github-copilot/versions.json
+.config/sops/age/keys.txt
