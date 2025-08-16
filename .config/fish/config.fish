@@ -17,19 +17,15 @@ set -x FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
 # The next line adds the Homebrew environment
 eval (/opt/homebrew/bin/brew shellenv)
 
-# The next line adds the ASDF environment
-source /opt/homebrew/opt/asdf/libexec/asdf.fish
+# Activate mise environment
+/opt/homebrew/bin/mise activate fish | source
 
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/usr/local/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/google-cloud-sdk/path.fish.inc'; end
-set gcloud_path (asdf which gcloud)
+set gcloud_path (mise which gcloud)
 if test -n "$gcloud_path"
   set source_file (dirname (dirname $gcloud_path))/path.fish.inc
   if test -f $source_file
     source $source_file
   end
 end
-
-# trap clear WINCH which will automatically run clear when WINCH is delivered (i.e. the window is resized).
-# https://stackoverflow.com/questions/74232633/multiple-prompts-appears-after-resizing-my-terminal
-# trap clear WINCH
