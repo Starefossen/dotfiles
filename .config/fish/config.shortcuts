@@ -69,10 +69,6 @@ alias tf="terraform"
 alias shellcheck="docker run --rm -it -v (pwd):/mnt nlknguyen/alpine-shellcheck"
 alias codi="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/MacOS/Electron"
 
-# Applications
-alias highlight="docker run -i --rm starefossen/highlight"
-alias az="docker run -it --rm -v $HOME:/root mcr.microsoft.com/azure-cli:latest az"
-alias azsh="docker run -it --rm -v $HOME:/root mcr.microsoft.com/azure-cli:latest /bin/bash"
-
 # Overrides
 alias vim=nvim
+alias npm=pnpe
