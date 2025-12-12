@@ -29,3 +29,33 @@ if test -n "$gcloud_path"
     source $source_file
   end
 end
+
+# VS Code shell integration
+# The integration script requires TERM_PROGRAM=vscode, but tmux overwrites it
+# Save the original and temporarily restore it for loading the integration
+if test "$VSCODE_TERM_PROGRAM" = "vscode"; and not set -q VSCODE_SHELL_INTEGRATION
+    # Find the VS Code binary
+    set -l vscode_bin ""
+
+    if test "$__CFBundleIdentifier" = "com.microsoft.VSCodeInsiders"
+        if test -x "/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin/code"
+            set vscode_bin "/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin/code"
+        end
+    end
+
+    if test -z "$vscode_bin"; and type -q code
+        set vscode_bin (which code)
+    end
+
+    # Source the integration if we found a binary
+    if test -n "$vscode_bin"
+        set -l integration_path ($vscode_bin --locate-shell-integration-path fish 2>/dev/null)
+        if test -n "$integration_path" -a -f "$integration_path"
+            # Temporarily set TERM_PROGRAM for the integration script's check
+            set -l original_term_program $TERM_PROGRAM
+            set -gx TERM_PROGRAM vscode
+            source "$integration_path"
+            set -gx TERM_PROGRAM $original_term_program
+        end
+    end
+end
