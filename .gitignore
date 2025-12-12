@@ -57,3 +57,5 @@
 .config/github-copilot/versions.json
 .config/sops/age/keys.txt
 .config/fish/functions/.vscode/settings.json
+.config/.vscode/tasks.json
+.sha1-hulud-null-find-v03.txt
