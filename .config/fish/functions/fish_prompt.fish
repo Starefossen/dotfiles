@@ -73,16 +73,37 @@ function fish_prompt
         set arrow "$arrow_color# "
     end
 
-    set -l cwd $cyan(basename (prompt_pwd))
+    # Adjust prompt based on terminal width
+    set -l cwd
+    set -l show_repo_info true
+
+    if test $COLUMNS -lt 60
+        # Very narrow: just arrow and current dir
+        set arrow "$arrow_color> "
+        set cwd $cyan(basename (pwd))
+        set show_repo_info false
+    else if test $COLUMNS -lt 100
+        # Medium: arrow and short path
+        set arrow "$arrow_color➜ "
+        set cwd $cyan(basename (prompt_pwd))
+        set show_repo_info false
+    else
+        # Wide: full prompt with repo info
+        set arrow "$arrow_color➜ "
+        set cwd $cyan(basename (prompt_pwd))
+        set show_repo_info true
+    end
 
     set -l repo_info
-    if set -l repo_type (_repo_type)
-        set -l repo_branch $red(_repo_branch_name $repo_type)
-        set repo_info "$blue $repo_type:($repo_branch$blue)"
+    if test $show_repo_info = true
+        if set -l repo_type (_repo_type)
+            set -l repo_branch $red(_repo_branch_name $repo_type)
+            set repo_info "$blue $repo_type:($repo_branch$blue)"
 
-        if _is_repo_dirty $repo_type
-            set -l dirty "$yellow ✗"
-            set repo_info "$repo_info$dirty"
+            if _is_repo_dirty $repo_type
+                set -l dirty "$yellow ✗"
+                set repo_info "$repo_info$dirty"
+            end
         end
     end
 
