@@ -27,5 +27,5 @@ function gauth
 
     echo $user | jq -r '.password' | pbcopy
     echo "Got password from Bitwarden, ready to paste into google auth prompt"
-    gcloud auth login --update-adc $username
+    gcloud auth login --activate --update-adc $username
 end
