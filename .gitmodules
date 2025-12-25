@@ -1,127 +1,31 @@
-[submodule ".vim/bundle/vim-airline"]
-	path = .vim/bundle/vim-airline
-	url = git@github.com:bling/vim-airline.git
 [submodule ".vim/bundle/vim-bufferline"]
 	path = .vim/bundle/vim-bufferline
 	url = git@github.com:bling/vim-bufferline.git
-[submodule ".vim/bundle/vim-coffee-script"]
-	path = .vim/bundle/vim-coffee-script
-	url = git@github.com:kchmck/vim-coffee-script.git
-[submodule ".vim/bundle/vim-sensible"]
-	path = .vim/bundle/vim-sensible
-	url = git@github.com:tpope/vim-sensible.git
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = git@github.com:scrooloose/syntastic.git
   ignore = dirty
-[submodule ".vim/bundle/vim-literate-coffeescript"]
-	path = .vim/bundle/vim-literate-coffeescript
-	url = git@github.com:Starefossen/vim-literate-coffeescript.git
-[submodule ".vim/bundle/vim-markdown"]
-	path = .vim/bundle/vim-markdown
-	url = git@github.com:preservim/vim-markdown.git
-[submodule ".vim/bundle/vim-mustache-handlebars"]
-	path = .vim/bundle/vim-mustache-handlebars
-	url = git@github.com:mustache/vim-mustache-handlebars.git
-[submodule ".vim/bundle/vim-dockerfile"]
-	path = .vim/bundle/vim-dockerfile
-	url = git@github.com:ekalinin/Dockerfile.vim.git
-[submodule ".vim/bundle/yajs.vim"]
-	path = .vim/bundle/yajs.vim
-	url = git@github.com:othree/yajs.vim.git
-[submodule ".vim/bundle/quick-scope"]
-	path = .vim/bundle/quick-scope
-	url = git@github.com:unblevable/quick-scope.git
-[submodule ".vim/bundle/vim-go"]
-	path = .vim/bundle/vim-go
-	url = https://github.com/fatih/vim-go.git
-[submodule ".vim/bundle/vim-fugitive"]
-	path = .vim/bundle/vim-fugitive
-	url = git@github.com:tpope/vim-fugitive.git
-[submodule ".vim/bundle/vim-startify"]
-	path = .vim/bundle/vim-startify
-	url = git@github.com:mhinz/vim-startify.git
-[submodule ".vim/bundle/pathogen"]
-	path = .vim/bundle/pathogen
-	url = git@github.com:tpope/vim-pathogen.git
-[submodule ".vim/bundle/vim-tmux-navigator"]
-	path = .vim/bundle/vim-tmux-navigator
-	url = https://github.com/christoomey/vim-tmux-navigator.git
-[submodule ".vim/bundle/seoul256.vim"]
-	path = .vim/bundle/seoul256.vim
-	url = https://github.com/junegunn/seoul256.vim.git
-[submodule ".vim/bundle/goyo.vim"]
-	path = .vim/bundle/goyo.vim
-	url = https://github.com/junegunn/goyo.vim.git
-[submodule ".vim/bundle/limelight.vim"]
-	path = .vim/bundle/limelight.vim
-	url = https://github.com/junegunn/limelight.vim.git
-[submodule ".vim/bundle/vim-json"]
-	path = .vim/bundle/vim-json
-	url = https://github.com/elzr/vim-json.git
-[submodule ".vim/bundle/vim-surround"]
-	path = .vim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
-[submodule ".vim/bundle/fzf"]
-	path = .vim/bundle/fzf
-	url = https://github.com/junegunn/fzf.git
-[submodule ".vim/bundle/vim-terraform"]
-	path = .vim/bundle/vim-terraform
-	url = https://github.com/hashivim/vim-terraform.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 [submodule ".tmux/plugins/tmux-resurrect"]
 	path = .tmux/plugins/tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect.git
-[submodule ".vim/bundle/vim-obsession"]
-	path = .vim/bundle/vim-obsession
-	url = https://github.com/tpope/vim-obsession.git
-[submodule ".vim/bundle/vim-lazy-obsession"]
-	path = .vim/bundle/vim-lazy-obsession
-	url = https://github.com/monokrome/vim-lazy-obsession.git
 [submodule ".tmux/plugins/tmux-continuum"]
 	path = .tmux/plugins/tmux-continuum
 	url = https://github.com/tmux-plugins/tmux-continuum.git
 [submodule ".tmux/plugins/tmux-yank"]
 	path = .tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank.git
-[submodule ".vim/bundle/haproxy.vim"]
-	path = .vim/bundle/haproxy.vim
-	url = https://github.com/infobip/haproxy.vim.git
-[submodule ".vim/bundle/ale"]
-	path = .vim/bundle/ale
-	url = https://github.com/w0rp/ale.git
-[submodule ".vim/bundle/vim-delve"]
-	path = .vim/bundle/vim-delve
-	url = https://github.com/sebdah/vim-delve.git
 [submodule ".config/fish/addons/fish-kubectl-completions"]
 	path = .config/fish/addons/fish-kubectl-completions
 	url = https://github.com/evanlucas/fish-kubectl-completions
-[submodule ".vim/bundle/vim-fish"]
-	path = .vim/bundle/vim-fish
-	url = https://github.com/aliva/vim-fish.git
-[submodule ".vim/bundle/vim-jsonnet"]
-	path = .vim/bundle/vim-jsonnet
-	url = https://github.com/google/vim-jsonnet.git
-[submodule ".vim/bundle/vim-easy-align"]
-	path = .vim/bundle/vim-easy-align
-	url = https://github.com/junegunn/vim-easy-align.git
 [submodule ".vim/bundle/plantuml-syntax"]
 	path = .vim/bundle/plantuml-syntax
 	url = git@github.com:aklt/plantuml-syntax.git
 [submodule "/Users/hans/.config/nvim/pack/github/start/copilot.vim"]
 	path = /Users/hans/.config/nvim/pack/github/start/copilot.vim
 	url = https://github.com/github/copilot.vim.git
-[submodule ".vim/bundle/vim-fzf-coauthorship.vim"]
-	path = .vim/bundle/vim-fzf-coauthorship.vim
-	url = https://github.com/maxjacobson/vim-fzf-coauthorship.git
 [submodule ".config/fish/addons/fish-kube-prompt"]
 	path = .config/fish/addons/fish-kube-prompt
 	url = https://github.com/aluxian/fish-kube-prompt
-[submodule ".vim/bundle/tabular"]
-	path = .vim/bundle/tabular
-	url = https://github.com/godlygeek/tabular.git
-[submodule ".vim/bundle/vim-plug"]
-	path = .vim/bundle/vim-plug
-	url = https://github.com/junegunn/vim-plug.git

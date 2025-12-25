@@ -1,1 +1,0 @@
-/Users/hans/.vim/bundle/vim-plug/plug.vim
