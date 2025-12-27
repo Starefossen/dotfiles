@@ -14,6 +14,9 @@ set -x LANGUAGE en_US.UTF-8
 
 set -x FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
 
+# GPG TTY configuration (required for signing)
+set -x GPG_TTY (tty)
+
 # The next line adds the Homebrew environment
 eval (/opt/homebrew/bin/brew shellenv)
 
