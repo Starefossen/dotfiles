@@ -269,14 +269,17 @@ Configured in conform.nvim:
 
 ## Commands
 
-| Command                | Action                 |
-| ---------------------- | ---------------------- |
-| `:Lazy`                | Plugin manager         |
-| `:Mason`               | LSP/tool installer     |
-| `:ConformInfo`         | Show formatter info    |
-| `:FormatDisable`       | Disable format on save |
-| `:FormatEnable`        | Enable format on save  |
-| `:checkhealth vim.lsp` | Check LSP status       |
+| Command                | Action                        |
+| ---------------------- | ----------------------------- |
+| `:Lazy`                | Plugin manager                |
+| `:Lazy sync`           | Update all plugins            |
+| `:Mason`               | LSP/tool installer            |
+| `:TSUpdate`            | Update all treesitter parsers |
+| `:TSInstall <lang>`    | Install treesitter parser     |
+| `:ConformInfo`         | Show formatter info           |
+| `:FormatDisable`       | Disable format on save        |
+| `:FormatEnable`        | Enable format on save         |
+| `:checkhealth vim.lsp` | Check LSP status              |
 
 ## Customization
 
@@ -319,6 +322,22 @@ Add to `formatters_by_ft` in `lua/plugins/formatting.lua`:
 ```lua
 newlang = { "formatter1", "formatter2" },
 ```
+
+## Updating
+
+### Update all plugins
+
+```vim
+:Lazy sync
+```
+
+### Update treesitter parsers
+
+```vim
+:TSUpdate
+```
+
+Note: Lazy plugins auto-update when you run `:Lazy sync`. Treesitter parsers must be updated separately with `:TSUpdate`.
 
 ## Troubleshooting
 

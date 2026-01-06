@@ -33,14 +33,20 @@ require("lazy").setup("plugins", {
     colorscheme = { "github_dark_dimmed" },
   },
   checker = {
-    enabled = true,
+    enabled = false, -- Disable automatic checking for updates
     notify = false,
   },
   change_detection = {
+    enabled = false, -- Disable change detection to prevent unnecessary reloads
     notify = false,
   },
   performance = {
+    cache = {
+      enabled = true, -- Enable caching
+    },
+    reset_packpath = true,
     rtp = {
+      reset = true,
       disabled_plugins = {
         "gzip",
         "matchit",
@@ -52,5 +58,9 @@ require("lazy").setup("plugins", {
         "zipPlugin",
       },
     },
+  },
+  lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json", -- Explicitly set lockfile location
+  git = {
+    timeout = 300, -- Increase timeout to avoid partial downloads
   },
 })

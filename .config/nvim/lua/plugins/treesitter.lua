@@ -1,6 +1,5 @@
 -- Treesitter: Syntax highlighting and folding
 -- For Neovim 0.11+ with the new main branch API
--- Note: textobjects temporarily disabled until main branch is stable
 
 return {
   -- Main treesitter plugin (main branch with new API)
@@ -9,31 +8,11 @@ return {
     branch = "main",
     version = false,
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-    cmd = { "TSUpdate", "TSInstall", "TSUninstall" },
+    lazy = false, -- Must not be lazy loaded
     config = function()
-      local TS = require("nvim-treesitter")
-
-      -- Install parsers
-      local parsers = {
-        -- Primary
-        "go", "gomod", "gosum", "gowork",
-        "typescript", "tsx", "javascript",
-        "lua", "luadoc",
-        -- Web
-        "html", "css", "scss", "json", "jsonc",
-        -- Config
-        "yaml", "toml", "dockerfile", "terraform", "hcl",
-        -- Text
-        "markdown", "markdown_inline",
-        -- Shell
-        "bash", "fish",
-        -- Other
-        "vim", "vimdoc", "query", "regex", "diff", "gitcommit", "gitignore",
-      }
-
-      -- Install missing parsers
-      TS.install(parsers)
+      -- The main branch no longer uses setup() - parsers are installed via commands
+      -- Install parsers once with: :TSInstall <lang> or :TSUpdate
+      -- See :h nvim-treesitter for the new API
 
       -- Enable treesitter-based highlighting via autocommand
       vim.api.nvim_create_autocmd("FileType", {
@@ -64,9 +43,4 @@ return {
       end, { desc = "Decrement selection" })
     end,
   },
-
-  -- NOTE: nvim-treesitter-textobjects is temporarily disabled
-  -- The main branch API is not yet compatible with lazy.nvim's loading
-  -- Text object functionality can be added back once the API stabilizes
-  -- For now, use built-in vim text objects (iw, aw, ip, ap, etc.)
 }
