@@ -32,3 +32,4 @@ alias gs='git status'
 alias gd='git diff'
 alias gl='git log --oneline -20'
 export GPG_TTY=$(tty)
+alias timeout='gtimeout'

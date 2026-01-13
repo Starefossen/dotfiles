@@ -72,3 +72,4 @@ alias codi="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/MacOS/E
 # Overrides
 alias vim=nvim
 alias npm=pnpm
+alias timeout=gtimeout
