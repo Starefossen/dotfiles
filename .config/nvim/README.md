@@ -1,10 +1,10 @@
 # Neovim Configuration
 
-Modern Neovim 0.11+ configuration using Lua and lazy.nvim package manager.
+Modern Neovim 0.12+ configuration using Lua and the built-in `vim.pack` plugin manager.
 
 ## Prerequisites
 
-- **Neovim** 0.11+ (required for native LSP API)
+- **Neovim** 0.12+ (required for vim.pack and native LSP API)
 - **Git** for plugin management
 - **Node.js** for GitHub Copilot and some LSP servers
 - **ripgrep** for Telescope live grep: `brew install ripgrep`
@@ -38,7 +38,7 @@ nvim
 
 ```
 ~/.config/nvim/
-├── init.lua                 # Entry point, lazy.nvim bootstrap
+├── init.lua                 # Entry point, vim.pack setup
 ├── lua/
 │   ├── config/
 │   │   ├── options.lua      # Core Neovim settings
@@ -69,7 +69,7 @@ nvim
 | `<F2>`    | Toggle paste mode          |
 | `,ev`     | Edit config                |
 | `,sv`     | Source config              |
-| `,l`      | Open Lazy (plugin manager) |
+| `,l`      | Update plugins             |
 | `,?`      | Show buffer local keymaps  |
 
 ### Navigation
@@ -271,8 +271,8 @@ Configured in conform.nvim:
 
 | Command                | Action                        |
 | ---------------------- | ----------------------------- |
-| `:Lazy`                | Plugin manager                |
-| `:Lazy sync`           | Update all plugins            |
+| `:Pack update`         | Update all plugins            |
+| `:Pack install`        | Install missing plugins       |
 | `:Mason`               | LSP/tool installer            |
 | `:TSUpdate`            | Update all treesitter parsers |
 | `:TSInstall <lang>`    | Install treesitter parser     |
@@ -285,18 +285,21 @@ Configured in conform.nvim:
 
 ### Add a new plugin
 
-Create a file in `lua/plugins/` (e.g., `lua/plugins/myplugin.lua`):
+Add the plugin URL to the `vim.pack.add()` list in `init.lua`:
 
 ```lua
-return {
-  {
-    "author/plugin-name",
-    event = "VeryLazy",
-    opts = {
-      -- plugin options
-    },
-  },
-}
+vim.pack.add({
+  -- ... existing plugins ...
+  "https://github.com/author/plugin-name",
+})
+```
+
+Then configure it in the appropriate `lua/plugins/*.lua` file:
+
+```lua
+require("plugin-name").setup({
+  -- plugin options
+})
 ```
 
 ### Add a new language server
@@ -328,7 +331,7 @@ newlang = { "formatter1", "formatter2" },
 ### Update all plugins
 
 ```vim
-:Lazy sync
+:Pack update
 ```
 
 ### Update treesitter parsers
@@ -337,14 +340,14 @@ newlang = { "formatter1", "formatter2" },
 :TSUpdate
 ```
 
-Note: Lazy plugins auto-update when you run `:Lazy sync`. Treesitter parsers must be updated separately with `:TSUpdate`.
+Note: Run `:Pack update` to update all plugins. Treesitter parsers must be updated separately with `:TSUpdate`.
 
 ## Troubleshooting
 
 ### Plugins not loading
 
 ```vim
-:Lazy sync
+:Pack install
 ```
 
 ### LSP not working
@@ -370,13 +373,14 @@ Note: Lazy plugins auto-update when you run `:Lazy sync`. Treesitter parsers mus
 ### Clear all plugin cache
 
 ```bash
-rm -rf ~/.local/share/nvim/lazy ~/.local/state/nvim/lazy ~/.cache/nvim
+rm -rf ~/.local/share/nvim/site/pack/core ~/.local/state/nvim/lazy ~/.cache/nvim
 ```
 
-## Neovim 0.11+ Features Used
+## Neovim 0.12+ Features Used
 
-This configuration takes advantage of Neovim 0.11+ features:
+This configuration takes advantage of Neovim 0.12+ features:
 
+- **Built-in plugin manager**: Uses `vim.pack` instead of external plugin managers
 - **Native LSP API**: Uses `vim.lsp.config()` and `vim.lsp.enable()` instead of deprecated `require('lspconfig').server.setup()`
 - **Native Treesitter API**: Uses `vim.treesitter.start()` and `vim.treesitter.foldexpr()`
 - **Diagnostic signs**: Uses new `vim.diagnostic.config({ signs = { text = {...} } })` format
@@ -385,7 +389,7 @@ This configuration takes advantage of Neovim 0.11+ features:
 ## Migration from Vim
 
 This config migrated from a VimScript setup using:
-- Pathogen → lazy.nvim
+- Pathogen → vim.pack (built-in)
 - vim-go → gopls (native LSP)
 - CtrlP/fzf → Telescope
 - Goyo/Limelight → zen-mode/twilight
