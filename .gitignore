@@ -60,3 +60,11 @@
 .config/.vscode/tasks.json
 .sha1-hulud-null-find-v03.txt
 .config/github-copilot/apps.json
+
+# auto-generated tool files
+.agents/
+.dotnet/
+.profile
+.tcshrc
+.zshenv
+.config/fish/conf.d/rustup.fish
