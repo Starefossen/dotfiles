@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Global pre-commit hook: scan staged changes for secrets with gitleaks
+#
+# To bypass for a specific commit: git commit --no-verify
+# To disable globally: git config --global core.hooksPath ""
+
+if command -v gitleaks &>/dev/null; then
+  gitleaks git --pre-commit --staged --verbose
+  if [ $? -ne 0 ]; then
+    echo ""
+    echo "⛔ gitleaks: secrets detected in staged changes. Commit blocked."
+    echo "   Fix the issues above, or bypass with: git commit --no-verify"
+    exit 1
+  fi
+fi

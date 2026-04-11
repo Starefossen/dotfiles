@@ -8,6 +8,7 @@
   autocrlf = false #true
   editor = nvim
   excludesfile = ~/.gitignore_global
+	hooksPath = /Users/hans/.config/git/hooks
 
 [color]
   ui = true
