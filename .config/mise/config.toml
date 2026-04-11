@@ -1,8 +1,22 @@
+[env]
+DOCKER_HOST = "unix:///Users/hans/.colima/default/docker.sock"
+PNPM_HOME = "/Users/hans/Library/pnpm"
+NODE_OPTIONS = "--no-deprecation"
+FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+KUBECONFIG = "/Users/hans/.kube/config"
+KUBE_EDITOR = "nvim"
+GOPATH = "/Users/hans/go"
+_.path = ["/Users/hans/Library/pnpm"]
+
 [tools]
 "aqua:bitwarden/clients" = "cli-v2025.5.0"
+fnox = "latest"
 gcloud = "528.0.0"
+go = "1.26"
 opentofu = "latest"
-pnpm = "latest"
+pnpm = "10"
+rust = "latest"
+uv = "latest"
 watchexec = "latest"
 
 [settings]
