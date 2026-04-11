@@ -73,3 +73,4 @@ alias codi="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/MacOS/E
 alias vim=nvim
 alias npm=pnpm
 alias timeout=gtimeout
+alias copilot=cplt
