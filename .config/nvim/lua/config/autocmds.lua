@@ -70,7 +70,6 @@ autocmd("FileType", {
     "notify",
     "qf",
     "checkhealth",
-    "lazy",
     "mason",
   },
   callback = function(event)

@@ -84,5 +84,7 @@ map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic message" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic list" })
 
--- Lazy.nvim
-map("n", "<leader>l", ":Lazy<CR>", { noremap = true, desc = "Open Lazy" })
+-- Plugin management (vim.pack)
+map("n", "<leader>l", function()
+  vim.cmd("Pack update")
+end, { noremap = true, desc = "Update plugins" })
