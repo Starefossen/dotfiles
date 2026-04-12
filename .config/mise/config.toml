@@ -17,6 +17,7 @@ opentofu = "latest"
 pnpm = "10"
 rust = "latest"
 uv = "latest"
+"go:github.com/sethvargo/ratchet" = "latest"
 watchexec = "latest"
 
 [settings]
