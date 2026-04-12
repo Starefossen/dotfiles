@@ -22,6 +22,7 @@ SAVEHIST=10000
 HISTFILE=~/.zsh_history
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
 
 # Useful aliases
 alias ll='ls -la'
