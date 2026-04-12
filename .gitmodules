@@ -1,6 +1,0 @@
-[submodule ".config/fish/addons/fish-kubectl-completions"]
-	path = .config/fish/addons/fish-kubectl-completions
-	url = https://github.com/evanlucas/fish-kubectl-completions
-[submodule ".config/fish/addons/fish-kube-prompt"]
-	path = .config/fish/addons/fish-kube-prompt
-	url = https://github.com/aluxian/fish-kube-prompt

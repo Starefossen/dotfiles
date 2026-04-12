@@ -1,3 +1,10 @@
 fishd.*
 fish_history
 fish_variables
+
+# Fisher plugin manager (installed at runtime via `fisher install`)
+functions/fisher.fish
+completions/fisher.fish
+functions/__kube_prompt.fish
+functions/kube_ps.fish
+completions/kubectl.fish
