@@ -8,6 +8,9 @@
 !.vim/**/*
 !.tmux/**/*
 
+# tpack-managed plugins (installed at runtime)
+.tmux/plugins/
+
 # ignored config files
 .config/configstore/*
 .config/github-copilot/hosts.json
