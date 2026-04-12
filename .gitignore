@@ -2,6 +2,7 @@
 *
 
 # don't ignore
+!README.md
 !.*
 !.*/
 !.config/**/*
