@@ -2,7 +2,7 @@
 DOCKER_HOST = "unix:///Users/hans/.colima/default/docker.sock"
 PNPM_HOME = "/Users/hans/Library/pnpm"
 NODE_OPTIONS = "--no-deprecation"
-FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+FZF_DEFAULT_COMMAND = 'fd --hidden --exclude .git'
 KUBECONFIG = "/Users/hans/.kube/config"
 KUBE_EDITOR = "nvim"
 GOPATH = "/Users/hans/go"
