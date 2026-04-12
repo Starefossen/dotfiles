@@ -33,7 +33,7 @@
   untracked = cyan
 
 [credential]
-  helper = cache --timeout=3600
+	helper = osxkeychain
 
 [push]
 	default = simple
