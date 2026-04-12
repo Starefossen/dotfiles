@@ -1,31 +1,15 @@
-[submodule ".vim/bundle/vim-bufferline"]
-	path = .vim/bundle/vim-bufferline
-	url = git@github.com:bling/vim-bufferline.git
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic
-	url = git@github.com:scrooloose/syntastic.git
-  ignore = dirty
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 [submodule ".tmux/plugins/tmux-resurrect"]
 	path = .tmux/plugins/tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect.git
-[submodule ".tmux/plugins/tmux-continuum"]
-	path = .tmux/plugins/tmux-continuum
-	url = https://github.com/tmux-plugins/tmux-continuum.git
 [submodule ".tmux/plugins/tmux-yank"]
 	path = .tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank.git
 [submodule ".config/fish/addons/fish-kubectl-completions"]
 	path = .config/fish/addons/fish-kubectl-completions
 	url = https://github.com/evanlucas/fish-kubectl-completions
-[submodule ".vim/bundle/plantuml-syntax"]
-	path = .vim/bundle/plantuml-syntax
-	url = git@github.com:aklt/plantuml-syntax.git
-[submodule "/Users/hans/.config/nvim/pack/github/start/copilot.vim"]
-	path = /Users/hans/.config/nvim/pack/github/start/copilot.vim
-	url = https://github.com/github/copilot.vim.git
 [submodule ".config/fish/addons/fish-kube-prompt"]
 	path = .config/fish/addons/fish-kube-prompt
 	url = https://github.com/aluxian/fish-kube-prompt
