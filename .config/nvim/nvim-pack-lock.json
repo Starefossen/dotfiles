@@ -127,8 +127,7 @@
     },
     "telescope.nvim": {
       "rev": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026",
-      "src": "https://github.com/nvim-telescope/telescope.nvim",
-      "version": "'0.1.x'"
+      "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "twilight.nvim": {
       "rev": "664e752f4a219801265cc3fc18782b457b58c1e1",
