@@ -93,6 +93,39 @@ Kube prompt (`kube_ps on/off`) shows current context/namespace in the prompt.
 - **VS Code integration** — `allow-passthrough on` for terminal sequences
 - **256-color Solarized** theme
 
+### Key Bindings
+
+| Binding       | Action                                          |
+| ------------- | ----------------------------------------------- |
+| `prefix + s`  | Session chooser (with 🔔/⚡ alert indicators)  |
+| `prefix + w`  | List windows in current session                 |
+| `prefix + m`  | Toggle monitor-activity for current window      |
+| `prefix + b`  | Toggle status bar                               |
+| `prefix + D`  | Load dev workspace layout                       |
+| `prefix + K`  | Load dev2 workspace layout                      |
+| `prefix + \|` | Split pane horizontally                         |
+| `prefix + S`  | Split pane vertically                           |
+| `prefix + c`  | New window (in current path)                    |
+| `prefix + z`  | Toggle pane zoom (fullscreen)                   |
+| `prefix + j`  | Join pane from another window                   |
+| `prefix + J`  | Break pane into its own window                  |
+| `prefix + T`  | Rename window                                   |
+| `prefix + r`  | Reload tmux config                              |
+| `` prefix + ` `` | Open man page in split                       |
+
+### Window Alert Flags
+
+Windows with alerts are highlighted in the status bar with these flags:
+
+| Flag | Meaning                                  |
+| ---- | ---------------------------------------- |
+| `!`  | Bell occurred (red/bold)                 |
+| `#`  | Activity detected (yellow)               |
+| `~`  | Silence — no output for N seconds        |
+
+In the session chooser (`prefix + s`), sessions with alerts show 🔔 and
+⚡ followed by the window indexes that triggered the alert.
+
 ## Bootstrap (Fresh Machine)
 
 ```bash
