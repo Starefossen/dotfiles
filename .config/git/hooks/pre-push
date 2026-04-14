@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# Global pre-push hook: warn about unsigned commits with Co-authored-by trailers
+#
+# Prompts for confirmation but does not block.
+# To skip this check: git push --no-verify
+
+remote="$1"
+url="$2"
+
+while read -r local_ref local_oid remote_ref remote_oid; do
+  # Skip branch deletions
+  if [ "$local_oid" = "0000000000000000000000000000000000000000" ]; then
+    continue
+  fi
+
+  # Determine commit range: new branch vs existing
+  if [ "$remote_oid" = "0000000000000000000000000000000000000000" ]; then
+    range="$local_oid --not --remotes"
+  else
+    range="$remote_oid..$local_oid"
+  fi
+
+  # Find unsigned commits that have Co-authored-by trailers
+  flagged=$(git log --pretty=format:'%h %G? %s' $range | while IFS= read -r line; do
+    hash=$(echo "$line" | awk '{print $1}')
+    sig=$(echo "$line" | awk '{print $2}')
+    if [ "$sig" = "N" ]; then
+      # Check if this commit has a Co-authored-by trailer
+      if git log -1 --format=%B "$hash" | grep -qi '^Co-authored-by:'; then
+        echo "$line"
+      fi
+    fi
+  done)
+
+  if [ -n "$flagged" ]; then
+    echo ""
+    echo "⚠️  Found unsigned commits with Co-authored-by trailers:"
+    echo ""
+    echo "$flagged" | while IFS= read -r line; do
+      echo "  $line"
+    done
+    echo ""
+    echo "Tip: use 'git claim $(echo "$flagged" | wc -l | tr -d ' ')' to re-sign and strip co-authors."
+    echo ""
+    read -r -p "Push anyway? [y/N] " answer </dev/tty
+    if [ "$answer" != "y" ] && [ "$answer" != "Y" ]; then
+      echo "Push aborted."
+      exit 1
+    fi
+  fi
+done
+
+exit 0
