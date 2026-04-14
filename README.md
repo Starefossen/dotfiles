@@ -51,6 +51,9 @@ Environment variables (Docker, FZF, Kubernetes, Go) are configured in
 - **GPG signing** — all commits and tags are auto-signed
 - **gitleaks pre-commit** — global hook at `.config/git/hooks/pre-commit`
   scans staged changes for secrets; bypass with `git commit --no-verify`
+- **co-author pre-push** — global hook at `.config/git/hooks/pre-push`
+  warns before pushing unsigned commits with Co-authored-by trailers;
+  bypass with `git push --no-verify`
 - **Credential helper** — macOS Keychain (`osxkeychain`)
 
 ## Git Aliases
@@ -65,6 +68,7 @@ Environment variables (Docker, FZF, Kubernetes, Go) are configured in
 | `unpublish` | Delete remote branch                                  |
 | `amend`     | Signed amend                                          |
 | `undo`      | Soft-reset last commit                                |
+| `claim`     | Re-sign last N commits, strip Co-authored-by trailers |
 | `conflicts` | List files with merge conflicts                       |
 
 ## Fish Shell
