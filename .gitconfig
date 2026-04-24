@@ -9,6 +9,7 @@
   editor = nvim
   excludesfile = ~/.gitignore_global
 	hooksPath = /Users/hans/.config/git/hooks
+	pager = delta
 
 [color]
   ui = true
@@ -61,9 +62,14 @@
   unpublish = "!sh -c 'git push --delete origin $(git rev-parse --abbrev-ref HEAD --)' -"
   whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
   claim = "!f() { git rebase HEAD~${1:-1} --exec 'GIT_COMMITTER_DATE=\"$(git log -1 --format=%cI)\" git commit --amend -S --no-verify -m \"$(git log -1 --format=%B | grep -v \"^Co-authored-by:\")\"'; }; f"
+	dft = !GIT_EXTERNAL_DIFF=difft git diff
+	dfts = !GIT_EXTERNAL_DIFF=difft git diff --staged
+	dftl = !GIT_EXTERNAL_DIFF=difft git log -p --ext-diff
+	diffs = diff -c delta.side-by-side=true
+	logs = log -p -c delta.side-by-side=true
 
 [merge]
-	conflictstyle = diff3
+	conflictStyle = zdiff3
 
 [help]
 	autocorrect = 1
@@ -83,3 +89,9 @@
 	gpgsign = true
 [tag]
 	gpgsign = true
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	line-numbers = true
+	dark = true
