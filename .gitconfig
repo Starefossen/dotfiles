@@ -74,7 +74,7 @@
 [help]
 	autocorrect = 1
 [url "https://github.com/"]
-  insteadOf = git@github.com:
+	insteadOf = git@github.com:
 
 [pull]
 	ff = only
@@ -95,3 +95,9 @@
 	navigate = true
 	line-numbers = true
 	dark = true
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
