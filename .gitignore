@@ -3,6 +3,7 @@
 
 # don't ignore
 !README.md
+!AGENTS.md
 !.*
 !.*/
 !.config/**/*
