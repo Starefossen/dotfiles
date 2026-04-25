@@ -7,6 +7,19 @@
 remote="$1"
 url="$2"
 
+# Gate: require interactive TTY confirmation before any push.
+# Agents and automated tools cannot provide this, only a human at a terminal can.
+if [ ! -t 0 ] && [ ! -t 1 ]; then
+  echo "🚫 Push blocked: no interactive terminal detected (agent/automation)."
+  exit 1
+fi
+
+read -r -t 30 -p "🔑 Confirm push to $remote? [y/N] " confirm </dev/tty
+if [ "$confirm" != "y" ] && [ "$confirm" != "Y" ]; then
+  echo "Push aborted."
+  exit 1
+fi
+
 while read -r local_ref local_oid remote_ref remote_oid; do
   # Skip branch deletions
   if [ "$local_oid" = "0000000000000000000000000000000000000000" ]; then
