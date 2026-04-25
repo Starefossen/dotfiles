@@ -1,3 +1,7 @@
 [sandbox]
 scratch_dir = true            # go test, mise run, node-gyp
 allow_localhost_any = true    # httptest.NewServer (random ports)
+allow_gpg_signing = true
+
+[allow]
+read = ["/Users/hans/Desktop"]
