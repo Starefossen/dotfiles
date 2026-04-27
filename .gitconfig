@@ -97,7 +97,7 @@
 	dark = true
 [credential "https://github.com"]
 	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !/Users/hans/.config/git/credential-confirm
 [credential "https://gist.github.com"]
 	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !/Users/hans/.config/git/credential-confirm
