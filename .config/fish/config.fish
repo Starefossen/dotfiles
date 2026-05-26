@@ -18,9 +18,6 @@ set -x GPG_TTY (tty)
 # The next line adds the Homebrew environment
 eval (/opt/homebrew/bin/brew shellenv)
 
-# Activate mise environment
-/opt/homebrew/bin/mise activate fish | source
-
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/usr/local/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/google-cloud-sdk/path.fish.inc'; end
 set gcloud_path (mise which gcloud)
@@ -30,6 +27,9 @@ if test -n "$gcloud_path"
     source $source_file
   end
 end
+
+# Activate mise environment — must be last so mise tool paths take precedence
+/opt/homebrew/bin/mise activate fish | source
 
 # VS Code shell integration
 # The integration script requires TERM_PROGRAM=vscode, but tmux overwrites it

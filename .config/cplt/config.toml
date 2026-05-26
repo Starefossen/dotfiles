@@ -5,3 +5,6 @@ allow_gpg_signing = true
 
 [allow]
 read = ["/Users/hans/Desktop"]
+
+[proxy]
+allow_private_domains = ["intern.nav.no", "nav.cloud.nais.io", "prod.nav.cloud.nais.io", "prod-gcp.nav.cloud.nais.io", "dev-gcp.nav.cloud.nais.io", "dev.nav.cloud.nais.io"]

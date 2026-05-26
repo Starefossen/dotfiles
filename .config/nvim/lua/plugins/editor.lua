@@ -51,6 +51,13 @@ require("twilight").setup({
   },
   context = 10,
   treesitter = true,
+  exclude = {
+    "TelescopePrompt",
+    "TelescopeResults",
+    "TelescopePreview",
+    "popup",
+    "nofile",
+  },
 })
 
 -- Which-key

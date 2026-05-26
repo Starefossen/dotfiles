@@ -23,6 +23,8 @@
 .config/yarn/*
 .config/sanity/*
 .config/gh-copilot/*
+.config/cplt/trust/
+.config/fish/completions/
 
 # ingored file endings
 *.swo
@@ -32,6 +34,7 @@
 .aspell/
 .cache/
 .cargo/
+.copilot/
 .dlv/.*
 .gnugp/
 .gnupg/
