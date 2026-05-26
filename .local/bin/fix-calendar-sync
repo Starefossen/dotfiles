@@ -1,0 +1,81 @@
+#!/bin/bash
+# fix-calendar-sync.sh — Restart macOS Calendar/Exchange sync daemons
+# Use this instead of rebooting when Calendar stops syncing after re-auth.
+#
+# Root cause: After OAuth2 token expiry, accountsd caches stale credentials
+# in memory and refuses to reload from Keychain. Downstream daemons
+# (exchangesyncd, dataaccessd, calaccessd) get "not entitled" denials.
+# Restarting the daemon chain forces fresh credential reads.
+#
+# Order matters: accountsd (credential source) → dataaccessd → exchangesyncd → calaccessd
+
+UID_NUM=$(id -u)
+GUI_DOMAIN="gui/${UID_NUM}"
+
+if [[ $EUID -eq 0 ]]; then
+    echo "❌ Do not run with sudo. Run as the logged-in macOS user."
+    exit 1
+fi
+
+restart_service() {
+    local label="$1"
+    local desc="$2"
+    echo "  • Restarting ${desc}..."
+    if ! launchctl kickstart -k "${GUI_DOMAIN}/${label}" 2>/dev/null; then
+        # Fallback: kill by process name, scoped to current user (launchd auto-restarts)
+        if ! pkill -u "$UID_NUM" -x "${desc}" 2>/dev/null; then
+            echo "    ⚠ Could not restart ${desc} (may already be stopped)"
+        fi
+    fi
+}
+
+echo "🔄 Fixing Calendar/Exchange sync..."
+echo ""
+
+# Step 1: Quit Calendar app (it holds stale XPC connections)
+echo "  • Quitting Calendar.app..."
+osascript -e 'tell application "Calendar" to quit' 2>/dev/null || true
+sleep 1
+
+# Step 2: Restart accountsd FIRST — it's the credential source
+# All other daemons depend on it for OAuth2 tokens
+restart_service "com.apple.accountsd" "accountsd"
+sleep 3  # Give accountsd time to re-read Keychain credentials
+
+# Step 3: Restart dataaccessd (broker between apps and account services)
+restart_service "com.apple.dataaccess.dataaccessd" "dataaccessd"
+sleep 1
+
+# Step 4: Restart exchangesyncd (Exchange Web Services client)
+restart_service "com.apple.exchange.exchangesyncd" "exchangesyncd"
+sleep 1
+
+# Step 5: Restart calaccessd (calendar database gatekeeper)
+# Restart AFTER exchangesyncd so both get fresh state
+restart_service "com.apple.calaccessd" "calaccessd"
+sleep 2
+
+# Step 6: Reopen Calendar and trigger refresh
+echo ""
+echo "  • Opening Calendar.app..."
+open -a Calendar
+sleep 3
+
+echo "  • Triggering calendar refresh..."
+osascript -e '
+    tell application "Calendar" to activate
+    delay 1
+    tell application "System Events"
+        keystroke "r" using {command down, shift down}
+    end tell
+' 2>/dev/null || echo "    ⚠ Could not trigger UI refresh; use View → Refresh Calendars manually (⌘⇧R)"
+
+echo ""
+echo "✅ Done! Calendar should begin syncing within 30 seconds."
+echo ""
+echo "If still stuck, try toggling the Exchange account:"
+echo "  System Settings → Internet Accounts → Exchange → uncheck/recheck Calendars"
+echo ""
+echo "Diagnostic commands:"
+echo "  log show --predicate 'process == \"accountsd\" AND eventMessage CONTAINS \"Exchange\"' --last 5m"
+echo "  log show --predicate 'process == \"dataaccessd\" AND eventMessage CONTAINS \"sync\"' --last 5m"

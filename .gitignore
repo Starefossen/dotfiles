@@ -9,6 +9,9 @@
 !.config/**/*
 !.vim/**/*
 !.tmux/**/*
+!.local/
+!.local/bin/
+!.local/bin/*
 
 # tpack-managed plugins (installed at runtime)
 .tmux/plugins/
