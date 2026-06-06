@@ -33,6 +33,13 @@ map("n", "<F1>", ":w<CR>", { noremap = true, desc = "Save file" })
 -- Toggle paste mode
 map("n", "<F2>", ":set invpaste paste?<CR>", { noremap = true, desc = "Toggle paste mode" })
 
+-- Toggle line numbers on/off
+map("n", "<leader>tn", function()
+  local show_numbers = not vim.wo.number
+  vim.wo.number = show_numbers
+  vim.wo.relativenumber = false
+end, { noremap = true, silent = true, desc = "Toggle line numbers" })
+
 -- Folding with space
 map("n", "<Space>", "za", { noremap = true, desc = "Toggle fold" })
 

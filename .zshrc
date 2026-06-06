@@ -34,3 +34,7 @@ alias gd='git diff'
 alias gl='git log --oneline -20'
 export GPG_TTY=$(tty)
 alias timeout='gtimeout'
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/hans/.local/bin:$PATH"

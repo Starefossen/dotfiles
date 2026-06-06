@@ -2,9 +2,16 @@
 scratch_dir = true            # go test, mise run, node-gyp
 allow_localhost_any = true    # httptest.NewServer (random ports)
 allow_gpg_signing = true
+allow_cache_exec = ["ms-playwright"]
 
 [allow]
-read = ["/Users/hans/Desktop"]
+read = ["/Users/hans/Desktop", "/Users/hans/Library/Application Support/cnctl/config.toml"]
 
 [proxy]
 allow_private_domains = ["intern.nav.no", "nav.cloud.nais.io", "prod.nav.cloud.nais.io", "prod-gcp.nav.cloud.nais.io", "dev-gcp.nav.cloud.nais.io", "dev.nav.cloud.nais.io"]
+
+[gh_guard]
+enabled = true
+
+[git_guard]
+enabled = true

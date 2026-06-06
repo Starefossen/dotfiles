@@ -7,7 +7,7 @@ opt.shell = "/bin/bash"
 
 -- UI
 opt.number = true                -- Show line numbers
-opt.relativenumber = true        -- Relative line numbers
+opt.relativenumber = false       -- Use absolute line numbers by default
 opt.cursorline = true            -- Highlight current line
 opt.showmode = true              -- Show current mode
 opt.showcmd = true               -- Show last command

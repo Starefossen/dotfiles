@@ -16,14 +16,21 @@
 # tpack-managed plugins (installed at runtime)
 .tmux/plugins/
 
+# Runtime binaries (don't commit compiled tool installations)
+.local/bin/*
+!.local/bin/
+
 # ignored config files
 .config/configstore/*
+.config/github-copilot/auth.db*
 .config/github-copilot/hosts.json
 .config/nvim/pack/**/*
 .config/yarn/*
 .config/sanity/*
 .config/gh-copilot/*
 .config/cplt/trust/
+.config/cplt/sessions/
+.config/cplt/state/
 .config/fish/completions/
 
 # ingored file endings

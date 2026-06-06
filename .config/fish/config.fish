@@ -61,3 +61,7 @@ if test "$VSCODE_TERM_PROGRAM" = "vscode"; and not set -q VSCODE_SHELL_INTEGRATI
     end
 end
 
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/Users/hans/.local/bin" $PATH
