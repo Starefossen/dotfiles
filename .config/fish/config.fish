@@ -11,6 +11,7 @@ set fish_greeting ""
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
 set -x LANGUAGE en_US.UTF-8
+set -x DOTNET_CLI_HOME "$HOME/.nuget"
 
 # GPG TTY configuration (required for signing)
 set -x GPG_TTY (tty)
@@ -20,7 +21,7 @@ eval (/opt/homebrew/bin/brew shellenv)
 
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/usr/local/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/google-cloud-sdk/path.fish.inc'; end
-set gcloud_path (mise which gcloud)
+set gcloud_path (mise which gcloud 2>/dev/null)
 if test -n "$gcloud_path"
   set source_file (dirname (dirname $gcloud_path))/path.fish.inc
   if test -f $source_file
