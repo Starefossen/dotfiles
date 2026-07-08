@@ -73,6 +73,11 @@ function fish_prompt
         set arrow "$arrow_color# "
     end
 
+    set -l host_info ""
+    if set -q SSH_CLIENT; or set -q SSH_TTY
+        set host_info (set_color -o magenta)"["(prompt_hostname)"] "
+    end
+
     # Adjust prompt based on terminal width
     set -l cwd
     set -l show_repo_info true
@@ -107,5 +112,5 @@ function fish_prompt
         end
     end
 
-    echo -n -s $arrow ' '$cwd $repo_info $normal ' '
+    echo -n -s $arrow ' ' $host_info $cwd $repo_info $normal ' '
 end
