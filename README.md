@@ -56,6 +56,17 @@ Environment variables (Docker, FZF, Kubernetes, Go) are configured in
   bypass with `git push --no-verify`
 - **Credential helper** — macOS Keychain (`osxkeychain`)
 
+### Personal Identity (`.gitconfig.local`)
+
+This repository is a generic template. To set your Git name, email, and signing key, create a `~/.gitconfig.local` file (this file is ignored by Git). The main `.gitconfig` will automatically include it:
+
+```ini
+[user]
+  name = Your Name
+  email = your.email@example.com
+  signingkey = YOUR_GPG_KEY_ID
+```
+
 ## Git Aliases
 
 | Alias       | Action                                                |

@@ -91,3 +91,4 @@
 .claude/
 .shiv/
 .config/opencode/.nav-pilot-state.json
+.gitconfig.local

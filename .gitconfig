@@ -1,7 +1,5 @@
-[user]
-  name = Hans Kristian Flaatten
-  email = hans.kristian.flaatten@nav.no
-  signingkey = 08723031EA995A49
+[include]
+  path = ~/.gitconfig.local
 
 [core]
   trustctime = true
