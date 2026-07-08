@@ -1,6 +1,8 @@
 # Agent Guidelines
 
-## Git Push Policy
+## Git Policy
+
+**Do NOT commit or push to the default branch** unless explicitly instructed otherwise. Always create and use a feature branch for your work.
 
 **Do NOT push code.** Always ask the human to review and push.
 
