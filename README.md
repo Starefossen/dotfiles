@@ -17,7 +17,7 @@ macOS dotfiles managed as a bare-ish git repo in `$HOME`.
 ├── .zshrc              Zsh configuration (minimal, for Copilot terminal)
 ├── .gitconfig          Git configuration
 ├── .gitignore_global   Global gitignore patterns
-└── .tool-versions      asdf/mise tool versions
+
 ```
 
 ## Plugin Management
@@ -38,7 +38,7 @@ runtime.
 
 | Category    | Tools                                                                 |
 | ----------- | --------------------------------------------------------------------- |
-| Languages   | Go, Rust, Node (via `.tool-versions`)                                 |
+| Languages   | Go, Rust, Node                                                        |
 | Cloud / K8s | gcloud, kubectl, helm, kubectx, kustomize, kubebuilder                |
 | Packages    | pnpm, uv, yarn                                                        |
 | Terminal    | bat, delta, difftastic, fd, fzf, jq, yq                               |
