@@ -34,7 +34,7 @@ runtime.
 
 ## Development Tools (mise)
 
-[mise](https://mise.jdx.dev/) manages runtimes and CLI tools (replaces asdf):
+[mise](https://mise.jdx.dev/) manages runtimes and CLI tools (replaces asdf and Homebrew for standalone binaries):
 
 | Category    | Tools                                                                 |
 | ----------- | --------------------------------------------------------------------- |
@@ -50,8 +50,7 @@ Environment variables (Docker, FZF, Kubernetes, Go) are configured in
 ## Git Security & Hooks
 
 - **GPG signing** — all commits and tags are auto-signed
-- **gitleaks pre-commit** — global hook at `.config/git/hooks/pre-commit`
-  scans staged changes for secrets; bypass with `git commit --no-verify`
+- **gitleaks pre-commit** — global hook at `.config/git/hooks/pre-commit` acts as a dispatcher for `lefthook`. To scan staged changes for secrets, a `lefthook.yml` (or `.lefthook.yml`) must be present in the repository root (as seen in this repo). Bypass with `git commit --no-verify`
 - **co-author pre-push** — global hook at `.config/git/hooks/pre-push`
   warns before pushing unsigned commits with Co-authored-by trailers;
   bypass with `git push --no-verify`
