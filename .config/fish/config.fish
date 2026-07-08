@@ -30,7 +30,9 @@ if test -n "$gcloud_path"
 end
 
 # Activate mise environment — must be last so mise tool paths take precedence
-/opt/homebrew/bin/mise activate fish | source
+if type -q mise
+  mise activate fish | source
+end
 
 # VS Code shell integration
 # The integration script requires TERM_PROGRAM=vscode, but tmux overwrites it
