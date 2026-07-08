@@ -11,3 +11,6 @@
 .vscode
 node_modules/
 bower_components/
+
+**/.claude/settings.local.json
+**/.claude

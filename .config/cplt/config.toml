@@ -1,8 +1,9 @@
 [sandbox]
 scratch_dir = true            # go test, mise run, node-gyp
-allow_localhost_any = true    # httptest.NewServer (random ports)
 allow_gpg_signing = true
 allow_cache_exec = ["ms-playwright"]
+pass_env = ["HOME"]
+allow_localhost_any = true
 
 [allow]
 read = ["/Users/hans/Desktop", "/Users/hans/Library/Application Support/cnctl/config.toml"]
@@ -15,3 +16,4 @@ enabled = true
 
 [git_guard]
 enabled = true
+protect_default_branch_only = true

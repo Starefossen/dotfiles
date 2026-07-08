@@ -14,11 +14,12 @@ fnox = "latest"
 gcloud = "528.0.0"
 go = "1.26"
 opentofu = "latest"
-pnpm = "10"
+pnpm = "11"
 rust = "latest"
 uv = "latest"
 "go:github.com/sethvargo/ratchet" = "latest"
 watchexec = "latest"
+node = "24"
 
 [settings]
 idiomatic_version_file_enable_tools = []
