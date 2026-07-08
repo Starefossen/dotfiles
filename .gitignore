@@ -86,3 +86,8 @@
 .tcshrc
 .zshenv
 .config/fish/conf.d/rustup.fish
+# Local state and caches
+.claude.json
+.claude/
+.shiv/
+.config/opencode/.nav-pilot-state.json
