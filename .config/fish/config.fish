@@ -67,7 +67,7 @@ end
 
 
 # Added by Antigravity CLI installer
-set -gx PATH "/Users/hans/.local/share/mise/shims" "/Users/hans/.local/bin" $PATH
+set -gx PATH "$HOME/.local/share/mise/shims" "$HOME/.local/bin" $PATH
 
 # Auto-start or attach to tmux on SSH login
 if status is-interactive; and set -q SSH_CONNECTION; and not set -q TMUX

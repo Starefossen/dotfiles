@@ -1,12 +1,12 @@
 [env]
-DOCKER_HOST = "unix:///Users/hans/.colima/default/docker.sock"
-PNPM_HOME = "/Users/hans/Library/pnpm"
+DOCKER_HOST = "unix://~/.colima/default/docker.sock"
+PNPM_HOME = "~/Library/pnpm"
 NODE_OPTIONS = "--no-deprecation"
 FZF_DEFAULT_COMMAND = 'fd --hidden --exclude .git'
-KUBECONFIG = "/Users/hans/.kube/config"
+KUBECONFIG = "~/.kube/config"
 KUBE_EDITOR = "nvim"
-GOPATH = "/Users/hans/go"
-_.path = ["/Users/hans/Library/pnpm"]
+GOPATH = "~/go"
+_.path = ["~/Library/pnpm"]
 
 [tools]
 "aqua:bitwarden/clients" = "cli-v2025.5.0"
