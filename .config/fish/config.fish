@@ -65,4 +65,4 @@ end
 
 
 # Added by Antigravity CLI installer
-set -gx PATH "/Users/hans/.local/bin" $PATH
+set -gx PATH "/Users/hans/.local/share/mise/shims" "/Users/hans/.local/bin" $PATH
