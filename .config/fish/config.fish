@@ -68,3 +68,9 @@ end
 
 # Added by Antigravity CLI installer
 set -gx PATH "/Users/hans/.local/share/mise/shims" "/Users/hans/.local/bin" $PATH
+
+# Auto-start or attach to tmux on SSH login
+if status is-interactive; and set -q SSH_CONNECTION; and not set -q TMUX
+    # Try to attach to 'dev'. If it doesn't exist, create it.
+    tmux attach -t dev; or tmux new -s dev
+end
