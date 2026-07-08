@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": "notify",
+  "experimental": {
+    "openTelemetry": true
+  },
+  "logLevel": "INFO",
+  "share": "disabled",
+  "plugin": ["~/.config/opencode/plugins/rtk.ts"]
+}
