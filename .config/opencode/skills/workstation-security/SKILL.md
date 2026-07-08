@@ -89,7 +89,7 @@ These checks are specific to Nav developer machines connected to the NAIS platfo
    ```bash
    which trivy gitleaks zizmor 2>/dev/null
    ```
-   Missing tools → **INFO**. Fix: `brew install trivy gitleaks zizmor`.
+   Missing tools → **INFO**. Fix: `mise install trivy gitleaks zizmor`.
 
 5. **gcloud authentication** — check for active credentials:
    ```bash

@@ -20,6 +20,17 @@ uv = "latest"
 "go:github.com/sethvargo/ratchet" = "latest"
 watchexec = "latest"
 node = "24"
+actionlint = "latest"
+bat = "latest"
+delta = "latest"
+difftastic = "latest"
+fd = "latest"
+fzf = "latest"
+gh = "latest"
+gitleaks = "latest"
+jq = "latest"
+lefthook = "latest"
+yq = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []

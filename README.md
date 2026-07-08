@@ -36,12 +36,13 @@ runtime.
 
 [mise](https://mise.jdx.dev/) manages runtimes and CLI tools (replaces asdf):
 
-| Category    | Tools                                                  |
-| ----------- | ------------------------------------------------------ |
-| Languages   | Go, Rust, Node (via `.tool-versions`)                  |
-| Cloud / K8s | gcloud, kubectl, helm, kubectx, kustomize, kubebuilder |
-| Packages    | pnpm, uv, yarn                                        |
-| Other       | Bitwarden CLI, watchexec, ratchet                      |
+| Category    | Tools                                                                 |
+| ----------- | --------------------------------------------------------------------- |
+| Languages   | Go, Rust, Node (via `.tool-versions`)                                 |
+| Cloud / K8s | gcloud, kubectl, helm, kubectx, kustomize, kubebuilder                |
+| Packages    | pnpm, uv, yarn                                                        |
+| Terminal    | bat, delta, difftastic, fd, fzf, jq, yq                               |
+| Utilities   | actionlint, Bitwarden CLI, gh, gitleaks, lefthook, ratchet, watchexec |
 
 Environment variables (Docker, FZF, Kubernetes, Go) are configured in
 `.config/mise/config.toml`.
