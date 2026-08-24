@@ -144,31 +144,37 @@ In the session chooser (`prefix + s`), sessions with alerts show 🔔 and
 ## Bootstrap (Fresh Machine)
 
 ```bash
-# 1. Clone the repo
+# 1. Clone the repo into $HOME
 git clone <repo-url> ~
 
-# 2. Install Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# 3. Install core tools
-brew install fish tmux neovim tpack mise
-
-# 4. Install dev runtimes
-mise install
-
-# 5. Install tmux plugins
-tpack install
-
-# 6. Install fish plugins
-fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher && fisher update'
-
-# 7. Launch neovim (plugins auto-install)
-nvim
+# 2. Run the bootstrap script (idempotent — safe to re-run)
+cd ~ && ./bootstrap.sh
 ```
+
+`bootstrap.sh` installs Homebrew, runs `brew bundle` against
+[`Brewfile`](Brewfile) (formulae, casks, App Store apps via `mas`, VS Code
+extensions), then sets up mise runtimes, tmux plugins (`tpack`), fish plugins
+(Fisher) and Claude Code plugins. Neovim plugins install themselves on first
+launch.
+
+### Manual follow-ups
+
+Things the script cannot do for you:
+
+- **Sign in to the Mac App Store**, then re-run `brew bundle install --file=~/Brewfile`
+- **Transfer secrets securely** from the old machine: `~/.ssh/`, `~/.gnupg/`,
+  `~/.config/sops/age/keys.txt`
+- **Re-authenticate CLIs**: `gcloud`, `gh`, `copilot`, `claude`, `bw` (Bitwarden), `nais`/`naisdevice`
+- **Re-add `NAV_AI_API_KEY`** to the macOS Keychain via `fnox`
+- **Restore licence keys** for paid apps (marked `licensed` in the Brewfile)
+- **Start the container runtime**: `colima start`
+- **Pull local LLM models**: `ollama pull <model>`
+- **Create `~/.gitconfig.local`** with your name, email and signing key (see above)
 
 ## Updating
 
 ```bash
+brew bundle install --file=~/Brewfile  # packages, casks & App Store apps
 tpack update                    # tmux plugins
 fish -c 'fisher update'        # fish plugins
 nvim -c ':Pack update'         # neovim plugins

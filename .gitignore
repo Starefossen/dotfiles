@@ -4,6 +4,9 @@
 # don't ignore
 !README.md
 !AGENTS.md
+!CLAUDE.md
+!Brewfile
+!bootstrap.sh
 !.*
 !.*/
 !.config/**/*
