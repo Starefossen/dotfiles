@@ -1,0 +1,6 @@
+[providers.keychain]
+type = "keychain"
+service = "fnox"
+
+[secrets]
+NAV_AI_API_KEY= { provider = "keychain", value = "NAV_AI_API_KEY" }
