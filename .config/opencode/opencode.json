@@ -6,5 +6,8 @@
   },
   "logLevel": "INFO",
   "share": "disabled",
-  "plugin": ["~/.config/opencode/plugins/rtk.ts"]
+  "plugin": [
+    "~/.config/opencode/plugins/rtk.ts",
+    "@dietrichgebert/ponytail"
+  ]
 }
