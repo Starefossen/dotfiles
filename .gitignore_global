@@ -9,6 +9,7 @@
 
 # ignored directories
 .vscode
+.claude
 node_modules/
 bower_components/
 
