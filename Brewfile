@@ -29,14 +29,7 @@ tap "nais/tap"
 tap "navikt/tap", trusted: { formulae: ["cplt"] }
 tap "tmuxpack/tpack"
 
-# NOTE: `runkonf/tap` was a LOCAL-PATH tap pointing at
-#   ~/go/src/github.com/RunKonf/homebrew-tap
-# It cannot be installed on a fresh machine until that repo is cloned:
-#   git clone git@github.com:RunKonf/homebrew-tap.git \
-#     ~/go/src/github.com/RunKonf/homebrew-tap
-#   brew tap runkonf/tap ~/go/src/github.com/RunKonf/homebrew-tap
-#   brew install runkonf/tap/konf
-# Alternatively install konf via cargo (it was also found in ~/.cargo/bin).
+tap "runkonf/tap"
 
 ###############################################################################
 # CLI tools & libraries (formulae)
@@ -124,6 +117,10 @@ brew "yt-dlp"
 brew "anomalyco/tap/opencode", trusted: true
 # Nav's institutional AI developer toolkit for GitHub Copilot
 brew "navikt/tap/nav-pilot", trusted: true
+# macOS Seatbelt sandbox wrapper for GitHub Copilot CLI
+brew "navikt/tap/cplt", trusted: true
+# CLI for Konf — run your conference (konfctl releases)
+brew "runkonf/tap/konf"
 
 ###############################################################################
 # Development & terminal apps
@@ -296,7 +293,4 @@ vscode "yzhang.markdown-all-in-one"
 
 cargo "cargo-audit"
 cargo "cargo-zigbuild"
-# cnctl / konfctl may not be published on crates.io — install from their
-# repos (CloudNativeBergen/cnctl, RunKonf/konfctl) if these entries fail.
-cargo "cnctl"
-cargo "konfctl"
+# cnctl is deprecated — replaced by konfctl (brew "runkonf/tap/konf" above)
