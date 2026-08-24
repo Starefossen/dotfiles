@@ -27,6 +27,8 @@ done
 step() { printf '\n==> %s\n' "$1"; }
 info() { printf '    %s\n' "$1"; }
 have() { command -v "$1" >/dev/null 2>&1; }
+# one failing cleaner (broken shim, daemon down, …) must not abort the rest
+run()  { "$@" || info "warn: '$*' failed — continuing"; }
 
 ###############################################################################
 # Report
@@ -63,27 +65,27 @@ fi
 
 step "Docker"
 if have docker && docker info >/dev/null 2>&1; then
-  docker system prune -a -f --volumes   # unused images, stopped containers, anon volumes
-  docker builder prune -a -f            # build cache
+  run docker system prune -a -f --volumes   # unused images, stopped containers, anon volumes
+  run docker builder prune -a -f            # build cache
 else
   info "docker not running — skipping"
 fi
 
 step "JavaScript package caches"
-have npm  && npm cache clean --force
-have pnpm && pnpm store prune
-have yarn && yarn cache clean
-have bun  && bun pm cache rm
+! have npm  || run npm cache clean --force
+! have pnpm || run pnpm store prune
+! have yarn || run yarn cache clean
+! have bun  || run bun pm cache rm
 
 step "Homebrew"
-have brew && brew cleanup --prune=all
+! have brew || run brew cleanup --prune=all
 
 step "Python caches"
-have pip3 && pip3 cache purge 2>/dev/null || true
-have uv   && uv cache clean
+! have pip3 || run pip3 cache purge
+! have uv   || run uv cache clean
 
 step "Go build cache"
-have go && go clean -cache
+! have go || run go clean -cache
 
 step "Gradle & Maven caches"
 rm -rf ~/.gradle/caches
@@ -96,7 +98,7 @@ fi
 
 step "Xcode"
 rm -rf ~/Library/Developer/Xcode/DerivedData
-have xcrun && xcrun simctl delete unavailable 2>/dev/null || true
+! have xcrun || run xcrun simctl delete unavailable
 
 ###############################################################################
 # --deep: heavier caches (regenerate via re-download, slower first use)
@@ -104,7 +106,7 @@ have xcrun && xcrun simctl delete unavailable 2>/dev/null || true
 
 if [ "$DEEP" -eq 1 ]; then
   step "Go module cache (--deep)"
-  have go && go clean -modcache
+  ! have go || run go clean -modcache
 
   step "Playwright browsers (--deep)"
   rm -rf ~/Library/Caches/ms-playwright
