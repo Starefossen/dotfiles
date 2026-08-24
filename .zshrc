@@ -38,3 +38,5 @@ alias timeout='gtimeout'
 
 # Added by Antigravity CLI installer
 export PATH="$HOME/.local/bin:$PATH"
+
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
