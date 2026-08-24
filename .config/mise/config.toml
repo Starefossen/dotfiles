@@ -38,6 +38,8 @@ kustomize = "5.5.0"
 kubebuilder = "4.3.1"
 yarn = "1.22.22"
 python = "3.11"
+"npm:@caveman-ai/cli" = "1.2.0"
 
 [settings]
 idiomatic_version_file_enable_tools = []
+npm.shell_out = true
