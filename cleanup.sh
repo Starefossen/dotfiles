@@ -100,6 +100,12 @@ step "Xcode"
 rm -rf ~/Library/Developer/Xcode/DerivedData
 ! have xcrun || run xcrun simctl delete unavailable
 
+step "Old temp files (/private/tmp, >3 days, own user only)"
+# live sessions keep recent mtimes and are never touched; macOS wipes the
+# rest on reboot anyway — this just brings that forward
+find /private/tmp -mindepth 1 -maxdepth 1 -user "$(id -un)" -mtime +3 \
+  -exec rm -rf {} + 2>/dev/null || true
+
 ###############################################################################
 # --deep: heavier caches (regenerate via re-download, slower first use)
 ###############################################################################
