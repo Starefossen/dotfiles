@@ -162,14 +162,22 @@ launch.
 Things the script cannot do for you:
 
 - **Sign in to the Mac App Store**, then re-run `brew bundle install --file=~/Brewfile`
-- **Transfer secrets securely** from the old machine: `~/.ssh/`, `~/.gnupg/`,
-  `~/.config/sops/age/keys.txt`
 - **Re-authenticate CLIs**: `gcloud`, `gh`, `copilot`, `claude`, `bw` (Bitwarden), `nais`/`naisdevice`
 - **Re-add `NAV_AI_API_KEY`** to the macOS Keychain via `fnox`
 - **Restore licence keys** for paid apps (marked `licensed` in the Brewfile)
 - **Start the container runtime**: `colima start`
 - **Pull local LLM models**: `ollama pull <model>`
 - **Create `~/.gitconfig.local`** with your name, email and signing key (see above)
+
+### 📦 Manual Data Migration
+
+While the bootstrap script handles applications and dependencies, your personal data and workspaces must be manually transferred from the old machine.
+
+- **Secrets (Secure Transfer):** `~/.ssh/`, `~/.gnupg/`, `~/.config/sops/age/keys.txt`
+- **Code & Workspaces:** `~/go/`, `~/copilot/`, `~/copilot-worktrees/`, `~/mlx-workspace/`, `~/minmal-maven/`, `~/examples/`
+- **Media:** `~/Screen Studio Projects/` (Local screen recordings)
+- **Terminal History:** `~/.zsh_history`, `~/.bash_history` (Recommended for continuity)
+- **AI Agent History (Optional):** Active chat sessions in `~/.claude/`, `~/.gemini/`, `~/.nav-pilot/`, `~/.qodo/`. *(Note: AI configs like `CLAUDE.md` are tracked in this repo, but agent chat histories are intentionally ignored).*
 
 ## Cleaning up
 
