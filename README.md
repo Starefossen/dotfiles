@@ -171,6 +171,15 @@ Things the script cannot do for you:
 - **Pull local LLM models**: `ollama pull <model>`
 - **Create `~/.gitconfig.local`** with your name, email and signing key (see above)
 
+## Cleaning up
+
+```bash
+./cleanup.sh            # clear regenerable caches (docker, npm/pnpm, brew, go, …)
+./cleanup.sh --check    # report sizes only
+./cleanup.sh --deep     # also go module cache and playwright browsers
+./cleanup.sh --repos    # also build artifacts under ~/go/src/github.com
+```
+
 ## Updating
 
 ```bash

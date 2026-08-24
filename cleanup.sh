@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+#
+# cleanup.sh — free disk space by clearing regenerable caches and build output.
+#
+# Usage:
+#   ./cleanup.sh            # standard cleanup (safe, everything regenerates)
+#   ./cleanup.sh --check    # report sizes only, delete nothing
+#   ./cleanup.sh --deep     # also go module cache, playwright browsers
+#   ./cleanup.sh --repos    # also build artifacts under ~/go/src/github.com
+#                           # (node_modules, rust target, .next, .terraform, …)
+#
+# Everything removed here is regenerated automatically on demand — no
+# functionality or data is lost. Flags combine: ./cleanup.sh --deep --repos
+
+set -euo pipefail
+
+CHECK=0 DEEP=0 REPOS=0
+for arg in "$@"; do
+  case "$arg" in
+    --check) CHECK=1 ;;
+    --deep)  DEEP=1 ;;
+    --repos) REPOS=1 ;;
+    *) echo "unknown flag: $arg" >&2; exit 1 ;;
+  esac
+done
+
+step() { printf '\n==> %s\n' "$1"; }
+info() { printf '    %s\n' "$1"; }
+have() { command -v "$1" >/dev/null 2>&1; }
+
+###############################################################################
+# Report
+###############################################################################
+
+step "Disk usage before"
+df -h / | tail -1
+
+step "Cache sizes"
+have docker && docker system df 2>/dev/null || true
+du -sh \
+  ~/.npm \
+  ~/Library/pnpm/store \
+  ~/Library/Caches/pnpm \
+  ~/.bun/install/cache \
+  ~/Library/Caches/Homebrew \
+  ~/Library/Caches/pip \
+  ~/Library/Caches/go-build \
+  ~/go/pkg/mod \
+  ~/.gradle/caches \
+  ~/.cargo/registry \
+  ~/Library/Caches/ms-playwright \
+  ~/Library/Developer/Xcode/DerivedData \
+  2>/dev/null | sort -rh || true
+
+if [ "$CHECK" -eq 1 ]; then
+  info "--check: stopping before any deletion"
+  exit 0
+fi
+
+###############################################################################
+# Standard cleanup — always safe
+###############################################################################
+
+step "Docker"
+if have docker && docker info >/dev/null 2>&1; then
+  docker system prune -a -f --volumes   # unused images, stopped containers, anon volumes
+  docker builder prune -a -f            # build cache
+else
+  info "docker not running — skipping"
+fi
+
+step "JavaScript package caches"
+have npm  && npm cache clean --force
+have pnpm && pnpm store prune
+have yarn && yarn cache clean
+have bun  && bun pm cache rm
+
+step "Homebrew"
+have brew && brew cleanup --prune=all
+
+step "Python caches"
+have pip3 && pip3 cache purge 2>/dev/null || true
+have uv   && uv cache clean
+
+step "Go build cache"
+have go && go clean -cache
+
+step "Gradle & Maven caches"
+rm -rf ~/.gradle/caches
+
+step "mise (unused tool versions + download cache)"
+if have mise; then
+  mise prune --yes 2>/dev/null || mise prune -y 2>/dev/null || true
+  mise cache clear
+fi
+
+step "Xcode"
+rm -rf ~/Library/Developer/Xcode/DerivedData
+have xcrun && xcrun simctl delete unavailable 2>/dev/null || true
+
+###############################################################################
+# --deep: heavier caches (regenerate via re-download, slower first use)
+###############################################################################
+
+if [ "$DEEP" -eq 1 ]; then
+  step "Go module cache (--deep)"
+  have go && go clean -modcache
+
+  step "Playwright browsers (--deep)"
+  rm -rf ~/Library/Caches/ms-playwright
+fi
+
+###############################################################################
+# --repos: build artifacts inside ~/go/src/github.com working trees
+###############################################################################
+
+if [ "$REPOS" -eq 1 ]; then
+  step "Repo build artifacts under ~/go/src/github.com (--repos)"
+  find ~/go/src/github.com -name .git -prune -o -type d \
+    \( -name node_modules -o -name target -o -name .next -o -name .terraform \
+       -o -name .tofu-plugin-cache -o -name .venv -o -name venv -o -name __pycache__ \
+       -o -name .pytest_cache -o -name .svelte-kit -o -name .turbo -o -name .gradle \
+       -o -name storybook-static -o -name .docusaurus \) -prune -print0 \
+    | xargs -0 rm -rf
+fi
+
+###############################################################################
+
+step "Disk usage after"
+df -h / | tail -1
+info "done — everything removed regenerates automatically on demand"
