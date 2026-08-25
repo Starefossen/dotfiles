@@ -206,7 +206,6 @@ cask "mp3tag"
 
 mas "PiPifier", id: 1160374471
 mas "1Blocker", id: 1365531024
-mas "MuteKey", id: 1509590766
 mas "Ghostery Privacy Ad Blocker", id: 6504861501
 
 ###############################################################################
