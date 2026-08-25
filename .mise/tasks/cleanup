@@ -100,6 +100,10 @@ step "Xcode"
 rm -rf ~/Library/Developer/Xcode/DerivedData
 ! have xcrun || run xcrun simctl delete unavailable
 
+step "AI Agent caches & uploads"
+rm -rf ~/.claude/{uploads,cache,paste-cache,shell-snapshots,debug} 2>/dev/null || true
+rm -rf ~/.gemini/antigravity-cli/{cache,log,crashes} 2>/dev/null || true
+
 step "Old temp files (/private/tmp, >3 days, own user only)"
 # live sessions keep recent mtimes and are never touched; macOS wipes the
 # rest on reboot anyway — this just brings that forward
