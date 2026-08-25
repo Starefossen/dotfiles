@@ -95,6 +95,33 @@ else
 fi
 
 ###############################################################################
+# 5b. Default Shell
+###############################################################################
+
+step "Default Shell"
+if command -v fish >/dev/null 2>&1; then
+  if [ "$SHELL" != "$(command -v fish)" ]; then
+    # We must read directly from /dev/tty because bootstrap.sh might be piped
+    printf "    fish is not your default shell. Set it now? (requires password) [y/N]: "
+    read -r response </dev/tty || response="N"
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+      FISH_PATH=$(command -v fish)
+      if ! grep -q "$FISH_PATH" /etc/shells; then
+        echo "$FISH_PATH" | sudo tee -a /etc/shells >/dev/null
+      fi
+      chsh -s "$FISH_PATH"
+      info "default shell changed to fish"
+    else
+      info "skipped changing default shell"
+    fi
+  else
+    info "already using fish"
+  fi
+else
+  warn "fish not found — skipping default shell setup"
+fi
+
+###############################################################################
 # 6. Neovim
 ###############################################################################
 
