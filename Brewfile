@@ -122,6 +122,7 @@ cask "claude-code@latest"
 cask "copilot-cli@prerelease"
 # Code editor
 cask "visual-studio-code"
+cask "antigravity-cli"
 # JDK from the Eclipse Foundation (Adoptium)
 cask "temurin"
 # Reverse proxy, secure introspectable tunnels to localhost
