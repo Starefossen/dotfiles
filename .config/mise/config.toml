@@ -43,3 +43,12 @@ python = "3.11"
 [settings]
 idiomatic_version_file_enable_tools = []
 npm.shell_out = true
+
+[tasks.bootstrap]
+description = "Bootstrap a fresh macOS machine from this dotfiles repo"
+
+[tasks.cleanup]
+description = "Clear regenerable caches (docker, pnpm, brew, go, etc)"
+
+[tasks.transfer]
+description = "Securely migrate workspaces and secrets from an old Mac"
