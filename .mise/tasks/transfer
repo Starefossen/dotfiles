@@ -3,7 +3,7 @@
 # transfer.sh — Securely migrate workspaces, history, and secrets from the old Mac via SSH.
 #
 # Usage:
-#   ./transfer.sh <old-machine-ip> [username]
+#   mise run transfer <old-machine-ip> [username]
 #
 
 set -euo pipefail

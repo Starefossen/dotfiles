@@ -3,7 +3,7 @@
 # bootstrap.sh — set up a fresh macOS machine from this dotfiles repo.
 #
 # Usage:
-#   ./bootstrap.sh
+#   mise run bootstrap
 #
 # Idempotent: every step is guarded, so it is safe to re-run at any time.
 # Steps that are already done are skipped with a message.

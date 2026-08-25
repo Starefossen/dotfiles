@@ -148,10 +148,10 @@ In the session chooser (`prefix + s`), sessions with alerts show 🔔 and
 git clone <repo-url> ~
 
 # 2. Run the bootstrap script (idempotent — safe to re-run)
-cd ~ && ./bootstrap.sh
+cd ~ && ./.mise/tasks/bootstrap
 ```
 
-`bootstrap.sh` installs Homebrew, runs `brew bundle` against
+`mise run bootstrap` installs Homebrew, runs `brew bundle` against
 [`Brewfile`](Brewfile) (formulae, casks, App Store apps via `mas`, VS Code
 extensions), then sets up mise runtimes, tmux plugins (`tpack`), fish plugins
 (Fisher) and Claude Code plugins. Neovim plugins install themselves on first
@@ -194,10 +194,10 @@ While the bootstrap script handles applications and dependencies, your personal 
 ## Cleaning up
 
 ```bash
-./cleanup.sh            # clear regenerable caches (docker, npm/pnpm, brew, go, …)
-./cleanup.sh --check    # report sizes only
-./cleanup.sh --deep     # also go module cache and playwright browsers
-./cleanup.sh --repos    # also build artifacts under ~/go/src/github.com
+mise run cleanup            # clear regenerable caches (docker, npm/pnpm, brew, go, …)
+mise run cleanup --check    # report sizes only
+mise run cleanup --deep     # also go module cache and playwright browsers
+mise run cleanup --repos    # also build artifacts under ~/go/src/github.com
 ```
 
 ## Updating

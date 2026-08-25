@@ -3,14 +3,14 @@
 # cleanup.sh — free disk space by clearing regenerable caches and build output.
 #
 # Usage:
-#   ./cleanup.sh            # standard cleanup (safe, everything regenerates)
-#   ./cleanup.sh --check    # report sizes only, delete nothing
-#   ./cleanup.sh --deep     # also go module cache, playwright browsers
-#   ./cleanup.sh --repos    # also build artifacts under ~/go/src/github.com
+#   mise run cleanup            # standard cleanup (safe, everything regenerates)
+#   mise run cleanup --check    # report sizes only, delete nothing
+#   mise run cleanup --deep     # also go module cache, playwright browsers
+#   mise run cleanup --repos    # also build artifacts under ~/go/src/github.com
 #                           # (node_modules, rust target, .next, .terraform, …)
 #
 # Everything removed here is regenerated automatically on demand — no
-# functionality or data is lost. Flags combine: ./cleanup.sh --deep --repos
+# functionality or data is lost. Flags combine: mise run cleanup --deep --repos
 
 set -euo pipefail
 
