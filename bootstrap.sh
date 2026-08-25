@@ -10,6 +10,13 @@
 
 set -euo pipefail
 
+# Ask for the administrator password upfront to prevent hidden sudo prompts from hanging the script
+printf "==> Requesting sudo access for setup...\n"
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until the script has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 step() { printf '\n==> %s\n' "$1"; }
 info() { printf '    %s\n' "$1"; }
 warn() { printf '    warn: %s\n' "$1" >&2; }
