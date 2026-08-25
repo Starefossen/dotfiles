@@ -122,6 +122,7 @@ cask "claude-code@latest"
 cask "copilot-cli@prerelease"
 # Code editor
 cask "visual-studio-code"
+cask "finicky"
 cask "antigravity-cli"
 # JDK from the Eclipse Foundation (Adoptium)
 cask "temurin"
