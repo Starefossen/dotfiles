@@ -155,6 +155,26 @@ EOF
 fi
 
 ###############################################################################
+# 9. iCloud Downloads
+###############################################################################
+
+step "iCloud Downloads Symlink"
+if [ -L "$HOME/Downloads" ]; then
+  info "already symlinked"
+else
+  icloud_dl="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Downloads"
+  mkdir -p "$icloud_dl"
+  
+  if [ -d "$HOME/Downloads" ] && [ -z "$(ls -A "$HOME/Downloads" 2>/dev/null)" ]; then
+    info "linking ~/Downloads to iCloud Drive..."
+    rm -rf "$HOME/Downloads"
+    ln -s "$icloud_dl" "$HOME/Downloads"
+  else
+    warn "~/Downloads is not empty or cannot be removed. Symlink it manually later."
+  fi
+fi
+
+###############################################################################
 # Summary
 ###############################################################################
 
@@ -195,6 +215,9 @@ Bootstrap finished. MANUAL follow-ups — none of these can be automated:
         ollama pull <model>
 
   8.  Create ~/.gitconfig.local if the step above told you to.
+
+  9.  Remap Caps Lock to Control:
+        System Settings > Keyboard > Keyboard Shortcuts > Modifier Keys
 
 ===============================================================================
 EOF

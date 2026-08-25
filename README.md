@@ -168,6 +168,7 @@ Things the script cannot do for you:
 - **Start the container runtime**: `colima start`
 - **Pull local LLM models**: `ollama pull <model>`
 - **Create `~/.gitconfig.local`** with your name, email and signing key (see above)
+- **Keyboard Settings**: Go to System Settings > Keyboard > Keyboard Shortcuts > Modifier Keys and remap Caps Lock to Control.
 
 ### 📦 Manual Data Migration
 
