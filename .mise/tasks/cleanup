@@ -123,12 +123,14 @@ fi
 ###############################################################################
 
 if [ "$REPOS" -eq 1 ]; then
-  step "Repo build artifacts under ~/go/src/github.com (--repos)"
-  find ~/go/src/github.com -name .git -prune -o -type d \
+  step "Repo build artifacts across all workspaces (--repos)"
+  # Target all known workspaces, silencing errors if they don't exist yet
+  find ~/go ~/copilot ~/copilot-worktrees ~/mlx-workspace ~/examples ~/minmal-maven \
+    -name .git -prune -o -type d \
     \( -name node_modules -o -name target -o -name .next -o -name .terraform \
        -o -name .tofu-plugin-cache -o -name .venv -o -name venv -o -name __pycache__ \
        -o -name .pytest_cache -o -name .svelte-kit -o -name .turbo -o -name .gradle \
-       -o -name storybook-static -o -name .docusaurus \) -prune -print0 \
+       -o -name storybook-static -o -name .docusaurus \) -prune -print0 2>/dev/null \
     | xargs -0 rm -rf
 fi
 
