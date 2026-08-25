@@ -248,3 +248,9 @@ vscode "yzhang.markdown-all-in-one"
 cargo "cargo-audit"
 cargo "cargo-zigbuild"
 # cnctl is deprecated — replaced by konfctl (brew "runkonf/tap/konf" above)
+
+###############################################################################
+# Fonts
+###############################################################################
+
+cask "font-jetbrains-mono-nerd-font"
