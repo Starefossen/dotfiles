@@ -253,5 +253,4 @@ cargo "cargo-zigbuild"
 ###############################################################################
 
 cask "font-jetbrains-mono-nerd-font"
-mas "Velja", id: 1607635845
 mas "Hush Nag Blocker", id: 1544743900
