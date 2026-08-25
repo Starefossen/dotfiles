@@ -75,7 +75,14 @@ for item in "${ITEMS[@]}"; do
     
     # Use -a (archive), -v (verbose), -z (compress), -u (update/skip newer), -P (progress)
     # The double quotes around the remote path handle spaces in folder names like "Screen Studio Projects"
-    if ! rsync -avzuP -e ssh "$OLD_USER@$OLD_IP:\"$item\"" "$DEST_DIR/" 2>/dev/null; then
+    if ! rsync -avzuP \
+        --exclude="*.tar.gz" \
+        --exclude="*.tar" \
+        --exclude="*.tgz" \
+        --exclude="*.zip" \
+        --exclude="*.dmg" \
+        --exclude=".DS_Store" \
+        -e ssh "$OLD_USER@$OLD_IP:\"$item\"" "$DEST_DIR/" 2>/dev/null; then
         echo "    (Skipped ~/$item - likely does not exist on the old machine)"
     fi
     echo ""
