@@ -64,9 +64,7 @@ brew "git"
 # Quickly rewrite git repository history
 brew "git-filter-repo"
 # HTTP load generator, ApacheBench (ab) replacement
-brew "hey"
 # Logs for humans to read
-brew "humanlog"
 # Postgres C API library
 brew "libpq", link: true
 # Library to render SVG files using Cairo
@@ -77,8 +75,6 @@ brew "mas"
 brew "mise"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Create, run, and share large language models (LLMs)
-brew "ollama"
 # PAM module for reattaching to the user's GUI (Aqua) session
 brew "pam-reattach"
 # Pinentry for GPG on Mac
@@ -86,7 +82,6 @@ brew "pinentry-mac"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Reattach process (e.g., tmux) to background
-brew "reattach-to-user-namespace"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # CLI proxy to minimize LLM token consumption
@@ -104,7 +99,6 @@ brew "topgrade"
 # Drop-in replacement for tmux-plugin-manager (tpm) with a TUI
 brew "tpack", link: false
 # Internet file retriever
-brew "wget"
 # Tools for the WireGuard secure network tunnel
 brew "wireguard-tools"
 # Feature-rich command-line audio/video downloader
@@ -140,9 +134,6 @@ cask "tmuxpack/tpack/tpack", trusted: true
 cask "naisdevice"
 # Virtual machines for macOS
 cask "utm"
-# NOTE: `ollama` is installed as a formula above (CLI + server).
-# The `ollama-app` cask (desktop GUI) is intentionally skipped to avoid
-# two competing installs. Add it here if you want the GUI.
 
 ###############################################################################
 # Security & privacy
@@ -154,8 +145,6 @@ cask "gpg-suite"
 cask "little-snitch" # licensed — restore key from vault
 # HTTP debugging proxy
 cask "proxyman" # licensed — restore key from vault
-# Anonymous web browser
-cask "tor-browser"
 
 ###############################################################################
 # Browsers
@@ -172,8 +161,6 @@ cask "discord"
 cask "signal"
 cask "zoom"
 cask "microsoft-teams"
-# Low-latency voice chat
-cask "mumble"
 
 ###############################################################################
 # Media, audio & creative
@@ -181,16 +168,8 @@ cask "mumble"
 
 # Screen recording with automatic zoom/pan
 cask "screen-studio" # licensed — restore key from vault
-# Audio editor
-cask "audacity"
 # RODE interface configuration utilities
 cask "rode-central"
-cask "rode-connect"
-# Rogue Amoeba audio suite
-cask "audio-hijack" # licensed — restore key from vault
-cask "farrago"      # licensed — restore key from vault
-cask "fission"      # licensed — restore key from vault
-cask "loopback"     # licensed — restore key from vault
 
 ###############################################################################
 # Design & productivity
@@ -199,15 +178,6 @@ cask "loopback"     # licensed — restore key from vault
 cask "figma"
 # Uninstaller that finds leftover files
 cask "appcleaner"
-# 3D parametric modeller
-cask "freecad"
-
-###############################################################################
-# Games
-###############################################################################
-
-# Free, open-source real-time strategy game
-cask "0-ad"
 
 ###############################################################################
 # Not available as a Homebrew cask
@@ -233,23 +203,10 @@ cask "mp3tag"
 # Mac App Store only (requires `mas` + being signed in to the App Store)
 ###############################################################################
 
-mas "Keynote", id: 361285480
-mas "Numbers", id: 361304891
-mas "Pages", id: 361309726
-mas "iMovie", id: 408981434
-mas "Xcode", id: 497799835
-mas "Toolbox for Keynote", id: 582635628
-mas "GarageBand", id: 682658836
-mas "AdBlock Pro", id: 1018301773
-mas "Apple Configurator", id: 1037126344
 mas "PiPifier", id: 1160374471
 mas "1Blocker", id: 1365531024
-mas "AdBlock", id: 1402042596
-mas "Adblock Plus", id: 1432731683
 mas "MuteKey", id: 1509590766
-mas "SPIKE", id: 6443545905
 mas "Ghostery Privacy Ad Blocker", id: 6504861501
-mas "CivilizationVII", id: 6744373452
 
 ###############################################################################
 # VS Code extensions
