@@ -55,7 +55,8 @@ fi
 step "Homebrew bundle (~/Brewfile)"
 if [ -f "$HOME/Brewfile" ]; then
   info "note: 'mas' entries require you to be signed in to the App Store."
-  brew bundle install --file="$HOME/Brewfile" ||
+  info "note: verbose mode (-v) is enabled so you can see large downloads (like Xcode) progressing."
+  brew bundle install -v --file="$HOME/Brewfile" ||
     warn "some bundle entries failed (App Store sign-in? licensed app?) — re-run after fixing"
 else
   warn "no ~/Brewfile found — skipping"
