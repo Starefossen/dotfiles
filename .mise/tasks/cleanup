@@ -103,6 +103,8 @@ rm -rf ~/Library/Developer/Xcode/DerivedData
 step "AI Agent caches & uploads"
 rm -rf ~/.claude/{uploads,cache,paste-cache,shell-snapshots,debug} 2>/dev/null || true
 rm -rf ~/.gemini/antigravity-cli/{cache,log,crashes} 2>/dev/null || true
+rm -rf ~/.copilot/{logs,run} 2>/dev/null || true
+rm -rf ~/.copilot/session-state/*/{files,checkpoints,rewind-snapshots} 2>/dev/null || true
 
 step "Old temp files (/private/tmp, >3 days, own user only)"
 # live sessions keep recent mtimes and are never touched; macOS wipes the
