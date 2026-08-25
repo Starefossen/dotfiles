@@ -54,6 +54,12 @@ ITEMS=(
     "minmal-maven"
     "examples"
     
+    # AI Agents (History & Local State)
+    ".claude"
+    ".gemini"
+    ".nav-pilot"
+    ".qodo"
+    
     # Media
     "Screen Studio Projects"
 )
