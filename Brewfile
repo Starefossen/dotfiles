@@ -14,22 +14,18 @@
 # Taps
 ###############################################################################
 
-tap "anomalyco/tap"
-tap "azure/kubelogin"
-tap "charmbracelet/tap"
-tap "cloudnativebergen/tap", "https://github.com/CloudNativeBergen/homebrew-tap"
-tap "domt4/autoupdate", "https://github.com/DomT4/homebrew-autoupdate.git"
-tap "homebrew/cask"
-tap "homebrew/core"
-tap "homebrew/services"
-tap "humanlogio/tap"
-tap "jjuarez/tap-1"
-tap "kanidm/kanidm"
-tap "nais/tap"
-tap "navikt/tap", trusted: { formulae: ["cplt"] }
-tap "tmuxpack/tpack"
-
-tap "runkonf/tap"
+tap "anomalyco/tap", trusted: true
+tap "azure/kubelogin", trusted: true
+tap "charmbracelet/tap", trusted: true
+tap "cloudnativebergen/tap", "https://github.com/CloudNativeBergen/homebrew-tap", trusted: true
+tap "domt4/autoupdate", "https://github.com/DomT4/homebrew-autoupdate.git", trusted: true
+tap "humanlogio/tap", trusted: true
+tap "jjuarez/tap-1", trusted: true
+tap "kanidm/kanidm", trusted: true
+tap "nais/tap", trusted: true
+tap "navikt/tap", trusted: true
+tap "tmuxpack/tpack", trusted: true
+tap "runkonf/tap", trusted: true
 
 ###############################################################################
 # CLI tools & libraries (formulae)
