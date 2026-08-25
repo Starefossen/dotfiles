@@ -197,7 +197,7 @@ cask "appcleaner"
 
 cask "tailscale-app"
 cask "slack"
-cask "bitwarden"
+mas "Bitwarden", id: 1352778147
 cask "mp3tag"
 
 ###############################################################################
