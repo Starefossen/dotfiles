@@ -124,6 +124,7 @@ cask "copilot-cli@prerelease"
 cask "visual-studio-code"
 cask "finicky"
 cask "antigravity-cli"
+cask "openusage"
 # JDK from the Eclipse Foundation (Adoptium)
 cask "temurin"
 # Reverse proxy, secure introspectable tunnels to localhost
