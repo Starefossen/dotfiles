@@ -168,7 +168,18 @@ Things the script cannot do for you:
 - **Start the container runtime**: `colima start`
 - **Pull local LLM models**: `ollama pull <model>`
 - **Create `~/.gitconfig.local`** with your name, email and signing key (see above)
-- **Keyboard Settings**: Go to System Settings > Keyboard > Keyboard Shortcuts > Modifier Keys and remap Caps Lock to Control.
+
+### ⚙️ System Preferences & Tweaks
+- **Keyboard**: Go to System Settings > Keyboard > Keyboard Shortcuts > Modifier Keys and remap Caps Lock to Control.
+- **iCloud Desktop**: Go to System Settings > Apple ID > iCloud > iCloud Drive and enable "Desktop & Documents Folders".
+- **Touch ID for Sudo (Tmux support)**: Run this to allow Touch ID in your terminal (survives macOS updates):
+  ```bash
+  sudo tee /etc/pam.d/sudo_local <<'EOF'
+# sudo_local: local config file which survives system update and is included for sudo
+auth       optional       /opt/homebrew/lib/pam/pam_reattach.so
+auth       sufficient     pam_tid.so
+EOF
+  ```
 
 ### 📦 Manual Data Migration
 

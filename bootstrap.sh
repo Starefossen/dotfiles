@@ -216,8 +216,10 @@ Bootstrap finished. MANUAL follow-ups — none of these can be automated:
 
   8.  Create ~/.gitconfig.local if the step above told you to.
 
-  9.  Remap Caps Lock to Control:
-        System Settings > Keyboard > Keyboard Shortcuts > Modifier Keys
+  9.  System Tweaks:
+        - Remap Caps Lock to Control in System Settings > Keyboard.
+        - Enable "Desktop & Documents Folders" in iCloud Settings.
+        - Enable Touch ID for sudo (check README.md for the snippet).
 
 ===============================================================================
 EOF
