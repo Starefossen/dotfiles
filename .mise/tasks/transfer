@@ -48,11 +48,7 @@ ITEMS=(
     
     # Workspaces & Code
     "go"
-    "copilot"
-    "copilot-worktrees"
     "mlx-workspace"
-    "minmal-maven"
-    "examples"
     
     # AI Agents (History & Local State)
     ".claude"
@@ -87,6 +83,13 @@ for item in "${ITEMS[@]}"; do
     fi
     echo ""
 done
+
+# Automatically set ultimate trust for imported secret GPG keys
+if command -v gpg &> /dev/null; then
+    echo "==> Setting ultimate trust for imported secret GPG keys..."
+    gpg --list-secret-keys --with-colons 2>/dev/null | awk -F: '/^sec:/ {print $5":6:"}' | gpg --import-ownertrust 2>/dev/null || true
+    gpgconf --kill all 2>/dev/null || true
+fi
 
 echo "==============================================================================="
 echo " Transfer complete! 🎉"
