@@ -166,11 +166,16 @@ Things the script cannot do for you:
 - **Re-add `NAV_AI_API_KEY`** to the macOS Keychain via `fnox`
 - **Restore licence keys** for paid apps (marked `licensed` in the Brewfile)
 - **Start the container runtime**: `colima start`
-- **Pull local LLM models**: `ollama pull <model>`
+- **Local LLM models**: Managed via `mlx` (see `~/mlx-workspace/`)
 - **Create `~/.gitconfig.local`** with your name, email and signing key (see above)
 
 ### ⚙️ System Preferences & Tweaks
-- **Keyboard**: Go to System Settings > Keyboard > Keyboard Shortcuts > Modifier Keys and remap Caps Lock to Control.
+- **Keyboard**: Go to System Settings > Keyboard > Keyboard Shortcuts > Modifier Keys and remap Caps Lock to **No Action**.
+  <br><img src="docs/assets/caps-lock-no-action.png" width="400" alt="Caps Lock Settings">
+- **Zoom Global Shortcuts**: In Zoom Settings > Keyboard shortcuts, enable **Global shortcut** for:
+  - Mute/unmute my audio (`⇧⌘A`)
+  - Start/stop video (`⇧⌘V`)
+  <br><img src="docs/assets/zoom-global-shortcuts.png" width="600" alt="Zoom Shortcuts">
 - **iCloud Desktop**: Go to System Settings > Apple ID > iCloud > iCloud Drive and enable "Desktop & Documents Folders".
 - **Touch ID for Sudo (Tmux support)**: Run this to allow Touch ID in your terminal (survives macOS updates):
   ```bash
@@ -186,7 +191,7 @@ EOF
 While the bootstrap script handles applications and dependencies, your personal data and workspaces must be manually transferred from the old machine.
 
 - **Secrets (Secure Transfer):** `~/.ssh/`, `~/.gnupg/`, `~/.config/sops/age/keys.txt`
-- **Code & Workspaces:** `~/go/`, `~/copilot/`, `~/copilot-worktrees/`, `~/mlx-workspace/`, `~/minmal-maven/`, `~/examples/`
+- **Code & Workspaces:** `~/go/`, `~/mlx-workspace/`
 - **Media:** `~/Screen Studio Projects/` (Local screen recordings)
 - **Terminal History:** `~/.zsh_history`, `~/.bash_history` (Recommended for continuity)
 - **AI Agent History (Optional):** Active chat sessions in `~/.claude/`, `~/.gemini/`, `~/.nav-pilot/`, `~/.qodo/`. *(Note: AI configs like `CLAUDE.md` are tracked in this repo, but agent chat histories are intentionally ignored).*

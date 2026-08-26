@@ -6,6 +6,8 @@
 !AGENTS.md
 !CLAUDE.md
 !Brewfile
+!docs/
+!docs/**/*
 !.*
 !.*/
 !.config/**/*
