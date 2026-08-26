@@ -207,10 +207,15 @@ mise run cleanup --repos    # also build artifacts under ~/go/src/github.com
 
 ## Updating
 
+All system packages, plugins, and tools can be updated using the provided `update` task:
+
 ```bash
-brew bundle install --file=~/Brewfile  # packages, casks & App Store apps
-tpack update                    # tmux plugins
-fish -c 'fisher update'        # fish plugins
-nvim -c ':Pack update'         # neovim plugins
-mise upgrade                    # dev tools & runtimes
+mise run update
 ```
+
+This will automatically run:
+- `brew update`, `brew upgrade`, and `brew bundle install`
+- Tmux plugin updates (`tpack update`)
+- Fish plugin updates (`fisher update`)
+- Neovim plugin updates (`:Pack update`)
+- Dev tools and runtime upgrades (`mise upgrade`)

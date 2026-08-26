@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+#
+# update — keep all system packages, runtimes, and plugins up to date.
+#
+# Usage:
+#   mise run update
+
+set -euo pipefail
+
+step() { printf '\n==> %s\n' "$1"; }
+info() { printf '    %s\n' "$1"; }
+warn() { printf '    warn: %s\n' "$1" >&2; }
+have() { command -v "$1" >/dev/null 2>&1; }
+
+###############################################################################
+# 1. Homebrew & App Store Apps
+###############################################################################
+step "Homebrew"
+if have brew; then
+  info "Updating Homebrew..."
+  brew update
+
+  info "Upgrading packages..."
+  brew upgrade --greedy
+
+  if [ -f "$HOME/Brewfile" ]; then
+    info "Installing missing Brewfile dependencies..."
+    brew bundle install --file="$HOME/Brewfile"
+  else
+    warn "No ~/Brewfile found."
+  fi
+else
+  warn "brew not found — skipping Homebrew update"
+fi
+
+###############################################################################
+# 2. Tmux plugins
+###############################################################################
+step "Tmux plugins (tpack)"
+if have tpack; then
+  tpack update
+else
+  warn "tpack not found — skipping"
+fi
+
+###############################################################################
+# 3. Fish plugins
+###############################################################################
+step "Fish plugins (fisher)"
+if have fish; then
+  fish -c 'fisher update'
+else
+  warn "fish not found — skipping"
+fi
+
+###############################################################################
+# 4. Neovim plugins
+###############################################################################
+step "Neovim plugins (pack)"
+if have nvim; then
+  info "Updating Neovim plugins..."
+  nvim --headless -c ':Pack update' -c ':qa' || warn "nvim package update failed"
+else
+  warn "nvim not found — skipping"
+fi
+
+###############################################################################
+# 5. Dev tools & runtimes
+###############################################################################
+step "Dev tools & runtimes (mise)"
+if have mise; then
+  mise upgrade
+else
+  warn "mise not found — skipping"
+fi
+
+step "Done"
+info "System is fully up to date."

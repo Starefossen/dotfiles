@@ -52,3 +52,6 @@ description = "Clear regenerable caches (docker, pnpm, brew, go, etc)"
 
 [tasks.transfer]
 description = "Securely migrate workspaces and secrets from an old Mac"
+
+[tasks.update]
+description = "Update system packages, runtimes, and plugins"
