@@ -1,6 +1,6 @@
 ---
 description: Scaffold en responsiv React-komponent med Aksel Design System, riktige tokens og props verifisert via Aksel MCP / aksel-builder-skillen
-model: Gemini 3.8 Flash
+model: Gemini 3.6 Flash
 ---
 
 

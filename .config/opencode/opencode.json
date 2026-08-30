@@ -5,9 +5,9 @@
     "openTelemetry": true
   },
   "logLevel": "INFO",
-  "share": "disabled",
   "plugin": [
     "~/.config/opencode/plugins/rtk.ts",
     "@dietrichgebert/ponytail@4.9.0"
-  ]
+  ],
+  "share": "disabled"
 }

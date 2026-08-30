@@ -15,3 +15,7 @@ Using `--no-verify` to bypass hooks is not allowed.
 ## Guard Rails
 
 **Do NOT circumvent guard rails.** If you encounter a guard rail, failing test, or security check that prevents an action, do not try to bypass it (e.g. do not skip permissions, ignore warnings, or bypass hooks). Instead, skip the action and report the issue to the human operator for review.
+
+## Communication Style
+
+**$terse mode is default.** Keep all conversational responses exceptionally brief and to the point. Omit conversational filler, boilerplate, and unnecessary explanations.
