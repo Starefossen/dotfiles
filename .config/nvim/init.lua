@@ -77,7 +77,7 @@ vim.pack.add({
 
   -- Telescope
   "https://github.com/nvim-lua/plenary.nvim",
-  "https://github.com/nvim-telescope/telescope.nvim",
+  { src = "https://github.com/nvim-telescope/telescope.nvim", branch = "master" },
   "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
   "https://github.com/nvim-telescope/telescope-file-browser.nvim",
   "https://github.com/nvim-telescope/telescope-ui-select.nvim",
@@ -87,6 +87,8 @@ vim.pack.add({
   { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 
   -- Formatting
+  "https://github.com/MeanderingProgrammer/render-markdown.nvim",
+
   "https://github.com/stevearc/conform.nvim",
 })
 
@@ -98,3 +100,29 @@ require("plugins.lsp")
 require("plugins.telescope")
 require("plugins.treesitter")
 require("plugins.formatting")
+require("plugins.markdown")
+
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    pcall(function()
+      local parsers = require("nvim-treesitter.parsers")
+      if parsers and not parsers.ft_to_lang then
+        parsers.ft_to_lang = function(ft)
+          return vim.treesitter.language.get_lang and vim.treesitter.language.get_lang(ft) or ft
+        end
+      end
+    end)
+  end,
+})
+
+-- Fix for Telescope / Treesitter incompatibility (force telescope to master)
+vim.api.nvim_create_autocmd("User", {
+  pattern = "PackChanged",
+  callback = function()
+    local tele_dir = vim.fn.stdpath("data") .. "/site/pack/core/opt/telescope.nvim"
+    if vim.fn.isdirectory(tele_dir) == 1 then
+      vim.fn.system({ "git", "-C", tele_dir, "checkout", "master" })
+    end
+  end,
+})

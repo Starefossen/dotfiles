@@ -52,6 +52,8 @@ nvim
 │       ├── completion.lua   # Autocompletion
 │       ├── formatting.lua   # Code formatting
 │       └── treesitter.lua   # Syntax highlighting
+│       ├── markdown.lua     # Markdown rendering
+
 └── README.md
 ```
 
@@ -121,7 +123,7 @@ nvim
 | `gD`        | Go to declaration          |
 | `gi`        | Go to implementation       |
 | `gr`        | Go to references           |
-| `gt`        | Go to type definition      |
+| `gy`        | Go to type definition      |
 | `K`         | Hover documentation        |
 | `<C-k>`     | Signature help             |
 | `,ca`       | Code action                |

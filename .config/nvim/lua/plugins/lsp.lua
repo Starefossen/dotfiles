@@ -77,7 +77,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
     map("n", "gi", vim.lsp.buf.implementation, "Go to implementation")
     map("n", "gr", vim.lsp.buf.references, "Go to references")
-    map("n", "gt", vim.lsp.buf.type_definition, "Go to type definition")
+    map("n", "gy", vim.lsp.buf.type_definition, "Go to type definition")
 
     -- Hover and signature
     map("n", "K", vim.lsp.buf.hover, "Hover documentation")
