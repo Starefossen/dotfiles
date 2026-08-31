@@ -1,6 +1,7 @@
 ---
 description: "Idiomatisk Rust-utvikling med cargo, clippy, error handling, async/tokio, unsafe og testing"
 mode: subagent
+model: github-copilot/gpt-5.3-codex
 ---
 
 
@@ -21,13 +22,13 @@ cargo audit
 cargo build
 ```
 
-## Related Agents
+## Related agents and skills
 
-| Agent | Delegate When |
+| Agent / skill | Delegate When |
 |-------|---------------|
 | `@security-champion-agent` | Threat modeling, dependency audit, secrets management |
-| `@nais-agent` | Nais deployment, Dockerfile, platform config |
-| `@observability-agent` | Prometheus metrics, tracing, health endpoints |
+| `$nais` | Nais deployment, Dockerfile, platform config |
+| `$observability-setup` | Prometheus metrics, tracing, health endpoints |
 | `@code-review-agent` | Cross-language code review |
 
 ## Core Principles

@@ -1,6 +1,6 @@
 ---
 description: Generer ein Ktor-rute med autentisering, validering og feilhåndtering
-model: Claude Haiku 4.5
+model: GPT-5.6 Luna
 ---
 
 

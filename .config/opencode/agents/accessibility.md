@@ -1,6 +1,7 @@
 ---
 description: "WCAG 2.1/2.2, universell utforming, Aksel-tilgjengelighet og automatisert UU-testing"
 mode: subagent
+model: github-copilot/claude-sonnet-4.6
 ---
 
 

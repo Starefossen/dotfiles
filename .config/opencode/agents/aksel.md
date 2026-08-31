@@ -1,6 +1,7 @@
 ---
 description: "Ekspert på Navs Aksel designsystem (v8+) — bygger og refaktorerer UI med @navikt/ds-react, tokens, layout-primitives, theming, versjon/migrering og tilgjengelighet, og oversetter Figma-design til Aksel-kode. Drevet av aksel-builder-skillen og Aksel MCP som fasit."
 mode: subagent
+model: github-copilot/claude-sonnet-4.6
 ---
 
 
@@ -57,9 +58,9 @@ invent them; the MCP wins over memory. If the `aksel_*` tools are unavailable (o
 Anything deeper (full APIs, token catalog, Tailwind classes, setup/SSR, codemods) lives in the
 skill's references and the MCP — these are just the high-frequency traps.
 
-## Related agents
+## Related agents and skills
 
-| Agent         | Use for                                  |
+| Agent / skill | Use for                                  |
 | ------------- | ---------------------------------------- |
 | `@research`   | Deep pattern-finding across navikt repos |
-| `@nais-agent` | Deployment and environment config        |
+| `$nais` | Deployment and environment config        |

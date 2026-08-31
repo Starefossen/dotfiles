@@ -1,6 +1,7 @@
 ---
 description: "Rapids & Rivers, eventdrevet arkitektur, Kafka-mønstre og schema-design"
 mode: subagent
+model: github-copilot/gpt-5.3-codex
 ---
 
 
@@ -29,12 +30,12 @@ kubectl logs -n <namespace> <pod> --tail=50 | grep -i "event\|kafka\|river"
 
 **Search tools**: Use `grep_search` to find River implementations, `semantic_search` for event patterns.
 
-## Related Agents
+## Related agents and skills
 
-| Agent | Use For |
+| Agent / skill | Use For |
 |-------|---------||
-| `@nais-agent` | Kafka pool configuration in Nais manifest |
-| `@observability-agent` | Consumer lag monitoring, event metrics |
+| `$nais` | Kafka pool configuration in Nais manifest |
+| `$observability-setup` | Consumer lag monitoring, event metrics |
 | `@security-champion-agent` | Event data privacy, audit logging |
 
 ## Rapids & Rivers Pattern

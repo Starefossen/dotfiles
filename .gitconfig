@@ -6,7 +6,6 @@
   autocrlf = false #true
   editor = nvim
   excludesfile = ~/.gitignore_global
-	hooksPath = ~/.config/git/hooks
 	pager = delta
 
 [color]

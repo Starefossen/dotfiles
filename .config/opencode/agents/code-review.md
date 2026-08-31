@@ -1,6 +1,7 @@
 ---
 description: "Kodegjennomgang for Nav-applikasjoner — finner feil, sikkerhetsproblemer og brudd på Nav-konvensjoner"
 mode: subagent
+model: github-copilot/gpt-5.3-codex
 ---
 
 
@@ -20,15 +21,15 @@ cd apps/<app-name> && mise check
 cd apps/<app-name> && mise test
 ```
 
-## Related Agents
+## Related agents and skills
 
-| Agent | Delegate When |
+| Agent / skill | Delegate When |
 |-------|---------------|
 | `@security-champion-agent` | Threat modeling, GDPR compliance, secrets management |
 | `@accessibility-agent` | WCAG compliance, ARIA attributes, keyboard navigation |
-| `@observability-agent` | Metrics, tracing, health endpoints, alerting |
+| `$observability-setup` | Metrics, tracing, health endpoints, alerting |
 | `@aksel-agent` | Aksel component usage, spacing tokens, responsive layout |
-| `@auth-agent` | JWT validation, TokenX, ID-porten, Azure AD |
+| `$nav-auth` | JWT validation, TokenX, ID-porten, Azure AD |
 
 ## Review Process
 

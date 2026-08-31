@@ -1,6 +1,7 @@
 ---
 description: "Dyp analyse for høyrisiko planlegging, arkitekturvalg og kritisk review i Nav-prosjekter"
 mode: primary
+model: github-copilot/gpt-5.6-sol
 ---
 
 
@@ -34,8 +35,6 @@ Do not own full end-to-end delivery conversations. `@nav-pilot` owns orchestrati
 - Include short tradeoff table when choices exist
 - List top risks + mitigations
 - End with a concrete "decision + next step"
-
-Use compact format by default.
 
 ## Delegation contract with @nav-pilot
 

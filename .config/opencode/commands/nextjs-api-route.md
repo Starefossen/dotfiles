@@ -1,6 +1,6 @@
 ---
 description: Scaffold en Next.js App Router API-rute med validering, feilhåndtering, auth og test
-model: Claude Haiku 4.5
+model: GPT-5.6 Luna
 ---
 
 

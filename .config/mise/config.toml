@@ -19,7 +19,7 @@ rust = "latest"
 uv = "latest"
 "go:github.com/sethvargo/ratchet" = "latest"
 watchexec = "latest"
-node = "24"
+node = "20"
 actionlint = "latest"
 bat = "latest"
 delta = "latest"
@@ -39,6 +39,7 @@ kubebuilder = "4.3.1"
 yarn = "1.22.22"
 python = "3.11"
 "npm:@caveman-ai/cli" = "1.2.0"
+gradle = "8.12.1"
 
 [settings]
 idiomatic_version_file_enable_tools = []

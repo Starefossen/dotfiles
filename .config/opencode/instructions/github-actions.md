@@ -158,7 +158,7 @@ env:
 
 # ❌ Feil — hardkodet hemmelighet
 env:
-  API_KEY: "my-fake-hardcoded-key"
+  API_KEY: "sk-1234567890"
 
 # ❌ Feil — logg hemmeligheter
 - run: echo ${{ secrets.MY_API_KEY }}
