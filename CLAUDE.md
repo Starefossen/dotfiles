@@ -43,3 +43,15 @@ To disable other commonly reported annoyances in Claude Code, ensure your global
 
 Or set the environment variable:
 `export CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=1`
+
+### GitHub Copilot CLI
+
+To disable the "Copilot Desktop" installation ad and other annoying startup tips in `gh copilot`, make sure your `~/.copilot/settings.json` includes:
+
+```json
+{
+  "showTipsOnStartup": false
+}
+```
+
+The desktop app installation ad is governed by `"appInstallNudgeResponded": true` inside the auto-managed `~/.copilot/config.json`. If you ever reset your configs, ensuring this flag is set to `true` will suppress the ad.
