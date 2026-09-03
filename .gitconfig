@@ -7,6 +7,7 @@
   editor = nvim
   excludesfile = ~/.gitignore_global
 	pager = delta
+	hooksPath = /Users/hans/.config/git/hooks
 
 [color]
   ui = true

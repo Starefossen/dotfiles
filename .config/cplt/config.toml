@@ -4,6 +4,7 @@ allow_gpg_signing = true
 allow_cache_exec = ["ms-playwright"]
 pass_env = ["HOME"]
 allow_localhost_any = true
+yes = true
 
 [allow]
 read = ["~/Desktop", "~/Library/Application Support/cnctl/config.toml"]

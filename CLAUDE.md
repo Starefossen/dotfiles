@@ -28,3 +28,18 @@ Commits and PRs are the user's work product and carry the user's authorship.
 # Communication Style
 
 **$terse mode is default.** Keep all conversational responses exceptionally brief and to the point. Omit conversational filler, boilerplate, and unnecessary explanations.
+
+# Settings for Annoyances
+
+To disable other commonly reported annoyances in Claude Code, ensure your global `~/.claude/settings.json` includes:
+
+```json
+{
+  "feedbackSurveyRate": 0,
+  "spinnerTipsEnabled": false,
+  "preferredNotifChannel": "none"
+}
+```
+
+Or set the environment variable:
+`export CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=1`

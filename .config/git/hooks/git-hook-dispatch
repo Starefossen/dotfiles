@@ -1,0 +1,47 @@
+#!/bin/sh
+# One dispatcher, symlinked under every client-side hook name.
+#
+# A global core.hooksPath REPLACES .git/hooks — it does not stack. So the
+# moment it is set, EVERY repository's own hooks stop running: the
+# simple-git-hooks `pre-commit` that runs the test suite, lefthook, husky, all
+# of it. Shipping only the two hooks we care about would silently disable the
+# rest, which is a far worse outcome than the trailers this is meant to stop.
+#
+# This script therefore runs our own checks for the hooks we police, then hands
+# off to the repository's own hook of the same name if it has one.
+set -eu
+
+hook=$(basename "$0")
+here=$(dirname "$0")
+
+# STDIN, once. pre-push, pre-receive, post-rewrite and friends are fed on
+# stdin, and the repo hook downstream expects to read the SAME bytes. Whatever
+# we consume has to be replayed, so it is captured up front for those hooks
+# and left alone for the ones where stdin is the user's terminal.
+stdin_data=''
+case "$hook" in
+  pre-push|post-rewrite|pre-receive|post-receive|update|reference-transaction)
+    stdin_data=$(cat) ;;
+esac
+
+case "$hook" in
+  commit-msg) . "$here/ai-trailers.sh"; strip_commit_msg "$1" ;;
+  # $1 is the remote NAME, needed to scope a new branch's range to the remote
+  # actually being pushed to rather than to every remote this repo knows.
+  pre-push)   . "$here/ai-trailers.sh"; check_pre_push "$stdin_data" "${1:-origin}" ;;
+esac
+
+# `--git-path hooks/...` resolves THROUGH core.hooksPath and would hand back
+# this very script — an exec loop. `--git-common-dir` is the repo's real .git,
+# and the shared one, so a linked worktree (whose --git-dir is
+# .git/worktrees/<name>) still finds the hooks that actually exist.
+repo_hook="$(git rev-parse --path-format=absolute --git-common-dir)/hooks/$hook"
+if [ -x "$repo_hook" ]; then
+  if [ -n "$stdin_data" ]; then
+    printf '%s\n' "$stdin_data" | "$repo_hook" "$@"
+  else
+    "$repo_hook" "$@"
+  fi
+  exit $?
+fi
+exit 0
