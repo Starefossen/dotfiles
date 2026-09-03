@@ -25,6 +25,7 @@
 !.local/bin/
 
 # ignored config files
+.config/git/hooks.backup.*/
 .config/configstore/*
 .config/github-copilot/auth.db*
 .config/github-copilot/hosts.json
