@@ -57,3 +57,7 @@ description = "Securely migrate workspaces and secrets from an old Mac"
 
 [tasks.update]
 description = "Update system packages, runtimes, and plugins"
+
+[tasks."claude:hooks-test"]
+description = "Selvtest for Claude Code-hookene i .config/claude/hooks/"
+run = "python3 {{env.HOME}}/.config/claude/hooks/slop-gate.py --selftest"

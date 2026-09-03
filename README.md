@@ -12,7 +12,8 @@ macOS dotfiles managed as a bare-ish git repo in `$HOME`.
 │   ├── mise/           Dev tool & runtime versions
 │   ├── git/            Git hooks (gitleaks pre-commit)
 │   ├── uv/             Python package manager config
-│   └── cplt/           Copilot sandbox config
+│   ├── cplt/           Copilot sandbox config
+│   └── claude/       Claude Code hooks + skills (installed by bootstrap)
 ├── .tmux.conf          Tmux configuration + tpack plugins
 ├── .zshrc              Zsh configuration (minimal, for Copilot terminal)
 ├── .gitconfig          Git configuration
@@ -55,6 +56,34 @@ Environment variables (Docker, FZF, Kubernetes, Go) are configured in
   warns before pushing unsigned commits with Co-authored-by trailers;
   bypass with `git push --no-verify`
 - **Credential helper** — macOS Keychain (`osxkeychain`)
+
+### Claude Code prose gate
+
+`.config/claude/hooks/slop-gate.py` is a `PreToolUse` hook that denies `git
+commit`, `git tag -a/-m` and
+`gh issue|pr|release create|comment|edit|review|close|reopen` when the text
+carries a Claude trailer, a phrase from the slop list, or a subject line over
+72 characters. It blocks at authoring time; the `pre-push` hook above only
+warns, and only at push time.
+
+- Wired into `~/.claude/settings.json` by `mise run bootstrap`. That file is
+  untracked because Claude Code rewrites it, so the hook is merged in rather
+  than committed.
+- Self-test: `mise run claude:hooks-test` — 40 cases, 9 of them controls that
+  must pass. A gate that cannot pass is not a gate.
+- Prefix a command with `SLOP_OK=1` to get past a false positive in the word list
+  or the subject-length check. It never lifts the trailer ban.
+- The word list is deliberately narrow, and words in normal use (`robust`,
+  `crucial`, `omfattende`, `i dagens`) are absent by design. Edit `SLOP` in the
+  script to extend it. Each addition buys a false positive, and a gate with
+  false positives gets switched off.
+
+### Claude Code skills
+
+`~/.claude/` is ignored, so anything left there is lost on a new machine.
+Skills worth keeping live in `.config/claude/skills/` and are symlinked into
+place by `mise run bootstrap`. Plugin-provided skills (ponytail, caveman) are
+not stored here; `bootstrap` installs the plugins instead.
 
 ### Personal Identity (`.gitconfig.local`)
 

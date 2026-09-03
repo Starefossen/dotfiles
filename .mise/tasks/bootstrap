@@ -170,6 +170,87 @@ else
 fi
 
 ###############################################################################
+# 7b. Claude Code hooks
+###############################################################################
+
+step "Claude Code hooks"
+gate="$HOME/.config/claude/hooks/slop-gate.py"
+if [ ! -f "$gate" ]; then
+  warn "slop-gate.py not found — skipping (is the dotfiles repo fully checked out?)"
+elif ! command -v python3 >/dev/null 2>&1; then
+  warn "python3 not found — skipping Claude Code hooks"
+else
+  chmod +x "$gate"
+  if python3 "$gate" --selftest >/dev/null 2>&1; then
+    info "slop-gate selftest passed"
+  else
+    warn "slop-gate selftest FAILED — hook not wired; see why with: python3 \"$gate\" --selftest"
+    gate=""
+  fi
+
+  # ~/.claude/settings.json is not tracked (Claude Code rewrites it), so the
+  # hook is merged in here instead. Idempotent: replaces any prior slop-gate
+  # entry, leaves every other setting untouched.
+  if [ -n "$gate" ]; then
+    python3 - "$gate" <<'PY' || warn "settings.json unreadable — hook not wired"
+import json, os, sys
+gate = sys.argv[1]
+p = os.path.expanduser("~/.claude/settings.json")
+s = {}
+if os.path.exists(p):
+    with open(p) as f:
+        s = json.load(f)
+hooks = s.setdefault("hooks", {})
+# Drop only the slop-gate entry, not the whole group: a sibling hook in the
+# same Bash group must survive. A group left with no hooks at all is kept.
+pre = []
+for g in hooks.get("PreToolUse", []):
+    inner = [h for h in g.get("hooks", []) if "slop-gate" not in json.dumps(h)]
+    if inner:
+        pre.append(dict(g, hooks=inner))
+    elif not g.get("hooks"):
+        pre.append(g)
+pre.append({
+    "matcher": "Bash",
+    "hooks": [{"type": "command", "command": gate, "args": [], "timeout": 10}],
+})
+hooks["PreToolUse"] = pre
+os.makedirs(os.path.dirname(p), exist_ok=True)
+with open(p, "w") as f:
+    json.dump(s, f, indent=2)
+    f.write("\n")
+print("    wired into ~/.claude/settings.json")
+PY
+  fi
+fi
+
+###############################################################################
+# 7c. Claude Code skills
+###############################################################################
+
+step "Claude Code skills"
+skills_src="$HOME/.config/claude/skills"
+skills_dst="$HOME/.claude/skills"
+if [ ! -d "$skills_src" ]; then
+  info "no tracked skills — nothing to link"
+else
+  mkdir -p "$skills_dst"
+  for src in "$skills_src"/*/; do
+    [ -d "$src" ] || continue
+    name=$(basename "$src")
+    dst="$skills_dst/$name"
+    if [ -L "$dst" ] && [ "$(readlink "$dst")" = "${src%/}" ]; then
+      info "already linked: $name"
+    elif [ -e "$dst" ] && [ ! -L "$dst" ]; then
+      warn "$dst exists and is not a symlink — leaving it alone"
+    else
+      ln -sfn "${src%/}" "$dst"
+      info "linked: $name"
+    fi
+  done
+fi
+
+###############################################################################
 # 8. Local git identity
 ###############################################################################
 

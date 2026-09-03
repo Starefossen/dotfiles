@@ -18,6 +18,10 @@ Concretely, none of these ever appear in anything you author:
 
 Commits and PRs are the user's work product and carry the user's authorship.
 
+Enforced in the tool layer, not only here: `.config/claude/hooks/slop-gate.py` denies any
+publishing command carrying such a trailer. The gate's `SLOP_OK=1` prefix skips the slop word
+list and the subject-length check only; it never lifts the trailer check.
+
 # Arbeidsform
 
 - Hovedagenten (Fable) er koordinator: planlegger, dispatcher subagenter og kvalitetssikrer — den gjør ikke tungt arbeid selv og skal bruke egne tokens sparsomt.
