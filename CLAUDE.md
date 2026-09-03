@@ -55,3 +55,16 @@ To disable the "Copilot Desktop" installation ad and other annoying startup tips
 ```
 
 The desktop app installation ad is governed by `"appInstallNudgeResponded": true` inside the auto-managed `~/.copilot/config.json`. If you ever reset your configs, ensuring this flag is set to `true` will suppress the ad.
+
+### OpenCode CLI
+
+To disable update notifications and telemetry in OpenCode, set these in `~/.config/opencode/opencode.json`:
+
+```json
+{
+  "autoupdate": false,
+  "experimental": {
+    "openTelemetry": false
+  }
+}
+```

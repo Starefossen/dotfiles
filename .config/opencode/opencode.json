@@ -1,8 +1,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "autoupdate": "notify",
+  "autoupdate": false,
   "experimental": {
-    "openTelemetry": true
+    "openTelemetry": false
   },
   "logLevel": "INFO",
   "plugin": [
