@@ -57,6 +57,68 @@ Environment variables (Docker, FZF, Kubernetes, Go) are configured in
   bypass with `git push --no-verify`
 - **Credential helper** — macOS Keychain (`osxkeychain`)
 
+### Claude Code configuration lifecycle
+
+`~/.claude/` is ignored, because Claude Code rewrites the files there. The
+tracked desired state lives in `.config/claude/`, and
+`.config/claude/manage.py` is the bridge between the two.
+
+| Task                  | Does                                                       |
+| --------------------- | ---------------------------------------------------------- |
+| `mise run claude:apply`   | Brings the machine to the tracked state                 |
+| `mise run claude:check`   | Reports drift, changes nothing, exits 1 if it finds any |
+| `mise run claude:capture` | Freezes the machine's current values back into the repo |
+| `mise run claude:test`    | Self-tests `manage.py` and every hook that has one      |
+
+Step 7b of `mise run bootstrap` runs `python3 ~/.config/claude/manage.py apply`
+directly, not the mise task, then runs the self-test of every hook that has
+one, and warns if one fails.
+
+Managed:
+
+- The keys listed in `MANAGED` in `manage.py`, merged from
+  `.config/claude/settings.d/base.json` into `~/.claude/settings.json`. Dicts
+  merge recursively; lists and scalars are replaced whole. `hooks` is the
+  exception: `hooks.<Event>` merges by `matcher`, so a group Claude Code or a
+  plugin added locally survives, while the inner `hooks` list of a matched
+  group is replaced whole. The live file is backed up to
+  `settings.json.bak-<timestamp>` before each write, the five newest backups
+  are kept, and the write itself goes through a temp file in the same
+  directory.
+- Every directory in `.config/claude/skills/`, symlinked into `~/.claude/skills/`.
+- Every file in `.config/claude/memory/`, symlinked into `~/.claude/`. That is
+  where `CLAUDE.md` and `RTK.md` live; left in `~/.claude/` they are lost on a
+  rebuild. `~/.claude/CLAUDE.md` is therefore a symlink into this repo, so
+  editing global memory — including through `/memory` — leaves the worktree
+  dirty until you commit it.
+
+Paths in `settings.d/base.json` are stored as `${HOME}/...` and expanded on
+`apply`. `capture` goes the other way, but collapses only a prefix equal to
+this machine's home directory: a path pointing anywhere else is stored verbatim
+and does not travel to the next machine. Expansion covers every string in a
+managed value, so a value that must contain a literal `${HOME}` cannot be
+expressed.
+
+Not managed, deliberately:
+
+- `autoMode` — machine-generated environment context, around 6 kB of repo
+  paths. It belongs to the machine, not the repo, and `apply` leaves it alone.
+- All runtime state: `projects/`, `history.jsonl`, `file-history/`,
+  `sessions/`, caches. Never read, never written.
+- Any settings key outside the allowlist. `apply` preserves its value, value
+  for value; the file itself is rewritten with sorted keys, so byte order and
+  escaping do change.
+
+A `settings.json` or `base.json` that exists but is not valid JSON stops all
+three commands with a message naming the file. Nothing is written, and `check`
+exits non-zero rather than reporting clean.
+
+Changed a setting in the Claude Code UI and want to keep it? Run
+`mise run claude:capture`, then commit the diff in `settings.d/base.json`.
+
+A skill or memory destination that exists and is not a symlink is reported as
+a conflict and left in place. `apply` never overwrites your own files.
+
 ### Claude Code prose gate
 
 `.config/claude/hooks/slop-gate.py` is a `PreToolUse` hook that denies `git
@@ -66,11 +128,11 @@ carries a Claude trailer, a phrase from the slop list, or a subject line over
 72 characters. It blocks at authoring time; the `pre-push` hook above only
 warns, and only at push time.
 
-- Wired into `~/.claude/settings.json` by `mise run bootstrap`. That file is
-  untracked because Claude Code rewrites it, so the hook is merged in rather
-  than committed.
-- Self-test: `mise run claude:hooks-test` — 40 cases, 9 of them controls that
-  must pass. A gate that cannot pass is not a gate.
+- Wired into `~/.claude/settings.json` through the tracked `hooks` key in
+  `settings.d/base.json`, applied by `mise run claude:apply`.
+- Self-test: `mise run claude:test` — 40 cases in `slop-gate.py`, 9 of them
+  controls that must pass, plus 29 cases in `manage.py`. A gate that cannot pass
+  is not a gate. `claude:check` also fails if any hook self-test fails.
 - Prefix a command with `SLOP_OK=1` to get past a false positive in the word list
   or the subject-length check. It never lifts the trailer ban.
 - The word list is deliberately narrow, and words in normal use (`robust`,
@@ -80,10 +142,11 @@ warns, and only at push time.
 
 ### Claude Code skills
 
-`~/.claude/` is ignored, so anything left there is lost on a new machine.
 Skills worth keeping live in `.config/claude/skills/` and are symlinked into
-place by `mise run bootstrap`. Plugin-provided skills (ponytail, caveman) are
-not stored here; `bootstrap` installs the plugins instead.
+`~/.claude/skills/` by `claude:apply`. Plugin-provided skills (ponytail,
+caveman) are not stored here; step 7 of `bootstrap` installs the plugins, and
+`claude:check` reports any plugin in `enabledPlugins` that is not installed, or
+is installed but disabled.
 
 ### Personal Identity (`.gitconfig.local`)
 

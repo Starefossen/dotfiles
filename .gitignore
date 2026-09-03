@@ -99,3 +99,6 @@
 .gitconfig.local
 !.mise/tasks/
 !.mise/tasks/*
+
+# Python bytecode caches
+__pycache__/

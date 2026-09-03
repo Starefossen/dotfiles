@@ -58,6 +58,21 @@ description = "Securely migrate workspaces and secrets from an old Mac"
 [tasks.update]
 description = "Update system packages, runtimes, and plugins"
 
-[tasks."claude:hooks-test"]
-description = "Selvtest for Claude Code-hookene i .config/claude/hooks/"
-run = "python3 {{env.HOME}}/.config/claude/hooks/slop-gate.py --selftest"
+[tasks."claude:apply"]
+description = "Bring maskinen til den sporede Claude Code-konfigurasjonen"
+run = "python3 {{env.HOME}}/.config/claude/manage.py apply"
+
+[tasks."claude:check"]
+description = "Rapporter avvik mellom maskinen og den sporede konfigurasjonen"
+run = "python3 {{env.HOME}}/.config/claude/manage.py check"
+
+[tasks."claude:capture"]
+description = "Frys maskinens nåværende Claude Code-innstillinger ned i repoet"
+run = "python3 {{env.HOME}}/.config/claude/manage.py capture"
+
+[tasks."claude:test"]
+description = "Selvtest for manage.py og hookene i .config/claude/hooks/"
+run = [
+  "python3 {{env.HOME}}/.config/claude/manage.py --selftest",
+  "rc=0; for h in {{env.HOME}}/.config/claude/hooks/*.py; do python3 \"$h\" --selftest || rc=1; done; exit $rc",
+]
