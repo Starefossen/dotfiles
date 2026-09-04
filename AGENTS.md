@@ -43,6 +43,39 @@ licence to add them and clean up later. Do not add them in the first place.
 
 **Do NOT circumvent guard rails.** If you encounter a guard rail, failing test, or security check that prevents an action, do not try to bypass it (e.g. do not skip permissions, ignore warnings, or bypass hooks). Instead, skip the action and report the issue to the human operator for review.
 
+## Running Subagents
+
+When you dispatch subagents to do work in parallel, these apply. They come from a
+session that ran eight lanes at once and paid for each of these the hard way.
+
+**Never poll with sleep loops.** The harness notifies you when a task finishes
+and when a background command exits. An `until ... sleep 30 ... done` around
+`gh pr checks` burns tool calls and tokens for information that arrives on its
+own. One agent spent over 200 tool calls largely this way.
+
+**One issue per agent, three deliverables, no exploratory scope.** Long briefs
+produce long detours. If a brief needs a fourth deliverable it is two briefs.
+
+**Never touch a branch an agent owns.** No `git push`, no rebase, no GitHub
+update-branch. Update-branch in particular creates a merge commit and will
+reject the agent's next push as non-fast-forward. If a PR needs rebasing, tell
+the agent; it knows whether a rebase is safe mid-flight.
+
+**Cap concurrency at about four.** More lanes than that produce merge-queue
+contention and rebase churn that costs more than the parallelism wins.
+
+**Have a second model review significant or security-relevant changes** before
+they merge. Automated PR review catches syntax and local logic; it does not
+question a design decision. Route anything touching security boundaries,
+authentication, network policy or config resolution through an adversarial read
+by a different model. Docs and mechanical refactors do not need it.
+
+**Verify what an agent reports before acting on it.** Agents state conclusions
+with the same confidence whether they ran something or reasoned about it. Ask
+which it was, and check the claims that matter yourself — several times this
+week a report was confidently wrong about code that had already changed
+underneath it.
+
 ## Communication Style
 
 **$terse mode is default.** Keep all conversational responses exceptionally brief and to the point. Omit conversational filler, boilerplate, and unnecessary explanations.
