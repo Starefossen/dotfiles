@@ -70,6 +70,17 @@ question a design decision. Route anything touching security boundaries,
 authentication, network policy or config resolution through an adversarial read
 by a different model. Docs and mechanical refactors do not need it.
 
+**Give each agent its own working directory.** Two agents cloning to the same
+path will collide, and the one that notices has to unpick the other's files.
+Name the directory after the task.
+
+**A red CI run can prove less than it looks like.** When you falsify a test by
+deleting the fix, check that the test you care about actually ran. A failing
+unit assertion aborts `cargo test` before later targets, so the integration test
+you were trying to exercise may never have executed. Two red runs are sometimes
+needed: one for the cheap assertion, one with it removed so the expensive one is
+reached.
+
 **Verify what an agent reports before acting on it.** Agents state conclusions
 with the same confidence whether they ran something or reasoned about it. Ask
 which it was, and check the claims that matter yourself — several times this
