@@ -4,13 +4,25 @@
 
 **Do NOT commit or push to the default branch** unless explicitly instructed otherwise. Always create and use a feature branch for your work.
 
-**Do NOT push code.** Always ask the human to review and push.
+**Pushing a feature branch is allowed. Pushing to the default branch is not.**
 
-After committing, say:
-> Ready to push. Run `git push` when you've reviewed the changes.
+You may push your own feature branch and open a pull request against it. The
+pull request is the review request — that is what replaces "ask the human to
+push". Do not push to `main` (or whatever the default branch is called) under
+any circumstances, and do not merge unless the human running the session has
+said so for that piece of work.
 
-This applies to `git push`, `git push origin`, and any variation.
-Using `--no-verify` to bypass hooks is not allowed.
+This is a deliberate change from an earlier, stricter rule. Routing every push
+through a human serialised the work behind one person for no safety gain: the
+protections that matter live on the default branch, in branch rulesets, required
+checks and the merge queue, none of which a feature-branch push touches.
+
+`--no-verify` is not allowed. If the pre-push hook rejects your push, that is the
+hook doing its job — read what it says and fix the cause. Commit signing is
+configured on this machine (`gpg.format = ssh`, key at
+`~/.ssh/id_ed25519_signing`), so an unsigned-commit rejection means something is
+wrong with your setup, not with the rule. Never use the flag to get past a
+failing test, a lint, or a guard rail.
 
 ## Commit and PR Messages
 
