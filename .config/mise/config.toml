@@ -41,6 +41,8 @@ python = "3.11"
 "npm:@caveman-ai/cli" = "1.2.0"
 gradle = "8.12.1"
 kubecolor = "latest"
+shellcheck = "0.11.0"
+"npm:vercel" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
