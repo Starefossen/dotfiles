@@ -1,6 +1,3 @@
-[include]
-  path = ~/.gitconfig.local
-
 [core]
   trustctime = true
   autocrlf = false #true
@@ -95,7 +92,11 @@
 	dark = true
 [credential "https://github.com"]
 	helper = 
-	helper = !gh auth git-credential
+	helper = !/Users/hans/.local/share/mise/installs/gh/latest/gh_2.96.0_macOS_arm64/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
-	helper = !gh auth git-credential
+	helper = !/Users/hans/.local/share/mise/installs/gh/latest/gh_2.96.0_macOS_arm64/bin/gh auth git-credential
+
+# Machine-local overrides (identity, gpg) — MUST stay last so .gitconfig.local wins.
+[include]
+  path = ~/.gitconfig.local
