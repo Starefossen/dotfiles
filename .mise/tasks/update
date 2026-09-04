@@ -34,6 +34,37 @@ else
 fi
 
 ###############################################################################
+# 1b. Claude Code quarantine flag
+###############################################################################
+# The claude-code cask ships a plain binary, and Homebrew quarantines every
+# download. A quarantined binary needs a Gatekeeper approval dialog on first
+# run, which cannot be drawn in a tmux or ssh session, so claude hangs at
+# dyld start instead of prompting. Each upgrade is a new file with a new flag,
+# so this has to run after every upgrade.
+step "Claude Code quarantine flag"
+if have brew; then
+  cleared=0
+  for bin in "$(brew --prefix)"/Caskroom/claude-code*/*/claude; do
+    [ -f "$bin" ] || continue
+    xattr -p com.apple.quarantine "$bin" >/dev/null 2>&1 || continue
+    if xattr -d com.apple.quarantine "$bin" 2>/dev/null; then
+      info "cleared quarantine: $bin"
+      cleared=1
+    elif sudo xattr -d com.apple.quarantine "$bin"; then
+      info "cleared quarantine (sudo): $bin"
+      cleared=1
+    else
+      warn "could not clear quarantine on $bin"
+    fi
+  done
+  if [ "$cleared" -eq 0 ]; then
+    info "nothing quarantined"
+  fi
+else
+  warn "brew not found — skipping quarantine check"
+fi
+
+###############################################################################
 # 2. Tmux plugins
 ###############################################################################
 step "Tmux plugins (tpack)"
