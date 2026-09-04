@@ -81,6 +81,14 @@ you were trying to exercise may never have executed. Two red runs are sometimes
 needed: one for the cheap assertion, one with it removed so the expensive one is
 reached.
 
+**A review you dispatch is not a gate unless you hold the thing being
+reviewed.** Agents arm auto-merge as part of finishing. Sending a second model
+to review an open PR changes nothing about whether it merges: it will land
+while the review runs. If a change must not merge before review, tell its owning
+agent to hold and disarm auto-merge, in the same breath as dispatching the
+reviewer. Otherwise call it a post-merge audit and be honest that findings
+become follow-up PRs.
+
 **Verify what an agent reports before acting on it.** Agents state conclusions
 with the same confidence whether they ran something or reasoned about it. Ask
 which it was, and check the claims that matter yourself — several times this
