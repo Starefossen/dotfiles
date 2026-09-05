@@ -89,6 +89,13 @@ agent to hold and disarm auto-merge, in the same breath as dispatching the
 reviewer. Otherwise call it a post-merge audit and be honest that findings
 become follow-up PRs.
 
+**Commit before you mutate.** Three agents in two days destroyed their own
+uncommitted work with a `git checkout --`, a `git stash drop`, or a `checkout
+HEAD --` run mid-task to compare against baseline. Commit (or at least stash
+and keep) your in-progress work before any command that resets files, and
+compare against baseline via `git show HEAD:path` into a scratch file instead
+of touching the working tree. All three recovered only because they noticed.
+
 **A success-shaped response is not success.** An API that answers `pending`,
 `accepted` or `queued` is telling you it received the request, not that the
 request will work. Where there is a status handle — a uuid, a job id, a run
