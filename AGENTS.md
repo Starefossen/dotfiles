@@ -70,6 +70,15 @@ question a design decision. Route anything touching security boundaries,
 authentication, network policy or config resolution through an adversarial read
 by a different model. Docs and mechanical refactors do not need it.
 
+**Delete your working directory when you finish.** A clone is ~1 GiB; a day of
+agents leaving them "for inspection" filled a 228 GiB disk to zero twice, and
+nobody inspected any of them because the branch is on GitHub and the report has
+the paths. When your PR is pushed or your branch is safe on origin, `rm -rf`
+your clone as the last step. Keep it only if you are handing off dirty
+uncommitted state, and then say so explicitly in your report so it gets cleaned
+deliberately rather than accumulating. The coordinator should not have to sweep
+up after finished agents.
+
 **Give each agent its own working directory.** Two agents cloning to the same
 path will collide, and the one that notices has to unpick the other's files.
 Name the directory after the task.
