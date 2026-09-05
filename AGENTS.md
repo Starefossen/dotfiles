@@ -89,6 +89,13 @@ agent to hold and disarm auto-merge, in the same breath as dispatching the
 reviewer. Otherwise call it a post-merge audit and be honest that findings
 become follow-up PRs.
 
+**A success-shaped response is not success.** An API that answers `pending`,
+`accepted` or `queued` is telling you it received the request, not that the
+request will work. Where there is a status handle — a uuid, a job id, a run
+link — fetch it before believing anything. Five identical "enqueued" replies
+today were five already-failed requests, and the failure reason was one GET
+away the whole time.
+
 **Verify what an agent reports before acting on it.** Agents state conclusions
 with the same confidence whether they ran something or reasoned about it. Ask
 which it was, and check the claims that matter yourself — several times this
