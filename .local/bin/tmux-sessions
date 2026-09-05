@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#
+# tmux-sessions — create the working sessions if they are not already there.
+#
+# Idempotent: an existing session is left exactly as it is, so this is safe to
+# run from tmux.conf on every config load and by hand after a reboot.
+#
+# Sessions are named after the work, not the directory, because that is what
+# `claude remote-control <name>` and `tmux attach -t <name>` are typed against.
+
+set -euo pipefail
+
+# session:directory
+SESSIONS=(
+  "Default:$HOME"
+  "personal:$HOME/projects/personal"
+  "konf:$HOME/projects/konf"
+  "cplt:$HOME/projects/copilot"
+  "nais-apm:$HOME/projects/nais-apm"
+  "nav-patterns:$HOME/projects/nav-patterns"
+  "unleash:$HOME/projects/unleash"
+)
+
+for entry in "${SESSIONS[@]}"; do
+  name="${entry%%:*}"
+  dir="${entry#*:}"
+  tmux has-session -t "=$name" 2>/dev/null && continue
+  [ -d "$dir" ] || { printf 'skipping %s: %s missing\n' "$name" "$dir" >&2; continue; }
+  tmux new-session -d -s "$name" -c "$dir"
+done
