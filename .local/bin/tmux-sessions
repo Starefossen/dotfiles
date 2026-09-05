@@ -11,8 +11,9 @@
 set -euo pipefail
 
 # session:directory
+# "Default" is not listed: tmux.conf creates it itself on server start, and
+# racing it here fails with "duplicate session".
 SESSIONS=(
-  "Default:$HOME"
   "personal:$HOME/projects/personal"
   "konf:$HOME/projects/konf"
   "cplt:$HOME/projects/copilot"
@@ -26,5 +27,10 @@ for entry in "${SESSIONS[@]}"; do
   dir="${entry#*:}"
   tmux has-session -t "=$name" 2>/dev/null && continue
   [ -d "$dir" ] || { printf 'skipping %s: %s missing\n' "$name" "$dir" >&2; continue; }
-  tmux new-session -d -s "$name" -c "$dir"
+  # tmux.conf runs this script itself on server start, so a manual run can race
+  # it; losing that race is fine as long as the session ends up existing. Any
+  # other failure is reported and does not stop the remaining sessions.
+  tmux new-session -d -s "$name" -c "$dir" 2>/dev/null \
+    || tmux has-session -t "=$name" 2>/dev/null \
+    || printf 'could not create %s\n' "$name" >&2
 done
