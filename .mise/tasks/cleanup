@@ -181,8 +181,15 @@ rm -rf ~/.copilot/session-state/*/{files,checkpoints,rewind-snapshots} 2>/dev/nu
 
 step "Old temp files (/private/tmp, >3 days, own user only)"
 # live sessions keep recent mtimes and are never touched; macOS wipes the
-# rest on reboot anyway — this just brings that forward
+# rest on reboot anyway — this just brings that forward.
+#
+# Sockets are excluded by name, not by mtime: a tmux server's socket directory
+# is created once and never touched again, so an eleven-day-old tmux-501 can
+# belong to a server with live sessions in it. Deleting it does not stop the
+# server, it just makes every session unreachable forever, since a client can
+# only find a server through that path.
 find /private/tmp -mindepth 1 -maxdepth 1 -user "$(id -un)" -mtime +3 \
+  ! -name 'tmux-*' ! -name 'ssh-*' ! -name '.s.*' \
   -exec rm -rf {} + 2>/dev/null || true
 
 ###############################################################################
