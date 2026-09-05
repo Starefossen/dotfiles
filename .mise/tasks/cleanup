@@ -54,7 +54,80 @@ du -sh \
   ~/Library/Developer/Xcode/DerivedData \
   2>/dev/null | sort -rh || true
 
+###############################################################################
+# Finished agent workspaces
+###############################################################################
+# Parallel agent sessions leave clones and worktrees behind, and nothing owns
+# their end of life — this is what actually filled the disk. A workspace is
+# only removed when it can prove it holds nothing: no uncommitted changes, no
+# stash, no commit that is not on a remote, and no git activity for
+# CLEANUP_AGENT_DAYS. Anything that fails a check is kept and reported.
+#
+# ponytail: activity is judged by the mtime of .git/index, which every git
+# command touches. A workspace being read but never git-touched for a week
+# looks idle. Good enough; a cwd scan across all processes is the upgrade.
+
+AGENT_DAYS="${CLEANUP_AGENT_DAYS:-7}"
+
+# 0 = safe to remove, 1 = keep, 2 = not a git workspace (say nothing)
+agent_workspace_state() {
+  local d="$1" index
+  index="$d/.git/index"                             # plain clone
+  [ -f "$d/.git" ] && index="$d/.git"               # linked worktree
+  [ -e "$index" ] || return 2
+
+  # Idle test comes first: git status refreshes the index and would reset the
+  # very mtime being read. GIT_OPTIONAL_LOCKS=0 keeps the reads below from
+  # writing it either.
+  [ -n "$(find "$index" -maxdepth 0 -mtime +"$AGENT_DAYS" 2>/dev/null)" ] || return 1
+
+  [ -z "$(GIT_OPTIONAL_LOCKS=0 git -C "$d" status --porcelain 2>/dev/null)" ] || return 1
+  [ -z "$(GIT_OPTIONAL_LOCKS=0 git -C "$d" stash list 2>/dev/null)" ] || return 1
+  # every commit reachable from a local branch must also be on some remote
+  [ -z "$(GIT_OPTIONAL_LOCKS=0 git -C "$d" log --branches --not --remotes --oneline 2>/dev/null)" ] || return 1
+}
+
+agent_workspace_cleanup() {
+  step "Finished agent workspaces (clean, pushed, idle >${AGENT_DAYS}d)"
+  found=0
+  for d in ~/wt-* ~/agent-work-* ~/projects/cplt-*; do
+    [ -d "$d" ] || continue
+    agent_workspace_state "$d" && state=0 || state=$?
+    [ "$state" -eq 2 ] && continue
+    found=1
+    if [ "$state" -eq 0 ]; then
+      if [ "$CHECK" -eq 1 ]; then
+        info "would remove: $d ($(du -shx "$d" 2>/dev/null | cut -f1))"
+      else
+        info "removing: $d ($(du -shx "$d" 2>/dev/null | cut -f1))"
+        rm -rf "$d"
+      fi
+    else
+      info "keeping: $d (has work, or active within ${AGENT_DAYS}d)"
+    fi
+  done
+  if [ "$found" -eq 0 ]; then
+    info "no agent workspaces found"
+  fi
+
+  step "Stale build output in live workspaces (idle >${AGENT_DAYS}d)"
+  # Source is untouched; only rebuildable output goes. A workspace still in use
+  # keeps a fresh mtime on its output and is skipped.
+  for out in ~/projects/*/target ~/projects/*/node_modules ~/wt-*/target; do
+    [ -d "$out" ] || continue
+    if [ -n "$(find "$out" -maxdepth 0 -mtime +"$AGENT_DAYS" 2>/dev/null)" ]; then
+      if [ "$CHECK" -eq 1 ]; then
+        info "would remove: $out ($(du -shx "$out" 2>/dev/null | cut -f1))"
+      else
+        info "removing: $out ($(du -shx "$out" 2>/dev/null | cut -f1))"
+        rm -rf "$out"
+      fi
+    fi
+  done
+}
+
 if [ "$CHECK" -eq 1 ]; then
+  agent_workspace_cleanup
   info "--check: stopping before any deletion"
   exit 0
 fi
@@ -139,6 +212,8 @@ if [ "$REPOS" -eq 1 ]; then
        -o -name storybook-static -o -name .docusaurus \) -prune -print0 2>/dev/null \
     | xargs -0 rm -rf
 fi
+
+agent_workspace_cleanup
 
 ###############################################################################
 
