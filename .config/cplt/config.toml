@@ -7,7 +7,7 @@ allow_localhost_any = true
 yes = true
 
 [allow]
-read = ["~/Desktop", "~/Library/Application Support/cnctl/config.toml"]
+read = ["~/Desktop"]
 
 [proxy]
 allow_private_domains = ["intern.nav.no", "nav.cloud.nais.io", "prod.nav.cloud.nais.io", "prod-gcp.nav.cloud.nais.io", "dev-gcp.nav.cloud.nais.io", "dev.nav.cloud.nais.io"]
