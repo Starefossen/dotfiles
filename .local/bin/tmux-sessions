@@ -31,7 +31,9 @@ SESSIONS=(
   # fail with "duplicate session" and the login ends up with no server at all.
   "personal:$HOME/projects/personal"
   "konf:$HOME/projects/konf"
-  "cplt:$HOME/projects/copilot"
+  # One session for the copilot workspace, not one per checkout: the directory
+  # holds both the copilot and cplt repos.
+  "copilot:$HOME/projects/copilot"
   "nais-apm:$HOME/projects/nais-apm"
   "nav-patterns:$HOME/projects/nav-patterns"
   "unleash:$HOME/projects/unleash"
