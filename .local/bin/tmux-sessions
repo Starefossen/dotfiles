@@ -14,7 +14,16 @@ set -euo pipefail
 # "Default" is not listed: tmux.conf creates it itself on server start, and
 # racing it here fails with "duplicate session".
 # Started in each new session. Kept in one place so the flags stay in sync.
-AGENT_CMD="claude remote-control --spawn same-dir"
+#
+# --remote-control and --continue are top-level flags. `claude --remote-control
+# <name>` names the session in claude.ai/code, and --continue reopens the most
+# recent conversation in that directory instead of starting another one, which
+# is what stops duplicates piling up.
+#
+# Not --resume: with no session id it opens the conversation picker, so every
+# pane would sit waiting for someone to choose. Not the `claude remote-control`
+# subcommand either; that starts a fresh session every time.
+AGENT_CMD="claude --remote-control"
 
 SESSIONS=(
   # "dev" is deliberately absent: config.fish runs `tmux attach -t dev; or
@@ -38,12 +47,10 @@ for entry in "${SESSIONS[@]}"; do
   # other failure is reported and does not stop the remaining sessions.
   if tmux new-session -d -s "$name" -c "$dir" 2>/dev/null; then
     # Start the agent in the session we just made. send-keys rather than a pane
-    # command, so the pane keeps its shell when claude exits.
-    #
-    # --spawn same-dir is not optional: without it the CLI asks "Choose [1/2]"
-    # and every session would sit at that prompt after a reboot. --name makes
-    # the session show up under the tmux name in claude.ai/code.
-    tmux send-keys -t "$name" "$AGENT_CMD --name $name" Enter
+    # command, so the pane keeps its shell when claude exits. The target is
+    # "$name" and not "=$name": the exact-match prefix is not valid for a pane
+    # target, and under set -e that failure aborted the loop.
+    tmux send-keys -t "$name" "$AGENT_CMD $name --continue" Enter
   elif ! tmux has-session -t "=$name" 2>/dev/null; then
     printf 'could not create %s\n' "$name" >&2
   fi
