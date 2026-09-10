@@ -5,12 +5,15 @@ allow_cache_exec = ["ms-playwright"]
 pass_env = ["HOME"]
 allow_localhost_any = true
 yes = true
+deny_clipboard = false
+brief = true
+keychain_substitute = true
 
 [allow]
 read = ["~/Desktop"]
 
 [proxy]
-allow_private_domains = ["intern.nav.no", "nav.cloud.nais.io", "prod.nav.cloud.nais.io", "prod-gcp.nav.cloud.nais.io", "dev-gcp.nav.cloud.nais.io", "dev.nav.cloud.nais.io"]
+allow_private_domains = ["intern.nav.no", "nav.cloud.nais.io", "prod.nav.cloud.nais.io", "prod-gcp.nav.cloud.nais.io", "dev-gcp.nav.cloud.nais.io", "dev.nav.cloud.nais.io", "cloud.nais.io"]
 
 [gh_guard]
 enabled = true

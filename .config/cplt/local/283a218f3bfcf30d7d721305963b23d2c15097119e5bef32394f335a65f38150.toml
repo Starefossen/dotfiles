@@ -1,0 +1,7 @@
+[local]
+path = "/Users/hans"
+remote = "github.com/Starefossen/dotfiles"
+written_at = "2026-09-10T09:12:44Z"
+
+[sandbox]
+repo_dirs = ["/Users/hans/go/src/github.com/navikt/cplt", "/Users/hans/go/src/github.com/navikt/copilot", "/Users/hans/go/src/github.com/navikt/copilot-intern", "/Users/hans/go/src/github.com/navikt/copilot-infra", "/Users/hans/go/src/github.com/navikt/.github-private/"]
