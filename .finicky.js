@@ -34,7 +34,18 @@ module.exports = {
         "*.github.com*",
         "stackoverflow.com*",
         "*.aws.amazon.com*",
-        "console.cloud.google.com*"
+        "console.cloud.google.com*",
+        ({ opener, url }) => {
+          // 1. Match by process if macOS preserves it
+          if (opener && (opener.bundleId === "io.nais.device" || (opener.path && opener.path.includes("naisdevice")))) {
+            return true;
+          }
+          // 2. Match OAuth flows (like naisdevice) that redirect back to a local server
+          if (url.host.includes("accounts.google.com") || url.host.includes("login.microsoftonline.com")) {
+            return url.search.includes("localhost") || url.search.includes("127.0.0.1");
+          }
+          return false;
+        }
       ],
       browser: {
         name: "Safari",
