@@ -59,6 +59,8 @@ brew "openssl@3"
 brew "ffmpeg"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# GitHub command-line tool
+brew "gh"
 # Distributed revision control system
 brew "git"
 # Quickly rewrite git repository history
