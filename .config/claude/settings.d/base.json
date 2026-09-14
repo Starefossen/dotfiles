@@ -41,6 +41,12 @@
             "command": "${HOME}/.config/claude/hooks/slop-gate.py",
             "timeout": 10,
             "type": "command"
+          },
+          {
+            "args": [],
+            "command": "${HOME}/.config/claude/hooks/worktree-gate.py",
+            "timeout": 10,
+            "type": "command"
           }
         ],
         "matcher": "Bash"
