@@ -1,7 +1,0 @@
-[local]
-path = "/private/var/folders/8q/l5h25q1s1tn8wp0p_d2nc4qc0000gn/T/.cplt-e2e-trust-propose-repos-0"
-remote = ""
-written_at = "2026-09-10T13:09:57Z"
-
-[sandbox]
-repo_dirs = ["/private/var/folders/8q/l5h25q1s1tn8wp0p_d2nc4qc0000gn/T/e2e-model"]

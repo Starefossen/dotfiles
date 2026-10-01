@@ -1,7 +1,0 @@
-[local]
-path = "/private/tmp/claude-501/-Users-hans-go-src-github-com-navikt-cplt/5382d7b3-fe92-4a66-a609-fdbde1a8c0e3/scratchpad/symtest/spleis"
-remote = "github.com/navikt/spleis"
-written_at = "2026-09-10T11:53:15Z"
-
-[sandbox]
-repo_dirs = ["/private/tmp/claude-501/-Users-hans-go-src-github-com-navikt-cplt/5382d7b3-fe92-4a66-a609-fdbde1a8c0e3/scratchpad/symtest/spleis/planted"]

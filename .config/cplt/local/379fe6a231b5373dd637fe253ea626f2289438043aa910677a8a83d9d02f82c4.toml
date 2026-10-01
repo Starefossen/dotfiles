@@ -1,7 +1,7 @@
 [local]
 path = "/Users/hans/go/src/github.com/navikt/copilot"
 remote = "github.com/navikt/copilot"
-written_at = "2026-09-10T10:32:39Z"
+written_at = "2026-09-15T13:29:55Z"
 
 [sandbox]
-repo_dirs = ["/Users/hans/go/src/github.com/navikt/.github-private", "/Users/hans/go/src/github.com/navikt/cplt"]
+repo_dirs = ["/Users/hans/go/src/github.com/navikt/.github-private", "/Users/hans/go/src/github.com/navikt/cplt", "/Users/hans/go/src/github.com/nais/helm-charts"]

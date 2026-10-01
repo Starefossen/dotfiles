@@ -1,9 +1,6 @@
 [sandbox]
 scratch_dir = true            # go test, mise run, node-gyp
-allow_gpg_signing = true
 allow_cache_exec = ["ms-playwright"]
-pass_env = ["HOME"]
-allow_localhost_any = true
 yes = true
 deny_clipboard = false
 brief = true
@@ -11,9 +8,11 @@ keychain_substitute = true
 
 [allow]
 read = ["~/Desktop"]
+# Shared pnpm store; needs pnpm store-dir set.
+write = ["~/Library/pnpm/store"]
 
 [proxy]
-allow_private_domains = ["intern.nav.no", "nav.cloud.nais.io", "prod.nav.cloud.nais.io", "prod-gcp.nav.cloud.nais.io", "dev-gcp.nav.cloud.nais.io", "dev.nav.cloud.nais.io", "cloud.nais.io"]
+allow_private_domains = ["intern.nav.no", "mimir.nav.cloud.nais.io", "loki.nav.cloud.nais.io", "tempo.dev-gcp.nav.cloud.nais.io", "tempo.prod-gcp.nav.cloud.nais.io"]
 
 [gh_guard]
 enabled = true
