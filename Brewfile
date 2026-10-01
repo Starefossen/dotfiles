@@ -114,6 +114,24 @@ brew "navikt/tap/cplt", trusted: true
 # CLI for Konf — run your conference (konfctl releases)
 brew "runkonf/tap/konf"
 
+# Machine Learning / AI
+brew "ggml"
+brew "llama.cpp"
+brew "mlx"
+brew "mlx-c"
+brew "ollama"
+
+# CLI Tools and Misc
+brew "azure/kubelogin/kubelogin"
+brew "gh"
+brew "hyperfine"
+brew "id3lib"
+brew "id3v2"
+brew "libomp"
+brew "n"
+brew "nais/tap/nais"
+brew "nais/tap/narc"
+
 ###############################################################################
 # Development & terminal apps
 ###############################################################################
