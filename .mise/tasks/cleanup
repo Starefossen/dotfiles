@@ -227,3 +227,13 @@ agent_workspace_cleanup
 step "Disk usage after"
 df -h / | tail -1
 info "done — everything removed regenerates automatically on demand"
+
+###############################################################################
+# Surgical Agent Git Cleanup (Python Script)
+###############################################################################
+step "Surgical Git Worktree & Stray Cleanup (Older than 24h)"
+if [ "$CHECK" -eq 1 ]; then
+  ~/scripts/agent-cleanup.py --min-age 24h --auto --dry-run
+else
+  ~/scripts/agent-cleanup.py --min-age 24h --auto
+fi

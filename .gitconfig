@@ -100,3 +100,5 @@
 # Machine-local overrides (identity, gpg) — MUST stay last so .gitconfig.local wins.
 [include]
   path = ~/.gitconfig.local
+[gpg]
+	program = /opt/homebrew/bin/gpg
