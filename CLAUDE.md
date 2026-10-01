@@ -28,6 +28,11 @@ list and the subject-length check only; it never lifts the trailer check.
 - Subagenter gjør selve arbeidet. Bruk Opus som standard; mindre modeller bare for små, mekaniske oppgaver.
 - Gjennomgå alltid subagentenes arbeid (scope-sjekk, faktasjekk, visuell verifisering der det er relevant) før du bygger videre eller committer.
 - Subagenter skal jobbe stall-robust: én fil om gangen, inkrementell skriving, validering mellom batcher.
+- Fable brukes til second opinion, adversarial review og språkvask før merge, samlet i batcher. Se `~/AGENTS.md` under «Running Subagents» for reglene om review, rapporter og opprydding.
+- All brukerrettet norsk tekst (nettsider, CLI-tekst, dokumentasjon, nyhetssaker) skal språkvaskes før merge: klarspråk, bokmål, ingen KI-floskler.
+- Norsk tekst bruker «KI», ikke «AI». Unntak: egennavn og leverandørenes egne termer (f.eks. «GitHub Copilot», GitHubs «AI credits»). Engelsk tekst beholder «AI».
+- Ikke flytt eller bryt eksisterende brukere. Nye standarder gjelder nye installasjoner; eksisterende brukere får et lite dytt, aldri et brudd.
+- Ikke bryt lenker. Flyttede eller fjernede URL-er og ankere får permanente omdirigeringer.
 
 # Communication Style
 

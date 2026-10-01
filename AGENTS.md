@@ -118,6 +118,103 @@ which it was, and check the claims that matter yourself — several times this
 week a report was confidently wrong about code that had already changed
 underneath it.
 
+**Keep agent reports short.** End every brief with "report in at most 15
+lines: result, PR/SHA, what is blocked, decisions for the human". Details
+belong in the PR body or a state file, not in the coordinator's context. Long
+handbacks are the main thing that fills the coordinator's context.
+
+**Prefer short-lived agents with a state file.** One agent per issue or small
+batch, writing progress to a state file in the scratchpad. A worker kept alive
+across many tasks grew to about 740k tokens and re-read all of it on every
+step. A restart of the coordinator kills agents' background waits; resume from
+the state file with a fresh agent.
+
+**Match the model to the work.** Use smaller models for mechanical work:
+labels, branch cleanup, re-runs, rebases, issue filing and inventories. Use the
+strongest coding model for code. Use the review model only for review. A review
+quota runs out, so batch reviews: one call covering several PRs, at most two
+calls per batch, and only after CI is green on the final head. On a quota
+error, hold the merge, record what is pending, and keep building. Don't retry
+in a loop.
+
+**Merge only on a review of the exact head.** An agent must never arm
+auto-merge or queue a PR before showing the reviewer's verdict on the commit
+being merged. Any later commit needs a new verdict. The one exception: a rebase
+whose only conflict is placement in an append-only file such as a changelog
+may merge on the earlier verdict, if `git range-diff` shows nothing else
+changed. Post that range-diff on the PR first.
+
+**On a merge-queue repo, `gh pr merge` arms auto-merge, and later pushes don't
+disarm it.** The PR merges as soon as the new head's checks pass, whether or not
+it was reviewed. One PR merged a head the reviewer had rejected this way. Before
+pushing to a PR that has auto-merge armed or is in the queue, run `gh pr merge
+--disable-auto`. Arm it again only after the new head has its verdict.
+
+**Check a brief against known rules before dispatching.** When work changes
+something users see (pages, CLI output, defaults, language), check it against
+the standing preferences and ask the human if it is ambiguous. Unclear briefs
+caused translate-then-revert churn and a CLI that defaulted to a dev cluster.
+
+**A refusal is not something to route around.** If a permission check or
+classifier refuses an action, stop and report it. Don't retry by another route
+or ask another agent to do it; that is laundering the refusal. Leave it to the
+human.
+
+**Clean up processes, not only clones.** Dev servers, container VMs, model
+servers and build daemons left running made the machine sluggish and cost
+benchmark data. Kill what you start, by PID, never by a broad `pkill`. Stop VMs
+when you are done, but only ones you started. Before stopping a shared VM
+such as Colima, list its containers (`docker ps`). If anything you don't own
+is running, leave the VM up; another session may be using it. Before starting heavy work, check whether a benchmark or
+other load-sensitive job is running. While one is, run no local test suites,
+package installs or production builds: push, and let CI test. The benchmark
+preflight refuses to run above a load average of 8. Two `go test -p 2` runs
+and one `pnpm install` pushed it past 18 and cost a benchmark phase.
+While a benchmark queue or launcher runs or waits, its checkout (the main
+`~/mlx-workspace` checkout) is live: never delete, clean, stash or switch
+branches there, even for untracked files. Work in a `git worktree` instead.
+
+**Never write to the real user config in tests or trials.** Set HOME and every
+`XDG_*` directory to scratch paths. Setting only HOME is not enough: tools that
+honour `XDG_CONFIG_HOME` still write to the real config.
+
+**Reviewers are read-only.** Spawn a reviewer as a fresh agent with a
+read-only brief ("review only: no push, no merge, no queueing"), never as a
+fork that inherits the author's context. A forked reviewer inherits the
+author's goal of getting the PR merged; one merged a PR itself, against
+explicit instructions.
+
+**Keep PR bodies and scratch notes inside your own working directory.** Agents
+sharing one scratch file published each other's PR descriptions.
+
+**Check that a waiter you restart can actually succeed.** After restarting
+one, read its first real attempt in the log. In zsh an unquoted `$var`
+isn't word-split, so `set -- $out` passed "sha UNKNOWN" as one argument, and
+a merge waiter failed silently all night with an invalid SHA while the GPU
+sat idle. Pass values explicitly, and confirm the first attempt.
+
+**Waiters must not match each other.** A waiter that checks
+`pgrep -f <pattern>` is blocked by any process whose command line contains that
+pattern, including another waiter or a watcher `tail`. Build such strings from
+pieces, or `cd` first, so no command line contains the watched words.
+Otherwise two waiters deadlock and a GPU sits idle overnight.
+
+**One waiter per queue, and it never reruns a finished queue.** Kill the old pid
+before relaunching an edited copy; give each launcher a pidfile and make it exit
+when its own `.done` marker exists. Gate on the GPU being free (no queue lock, no
+GPU job, 1-min load below 6, 5 min), not only on a sibling launcher's marker. A stale twin once reran
+a 5-hour queue that its copy had already finished.
+
+**Files fetched at runtime from a repo's main branch are releases.** No pin, no staging step —
+a merge ships to every user on their next run. Review them like a release: user impact stated,
+a second model's eyes, before merge. `navikt/mlx-workspace`'s `manifest/models.json`, fetched by
+released nav-pilot, is the example this rule was written for.
+
+**Track loose ends as issues.** Every "not done", "follow-up" or "idea" in a
+report becomes an issue, and ongoing work is linked from one tracking issue.
+Once the human has taken an artifact over (for example an article after its
+language pass), agents don't edit it; they file follow-up issues.
+
 ## Communication Style
 
 **$terse mode is default.** Keep all conversational responses exceptionally brief and to the point. Omit conversational filler, boilerplate, and unnecessary explanations.
