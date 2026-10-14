@@ -86,8 +86,6 @@ brew "poppler"
 # Reattach process (e.g., tmux) to background
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# CLI proxy to minimize LLM token consumption
-brew "rtk"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Editor of encrypted files
