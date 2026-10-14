@@ -1,0 +1,8 @@
+[local]
+path = "/Users/hans/go/src/github.com/nais/audit-approval"
+remote = "github.com/nais/audit-approval"
+written_at = "2026-10-08T21:03:07Z"
+
+[sandbox]
+allow_cache_exec = ["ms-playwright"]
+repo_dirs = ["/Users/hans/go/src/github.com/nais/actions", "/Users/hans/go/src/github.com/nais/api"]

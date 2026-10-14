@@ -1,0 +1,7 @@
+[local]
+path = "/Users/hans/go/src/github.com/nais/unleasherator"
+remote = "github.com/nais/unleasherator"
+written_at = "2026-10-08T06:43:11Z"
+
+[sandbox]
+repo_dirs = ["/Users/hans/go/src/github.com/nais/bifrost", "/Users/hans/go/src/github.com/nais/unleash", "/Users/hans/go/src/github.com/nais/helm-charts", "/Users/hans/go/src/github.com/nais/vakt"]
