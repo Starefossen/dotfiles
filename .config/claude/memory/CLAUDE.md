@@ -13,5 +13,3 @@ Do NOT append any of these to a commit message or a pull-request body:
 - `Generated with [Claude Code]` — or any equivalent tool footer
 
 Write the message the change deserves and stop there.
-
-@RTK.md
