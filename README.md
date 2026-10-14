@@ -87,7 +87,7 @@ Managed:
   directory.
 - Every directory in `.config/claude/skills/`, symlinked into `~/.claude/skills/`.
 - Every file in `.config/claude/memory/`, symlinked into `~/.claude/`. That is
-  where `CLAUDE.md` and `RTK.md` live; left in `~/.claude/` they are lost on a
+  where `CLAUDE.md` lives; left in `~/.claude/` it is lost on a
   rebuild. `~/.claude/CLAUDE.md` is therefore a symlink into this repo, so
   editing global memory — including through `/memory` — leaves the worktree
   dirty until you commit it.

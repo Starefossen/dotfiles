@@ -439,7 +439,7 @@ def selftest():
     (root / "settings.d").mkdir(parents=True)
     (root / "skills" / "unslop").mkdir(parents=True)
     (root / "memory").mkdir(parents=True)
-    (root / "memory" / "CLAUDE.md").write_text("@RTK.md\n", encoding="utf8")
+    (root / "memory" / "CLAUDE.md").write_text("# memory\n", encoding="utf8")
     p["live"].parent.mkdir(parents=True)
 
     automode = {"repos": ["/a/b", "/c/d"], "n": 3}
